@@ -25,10 +25,11 @@
           <h1 id="game-title">Small paws.<br />Big adventure.<br /><em>Just cake.</em></h1>
           <p class="intro">Beyond the forgotten ruins, above the clouds,<br class="desktop-break" /> a perfectly ordinary dessert awaits.</p>
           <div class="play-row">
-            <button id="play" class="play-button"><span class="play-icon" aria-hidden="true">▶</span><span>Play the adventure</span><span class="play-arrow" aria-hidden="true">↗</span></button>
+            <button id="play" class="play-button" disabled aria-describedby="availability"><span class="play-icon" aria-hidden="true">▶</span><span id="play-label">Checking availability</span><span class="play-arrow" aria-hidden="true">↗</span></button>
             <span class="play-note">Made for the curious.<br />Best with a keyboard or controller.</span>
           </div>
           <p id="availability" class="availability" role="status"><span class="status-dot"></span><span id="availability-text">Checking the trail…</span></p>
+          <p id="local-setup" class="local-setup" hidden>Local setup: open <strong>Play Piece of Cake.command</strong> in your Desktop/PieceOfCake folder. Unreal Engine 5.8 must be installed before the game can be built and played.</p>
         </div>
         <div class="art-note"><span class="art-note-line"></span><span>AN ANCIENT WORLD.<br /><strong>A VERY SMALL REASON TO EXPLORE IT.</strong></span></div>
         <span class="concept-label">Original journey illustration</span>

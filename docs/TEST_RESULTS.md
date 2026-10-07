@@ -91,3 +91,11 @@ engine patch version, GPU/driver, date, build commit and outcomes here.
 - [ ] Verify Chrome, Edge, Firefox and supported Safari; physical gamepad.
 - [ ] Test the actual cloud host, HTTPS, TURN fallback and complete browser playthrough.
 - [ ] Publish an actual tested URL and update README status only after success.
+
+## Play startup correction — 7 October 2026
+
+- Browser production build and six Node signalling tests pass again.
+- Live browser inspection confirms disabled “Game not running” and explicit “Not playable yet” when `/readyz` has no Unreal stream.
+- The combined Desktop launcher exits immediately with the missing-Unreal diagnostic; it does not start a misleading empty player.
+- Browser regression assertions were updated for the disabled offline state.
+- Combined launch after installing Unreal remains untested. No game stream or gameplay has been verified.

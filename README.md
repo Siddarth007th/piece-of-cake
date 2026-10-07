@@ -45,11 +45,14 @@ vector art; it is not a screenshot of the game.
    generates real materials/audio/Blueprint assets and creates `L_LongWayToCake`.
    This step may take time and disk space; build errors must be fixed, not ignored.
 5. In Unreal, open `/Game/Levels/L_LongWayToCake` and press Play.
-6. For the browser: double-click **Start Browser Player.command**, then
-   **Stream Unreal.command**, then visit [the local player](http://127.0.0.1:8080).
+6. For the browser: double-click **Play Piece of Cake.command**. It checks for Unreal,
+   builds the project, starts both Unreal and the signalling server, and opens the browser
+   only after Unreal registers. Keep its terminal open; Control-C stops both processes.
+   The separate **Start Browser Player.command** and **Stream Unreal.command** remain
+   available for debugging. Close their terminals before using the combined launcher.
 
-The browser page alone is not the game. It correctly reports **Game server offline**
-until Unreal connects. A normal end user's browser needs neither Unreal nor a game
+The browser page alone is not the game. It disables Play and reports **Not playable yet**
+until Unreal connects. Availability refreshes automatically every five seconds. A normal end user's browser needs neither Unreal nor a game
 download once a working GPU host is deployed.
 
 ## Command-line workflow

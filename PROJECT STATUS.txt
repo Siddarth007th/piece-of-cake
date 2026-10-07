@@ -11,6 +11,7 @@ The Mac currently has Xcode and around 99 GiB of free space.
 Open README.md for exact steps and the validation status.
 
 Double-click shortcuts:
+  Play Piece of Cake.command      Check Unreal, build, and start game + browser
   Check Setup.command             Detect Unreal and report setup
   Open Unreal.command             Build/generate assets, then open Unreal
   Start Browser Player.command    Start the page and signalling server

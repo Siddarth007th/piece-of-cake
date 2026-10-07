@@ -51,15 +51,20 @@ async function readiness() {
   return response.ok && body.ready === true ? 'ready' : 'offline';
 }
 
+let checkingAvailability = false;
 async function checkAvailability() {
-  try {
-    const status = await readiness();
-    availability.dataset.ready = String(status === 'ready');
-    element('availability-text').textContent = status === 'ready' ? 'The trail is open. Your adventure is ready.' : status === 'busy' ? 'An adventurer is on the trail. Try again shortly.' : 'Game server offline · Check back soon';
-  } catch {
-    availability.dataset.ready = 'false';
-    element('availability-text').textContent = 'Game server unavailable · Check back soon';
-  }
+  if (checkingAvailability || connecting || playing) return;
+  checkingAvailability = true;
+  let status = 'unavailable';
+  try { status = await readiness(); } catch { /* Server may have stopped. */ }
+  finally { checkingAvailability = false; }
+  if (connecting || playing) return;
+  const ready = status === 'ready';
+  availability.dataset.ready = String(ready);
+  playButton.disabled = !ready;
+  element('play-label').textContent = ready ? 'Play the adventure' : status === 'busy' ? 'Adventure occupied' : 'Game not running';
+  element('availability-text').textContent = ready ? 'The trail is open. Your adventure is ready.' : status === 'busy' ? 'An adventurer is on the trail. Try again shortly.' : status === 'offline' ? 'Not playable yet · No Unreal game is connected' : 'Not playable yet · The game server is unavailable';
+  element('local-setup').hidden = ready || status === 'busy' || !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
 }
 
 function leave() {
@@ -71,7 +76,8 @@ function leave() {
   playerPanel.hidden = true;
   document.body.classList.remove('playing');
   restartButton.disabled = true;
-  playButton.disabled = false;
+  playButton.disabled = true;
+  void checkAvailability();
   if (document.pointerLockElement) document.exitPointerLock();
   if (document.fullscreenElement) void document.exitFullscreen();
 }
@@ -188,3 +194,7 @@ document.addEventListener('focusin', event => {
 });
 window.addEventListener('pagehide', leave);
 void checkAvailability();
+
+// Refresh availability without making players retry a dead Play button.
+window.setInterval(() => { if (!document.hidden) void checkAvailability(); }, 5000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) void checkAvailability(); });
