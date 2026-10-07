@@ -55,10 +55,10 @@ void APOCController::OpenMenu(EPOCMenu NewMenu)
     if (Playing)
     {
         FInputModeGameOnly Mode; SetInputMode(Mode);
-        if (auto* Player = Cast<APOCCharacter>(GetPawn())) Player->GetCharacterMovement()->StopMovementImmediately();
     }
     else
     {
+        if (auto* Player = Cast<APOCCharacter>(GetPawn())) Player->ResetHeldInput();
         FInputModeGameAndUI Mode;
         Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
         Mode.SetHideCursorDuringCapture(false);

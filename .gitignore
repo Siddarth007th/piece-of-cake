@@ -25,3 +25,5 @@ Deploy/runtime/
 __pycache__/
 *.pyc
 Setup/*.dmg
+
+*.blend1

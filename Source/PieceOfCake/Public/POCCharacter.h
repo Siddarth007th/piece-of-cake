@@ -18,6 +18,7 @@ public:
     virtual void Tick(float DeltaSeconds) override;
     virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
     virtual void Landed(const FHitResult& Hit) override;
+    void ResetHeldInput();
     UFUNCTION(BlueprintCallable) void Bonk();
     UFUNCTION(BlueprintCallable) void Echo();
     UFUNCTION(BlueprintCallable) void Respawn();
@@ -64,6 +65,13 @@ private:
     bool SprintHeld = false;
     bool JumpHeld = false;
     bool JumpUsed = false;
+    bool AirBonkUsed = false;
+    bool StrikePending = false;
+    float GaitPhase = 0;
+    UPROPERTY() TObjectPtr<USceneComponent> HeadRoot;
+    UPROPERTY() TArray<TObjectPtr<USceneComponent>> EarRoots;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Paws;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> EyeDetails;
     UPROPERTY() TObjectPtr<USceneComponent> VisualRoot;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Body;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Head;

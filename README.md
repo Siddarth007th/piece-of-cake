@@ -233,3 +233,20 @@ Cloud URL: **none**. `https://cake.example.com` in examples is a placeholder.
 
 See [architecture](docs/ARCHITECTURE.md), [gameplay](docs/GAMEPLAY.md),
 [development](docs/DEVELOPMENT.md), and [asset provenance](docs/ASSETS.md).
+
+
+### Current refinement (8 October 2026)
+
+The title menu is now restrained and stays on one screen. Original editable Nori
+and scenery meshes live in `Content/Art/Source`; `Scripts/build_art.py` regenerates
+FBX assets and a Blender studio preview. Bootstrap imports these into Unreal and
+packaging explicitly cooks dynamically loaded character/enemy/art assets.
+
+Unreal 5.8.3 is still installing. **No native gameplay, performance, packaged build,
+or real browser stream has been validated yet.** See `docs/TEST_RESULTS.md` for
+passed source/server/asset checks and the required runtime runs before publication.
+GitHub authentication is confirmed as Siddarth007th; nothing has been pushed yet.
+Hosting must stay free. Vercel can serve the menu, but a playable Unreal browser
+session still requires a running game host. A temporary self-hosted demonstration
+may be possible after real stream validation; it will depend on this Mac staying
+awake and network traversal succeeding. Paid GPU services are not authorized.

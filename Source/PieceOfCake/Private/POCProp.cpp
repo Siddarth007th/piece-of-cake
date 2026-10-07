@@ -246,14 +246,14 @@ void APOCEnemy::BeginPlay()
     Super::BeginPlay();
     Home = GetActorLocation(); Forward = GetActorForwardVector();
     const FLinearColor Color = Species == 1 ? FLinearColor(.22, .31, .35) : Species == 2 ? FLinearColor(.42, .31, .52) : FLinearColor(.43, .51, .28);
-    Shell = POCVisuals::Part(this, Visual, TEXT("Shell"), Species == 1 ? TEXT("Cube") : TEXT("Sphere"), FVector::ZeroVector,
+    Shell = POCVisuals::Part(this, Visual, TEXT("Shell"), Species == 1 ? TEXT("WeatheredRock") : TEXT("NoriBody"), FVector::ZeroVector,
         Species == 1 ? FVector(.9, .9, 1.1) : FVector(.7, .7, .5), Color);
     Surface = POCVisuals::Material(this, Color);
     Shell->SetMaterial(0, Surface);
     for (int32 Side : {-1, 1})
     {
         POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Eye%d"), Side), TEXT("Sphere"), FVector(32, Side * 17, 7), FVector(.06, .09, .08), FLinearColor(.95, .68, .26), .8);
-        POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Limb%d"), Side), Species == 2 ? TEXT("Cone") : TEXT("Sphere"), FVector(0, Side * 39, -15),
+        POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Limb%d"), Side), Species == 2 ? TEXT("NoriEar") : TEXT("NoriPaw"), FVector(0, Side * 39, -15),
             Species == 2 ? FVector(.7, .3, .08) : FVector(.24, .22, .2), Color);
     }
 }

@@ -57,6 +57,11 @@ def prepare(root):
         raise SystemExit("UE asset generation did not produce the map. Inspect Saved/Logs before continuing.")
 
 
+def stream_arguments():
+    return ["-PixelStreamingSignallingURL=ws://127.0.0.1:8888", "-PixelStreamingID=piece-of-cake", "-PixelStreamingEncoderCodec=H264",
+                  "-RenderOffscreen", "-ForceRes", "-ResX=1600", "-ResY=900", "-AudioMixer", "-Unattended", "-log", "-stdout", "-FullStdOutLogOutput"]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["doctor", "prepare", "editor", "play", "package", "stream", "profile", "test"])
@@ -65,6 +70,12 @@ def main():
     args = parser.parse_args()
     if args.action == "doctor":
         print(json.dumps({"platform":PLATFORM,"project":str(PROJECT),"disk_free_gib":round(shutil.disk_usage(ROOT).free / 2**30, 1),"python":platform.python_version(),"node":shutil.which("node")}, indent=2))
+    configured = os.environ.get("GAME_EXECUTABLE")
+    if args.action == "stream" and configured:
+        executable = Path(configured).expanduser().resolve()
+        if not executable.is_file(): raise SystemExit("GAME_EXECUTABLE does not exist")
+        run([executable, *stream_arguments()])
+        return
     root = engine_root()
     build, editor, uat = tools(root)
     if args.action == "doctor":
@@ -88,17 +99,9 @@ def main():
              "-build", "-cook", "-stage", "-pak", "-archive", f"-archivedirectory={output}", "-utf8output"])
         print(f"Packaging command succeeded. Launch and validate the build in {output} before distribution.")
     elif args.action == "stream":
-        common = ["-PixelStreamingSignallingURL=ws://127.0.0.1:8888", "-PixelStreamingID=piece-of-cake", "-PixelStreamingEncoderCodec=H264",
-                  "-RenderOffscreen", "-ForceRes", "-ResX=1600", "-ResY=900", "-AudioMixer", "-Unattended", "-log", "-stdout", "-FullStdOutLogOutput"]
-        configured = os.environ.get("GAME_EXECUTABLE")
-        if configured:
-            executable = Path(configured)
-            if not executable.is_file(): raise SystemExit("GAME_EXECUTABLE does not exist")
-            run([executable, *common])
-        else:
-            if not (ROOT / "Content/Levels/L_LongWayToCake.umap").exists(): prepare(root)
-            else: build_editor(root)
-            run([editor, PROJECT, "/Game/Levels/L_LongWayToCake", "-game", *common])
+        if not (ROOT / "Content/Levels/L_LongWayToCake.umap").exists(): prepare(root)
+        else: build_editor(root)
+        run([editor, PROJECT, "/Game/Levels/L_LongWayToCake", "-game", *stream_arguments()])
 
 
 if __name__ == "__main__":

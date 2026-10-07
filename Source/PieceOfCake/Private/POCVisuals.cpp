@@ -6,6 +6,14 @@
 
 UStaticMesh* POCVisuals::Shape(const TCHAR* Name)
 {
+    if (FCString::Strcmp(Name, TEXT("Sphere")) && FCString::Strcmp(Name, TEXT("Cube"))
+        && FCString::Strcmp(Name, TEXT("Cone")) && FCString::Strcmp(Name, TEXT("Cylinder")))
+    {
+        const FString Path = FString::Printf(TEXT("/Game/Art/Meshes/SM_%s.SM_%s"), Name, Name);
+        UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, *Path);
+        if (!Mesh) UE_LOG(LogTemp, Error, TEXT("Required game mesh missing: %s. Run asset bootstrap."), *Path);
+        return Mesh;
+    }
     return LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Engine/BasicShapes/%s.%s"), Name, Name));
 }
 
@@ -26,7 +34,8 @@ UStaticMeshComponent* POCVisuals::Part(AActor* Owner, USceneComponent* Parent, F
     Owner->AddInstanceComponent(Mesh);
     Mesh->SetupAttachment(Parent);
     Mesh->SetStaticMesh(Shape(ShapeName));
-    Mesh->SetMaterial(0, Material(Owner, Color, Glow));
+    auto* Surface = Material(Owner, Color, Glow);
+    for (int32 Slot = 0; Slot < FMath::Max(1, Mesh->GetNumMaterials()); ++Slot) Mesh->SetMaterial(Slot, Surface);
     Mesh->SetRelativeLocation(Position);
     Mesh->SetRelativeScale3D(Scale);
     Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);

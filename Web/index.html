@@ -8,11 +8,10 @@
 <body>
   <main id="title-screen" class="title-screen" aria-label="Piece of Cake title menu">
     <div class="world" aria-hidden="true"></div><div class="world-shade" aria-hidden="true"></div>
-    <div class="sunlight" aria-hidden="true"></div><canvas id="fireflies" aria-hidden="true"></canvas>
-    <div class="character-stage" aria-hidden="true"><div class="character-shadow"></div><img class="nori" src="/art/nori-title.png" alt="" fetchpriority="high"/><span class="echo-shard shard-one"></span><span class="echo-shard shard-two"></span><span class="echo-shard shard-three"></span></div>
+    <div class="character-stage" aria-hidden="true"><div class="character-shadow"></div><img class="nori" src="/art/nori-title.png" alt="" fetchpriority="high"/></div>
     <div class="top-tools"><button id="sound-toggle" class="round-button" aria-label="Enable menu music" aria-pressed="false" title="Menu music"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4zM15 8q5 4 0 8M18 5q8 7 0 14"/></svg><span id="sound-state">OFF</span></button><button id="title-fullscreen" class="round-button" aria-label="Enter fullscreen" title="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"/></svg></button></div>
     <section class="menu-content" aria-label="Main menu">
-      <h1 class="game-logo" aria-label="Piece of Cake"><span class="logo-top" aria-hidden="true">PIECE <small>OF</small></span><span class="logo-bottom" aria-hidden="true">CAKE<span class="logo-spark">✦</span></span></h1>
+      <h1 class="game-logo" aria-label="Piece of Cake"><span class="logo-top" aria-hidden="true">PIECE <small>OF</small></span><span class="logo-bottom" aria-hidden="true">CAKE</span></h1>
       <p class="subtitle">THE LONG WAY TO CAKE</p>
       <nav class="game-menu" aria-label="Game menu">
         <button id="play" class="menu-item start-button" disabled aria-describedby="availability"><span class="menu-pointer" aria-hidden="true">▶</span><span id="play-label">START GAME</span><span class="start-key" aria-hidden="true">↵</span></button>
@@ -21,8 +20,7 @@
       </nav>
       <div class="connection-state"><p id="availability" role="status"><span class="status-dot"></span><span id="availability-text">Checking game…</span></p><button id="setup-open" class="status-help" aria-label="Why is the game offline?" hidden>Why?</button></div>
     </section>
-    <div class="character-caption" aria-hidden="true"><span>MEET NORI.</span><strong>Small paws.<br/>Big appetite.</strong><svg viewBox="0 0 90 60"><path d="M5 5q50 0 60 40m-18-4 20 10 4-22"/></svg></div>
-    <footer class="menu-footer"><span><kbd>↑</kbd><kbd>↓</kbd> SELECT <i>·</i> <kbd>ENTER</kbd> CONFIRM <span id="gamepad-hint" hidden> <i>·</i> CONTROLLER CONNECTED</span></span><span class="art-caption">ORIGINAL TITLE ART <i>·</i> PRE-RELEASE</span></footer>
+    <footer class="menu-footer"><span><kbd>↑</kbd><kbd>↓</kbd> SELECT <i>·</i> <kbd>ENTER</kbd> CONFIRM <span id="gamepad-hint" hidden> <i>·</i> CONTROLLER CONNECTED</span></span><span class="art-caption">PRE-RELEASE</span></footer>
   </main>
   <section id="player-panel" class="player-panel" hidden aria-label="Game stream">
     <div id="stream-frame" class="stream-frame"><div id="stream" tabindex="0" aria-label="Piece of Cake game. WASD to move. Space to jump."></div>

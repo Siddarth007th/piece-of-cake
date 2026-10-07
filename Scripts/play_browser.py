@@ -17,7 +17,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     # Fail before starting a tempting but unplayable browser page.
-    ue.engine_root()
+    packaged = os.environ.get("GAME_EXECUTABLE")
+    if packaged:
+        if not Path(packaged).expanduser().is_file():
+            raise SystemExit("GAME_EXECUTABLE does not exist")
+    else:
+        ue.engine_root()
     for program in ("node", "npm"):
         if not shutil.which(program):
             raise SystemExit(f"Missing {program}. Install Node.js before continuing.")
@@ -27,7 +32,8 @@ def main():
             try: probe.bind(("127.0.0.1", port))
             except OSError:
                 raise SystemExit(f"Port {port} is already in use. Close the existing browser-player/server terminal, then retry. No existing process was stopped.")
-    subprocess.run([sys.executable, ROOT / "Scripts/ue.py", "prepare"], cwd=ROOT, check=True)
+    if not packaged:
+        subprocess.run([sys.executable, ROOT / "Scripts/ue.py", "prepare"], cwd=ROOT, check=True)
     if not (ROOT / "Web/node_modules").is_dir():
         subprocess.run(["npm", "ci"], cwd=ROOT / "Web", check=True)
     subprocess.run(["npm", "run", "build"], cwd=ROOT / "Web", check=True)

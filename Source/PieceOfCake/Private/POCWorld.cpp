@@ -188,6 +188,14 @@ void APOCWorld::BuildJourney()
             SpawnProp(EPOCProp::Relic, Secret + FVector(0, 0, 90), 0, FVector(1), 50000 + Section);
             AddInstance(TEXT("SecretMarker"), TEXT("Cone"), Point.Position + Right * 410 + FVector(0, 0, 40), FVector(.18, .18, .8), Rotation, FLinearColor(.85, .64, .22), false, .4);
         }
+        if (Point.Kind == TEXT("ground"))
+        {
+            for (int32 Side : {-1, 1})
+                for (int32 Edge = -1; Edge <= 1; ++Edge)
+                    AddInstance(Prefix + TEXT("WeatheredEdge"), TEXT("WeatheredRock"),
+                        Point.Position + Right * Side * (Point.Size.Y * .5 + 50) + Forward * Edge * 420 - FVector(0, 0, 140),
+                        FVector(5.2, 3, 3.6), FRotator(0, Point.Yaw + Side * Edge * 13, 0), Palettes[Section] * .9f);
+        }
         AddScenery(Point);
         // Inlays indicate forward travel without a floating waypoint over every jump.
         AddInstance(TEXT("Waymark"), TEXT("Cone"), Point.Position + Forward * 510 + FVector(0, 0, 6), FVector(.5, .5, .1), FRotator(90, Point.Yaw, 0), FLinearColor(.74, .58, .23), false, .2);
@@ -242,7 +250,7 @@ void APOCWorld::AddScenery(const FPOCRoutePoint& Point)
     {
         const FVector Edge = Point.Position + Right * Side * (Point.Size.Y * .5 + 300);
         if (Point.Kind == TEXT("ground"))
-            AddInstance(Key + TEXT("Cliff"), TEXT("Cone"), Edge - FVector(0, 0, 1100), FVector(14, 13, 26), FRotator(180, Point.Yaw, 0), Palettes[Section] * .65f);
+            AddInstance(Key + TEXT("Cliff"), TEXT("WeatheredRock"), Edge - FVector(0, 0, 1100), FVector(14, 13, 26), FRotator(180, Point.Yaw, 0), Palettes[Section] * .65f);
         if (Section == 0 || Section == 2)
         {
             const float Height = Section == 2 ? Random.FRandRange(2200, 4300) : Random.FRandRange(650, 1400);
@@ -255,16 +263,16 @@ void APOCWorld::AddScenery(const FPOCRoutePoint& Point)
         if (Section == 1 || Section == 3 || Section == 5 || Section == 7)
         {
             const float Height = Section == 5 ? Random.FRandRange(5000, 15000) : Random.FRandRange(1500, 3300);
-            AddInstance(Key + TEXT("Pillar"), TEXT("Cube"), Edge + FVector(0, 0, Height * .5), FVector(2, 2.5, Height / 100), Rot, Palettes[Section] * .8f);
-            AddInstance(Key + TEXT("Capital"), TEXT("Cube"), Edge + FVector(0, 0, Height), FVector(3.5, 4, .7), Rot, Palettes[Section] * 1.3f);
+            AddInstance(Key + TEXT("Pillar"), TEXT("DressedStone"), Edge + FVector(0, 0, Height * .5), FVector(2, 2.5, Height / 100), Rot, Palettes[Section] * .8f);
+            AddInstance(Key + TEXT("Capital"), TEXT("DressedStone"), Edge + FVector(0, 0, Height), FVector(3.5, 4, .7), Rot, Palettes[Section] * 1.3f);
             AddInstance(Key + TEXT("Lantern"), TEXT("Sphere"), Edge + FVector(0, 0, 240), FVector(.4), Rot, FLinearColor(1, .55, .16), false, 3);
             if (Local % 4 == 0)
-                AddInstance(Key + TEXT("Arch"), TEXT("Cube"), Point.Position + FVector(0, 0, 1250), FVector(3, 20, 1.8), Rot, Palettes[Section]);
+                AddInstance(Key + TEXT("Arch"), TEXT("DressedStone"), Point.Position + FVector(0, 0, 1250), FVector(3, 20, 1.8), Rot, Palettes[Section]);
         }
         if (Section == 4)
         {
-            AddInstance(TEXT("CaveRibs"), TEXT("Sphere"), Edge + FVector(0, 0, 1300), FVector(12, 12, 30), Rot, Palettes[4] * .6f);
-            AddInstance(TEXT("CaveRoof"), TEXT("Sphere"), Point.Position + FVector(0, 0, 2800), FVector(20, 28, 10), Rot, Palettes[4] * .55f);
+            AddInstance(TEXT("CaveRibs"), TEXT("WeatheredRock"), Edge + FVector(0, 0, 1300), FVector(12, 12, 30), Rot, Palettes[4] * .6f);
+            AddInstance(TEXT("CaveRoof"), TEXT("WeatheredRock"), Point.Position + FVector(0, 0, 2800), FVector(20, 28, 10), Rot, Palettes[4] * .55f);
             for (int32 J = 0; J < 4; ++J)
                 AddInstance(TEXT("Crystal"), TEXT("Cone"), Edge + Forward * (J * 140 - 200) + FVector(0, 0, 100), FVector(.7, .9, Random.FRandRange(2, 5)), FRotator(Side * 12, 0, 20), FLinearColor(.05, .45, .7), false, .8);
         }
@@ -272,13 +280,13 @@ void APOCWorld::AddScenery(const FPOCRoutePoint& Point)
         {
             const FVector P = Point.Position + Forward * Random.FRandRange(-570, 570) + Right * Side * Random.FRandRange(330, Point.Size.Y * .5 - 25);
             if (Point.Kind == TEXT("ground"))
-                AddInstance(Key + TEXT("Grass"), TEXT("Cone"), P + FVector(0, 0, 18), FVector(.11, .11, Random.FRandRange(.3, .7)), Rot, Section == 4 ? FLinearColor(.1, .5, .55) : FLinearColor(.22, .36, .26), false, Section == 4 ? .5 : 0);
+                AddInstance(Key + TEXT("Grass"), TEXT("Fern"), P, FVector(.7, .7, Random.FRandRange(.6, 1.1)), Rot, Section == 4 ? FLinearColor(.1, .5, .55) : FLinearColor(.22, .36, .26), false, Section == 4 ? .5 : 0);
         }
     }
     if (Local % 6 == 0)
     {
         const FVector Mountain = Point.Position + Right * 14000;
-        AddInstance(TEXT("DistantMass"), TEXT("Cone"), Mountain + FVector(0, 0, -2000), FVector(190, 210, 220), Rot, FLinearColor(.16, .22, .3));
+        AddInstance(TEXT("DistantMass"), TEXT("WeatheredRock"), Mountain + FVector(0, 0, -2000), FVector(190, 210, 220), Rot, FLinearColor(.16, .22, .3));
         AddInstance(TEXT("Falls"), TEXT("Cube"), Point.Position + Right * -1800 + FVector(0, 0, -1200), FVector(1.5, .4, 35), Rot, FLinearColor(.26, .57, .63), false, .25);
     }
 }

@@ -1,0 +1,101 @@
+[
+  {
+    "name": "SM_NoriBody",
+    "vertices": 800,
+    "triangles": 1596,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_NoriHead",
+    "vertices": 800,
+    "triangles": 1596,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_NoriEar",
+    "vertices": 792,
+    "triangles": 1580,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_NoriPaw",
+    "vertices": 800,
+    "triangles": 1596,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_NoriPack",
+    "vertices": 152,
+    "triangles": 300,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_NoriScarf",
+    "vertices": 152,
+    "triangles": 300,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_DressedStone",
+    "vertices": 152,
+    "triangles": 300,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_WeatheredRock",
+    "vertices": 132,
+    "triangles": 260,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "SM_Fern",
+    "vertices": 672,
+    "triangles": 336,
+    "source": "Scripts/build_art.py",
+    "bounds_m": [
+      0.919,
+      0.9427,
+      0.3898
+    ]
+  }
+]

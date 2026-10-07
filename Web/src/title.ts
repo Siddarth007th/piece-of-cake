@@ -79,29 +79,14 @@ document.addEventListener('keydown',event => {
 });
 window.addEventListener('pointermove',event => {
   if(!motion.checked || event.pointerType==='touch' || document.body.classList.contains('playing')) return;
-  document.documentElement.style.setProperty('--px',`${(event.clientX/innerWidth-.5)*16}px`);
-  document.documentElement.style.setProperty('--py',`${(event.clientY/innerHeight-.5)*10}px`);
+  document.documentElement.style.setProperty('--px',`${(event.clientX/innerWidth-.5)*6}px`);
+  document.documentElement.style.setProperty('--py',`${(event.clientY/innerHeight-.5)*4}px`);
 },{passive:true});
-const canvas=el<HTMLCanvasElement>('fireflies'), context=canvas.getContext('2d');
-const particles=Array.from({length:32},(_,i)=>({x:((i*73+17)%101)/101,y:((i*43+13)%97)/97,size:1+i%3,speed:.006+i%5*.002}));
-function resize() {
-  const ratio=Math.min(devicePixelRatio,1.5); canvas.width=Math.round(innerWidth*ratio); canvas.height=Math.round(innerHeight*ratio);
-  context?.setTransform(ratio,0,0,ratio,0,0);
-}
-resize(); window.addEventListener('resize',resize);
 let lastPaint=0;
 function tick(now:number) {
   requestAnimationFrame(tick);
   if(document.hidden || document.body.classList.contains('playing') || now-lastPaint<32) return;
   lastPaint=now;
-  if(context) {
-    context.clearRect(0,0,innerWidth,innerHeight);
-    if(motion.checked) for(const [i,p] of particles.entries()) {
-      const t=now/1000,x=p.x*innerWidth+Math.sin(t*.3+i)*28,y=((p.y-t*p.speed)%1+1)%1*innerHeight;
-      context.fillStyle=`rgba(226,255,184,${.25+(Math.sin(t*1.2+i)+1)*.22})`; context.shadowColor='#b9ffc6'; context.shadowBlur=9;
-      context.beginPath(); context.arc(x,y,p.size,0,Math.PI*2); context.fill();
-    }
-  }
   const pad=typeof navigator.getGamepads==='function' ? Array.from(navigator.getGamepads()).find(p=>p?.connected) : null;
   el('gamepad-hint').hidden=!pad;
   if(!pad) { lastA=lastB=false; return; }

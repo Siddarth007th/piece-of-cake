@@ -109,3 +109,41 @@ engine patch version, GPU/driver, date, build commit and outcomes here.
 - Restored default menu motion/volume and muted test audio afterward.
 - Updated Playwright regression suite to cover offline behavior, keyboard navigation, persistent preferences and three viewport sizes. This authored suite was not executed in this session; live browser checks used the provided computer-use interface.
 - Gamepad navigation is implemented but not hardware-tested. Native Unreal gameplay and stream validation remain pending engine installation.
+
+
+## Gameplay readiness and visual refinement — 8 October 2026
+
+User release constraint: test before deployment; free hosting only. No GitHub push,
+public deployment, or claim of smooth/bug-free gameplay has been made.
+
+- PASS: 11 Python tests (8 route/audio checks plus 3 packaged launcher regressions).
+- PASS: all 6 real HTTP/signalling tests; these still contain no Unreal media.
+- PASS: strict TypeScript and production Vite build (236.24 kB JS, 53.26 kB gzip;
+  10.82 kB CSS). Menu removes the tilted oversized logo, floating gems, fireflies,
+  light shafts and character caption, retaining a single Start action and two options.
+- PASS: live simplified menu inspected in narrow and 1470×875 desktop views.
+  Desktop document exactly matches viewport (no scroll); Options, controls and
+  fullscreen activation work by keyboard; no captured browser errors.
+- PASS: nine original FBX assets exported with Blender 5.2.1 and imported back.
+  Bounds, manifold solids, outward normals and two ear material slots verified.
+  Re-run with `Blender --background --python Scripts/verify_art.py`.
+- Actual mesh preview rendered in Blender at `Artifacts/Nori-mesh-preview.png`.
+  This is a studio render, **not an Unreal gameplay screenshot**. Title illustrations
+  remain separate from actual game meshes.
+- Code fixes awaiting native verification: character/enemy/art cook directories;
+  packaged executable launch without engine installation; one air bonk per jump;
+  attack contact after wind-up; head/eyes/ears moving together; paw gait, airborne
+  pose and scarf refinement; retaining momentum across pause; clearing held input;
+  slide braking; keeping cake-facing rotation upright; falling-only ledge assist.
+- Added Unreal mesh import/unit/material-slot test, making 3 authored Unreal tests.
+  None have run until the engine installation finishes.
+
+Before publishing: compile and import successfully, run all three Unreal tests,
+complete at least three unassisted full journeys, inspect each section, measure
+frame pacing in both the native game and actual browser stream, and repeat key
+checks on the packaged build. Include one run with deliberate deaths, checkpoint
+restarts, Echo expiry, pause mid-jump, repeated aerial attack input, and leave/reconnect.
+Use `python3 Scripts/ue.py profile` for an Unreal Insights trace; record hardware,
+resolution, quality, frame-time percentiles and visible/input stutters. Tune quality
+and expensive scenery against those measurements. Keep observed gameplay defects
+and persistent stutters as release blockers. Static tests never satisfy this gate.
