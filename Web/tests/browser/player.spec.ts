@@ -1,28 +1,56 @@
 import {test, expect} from '@playwright/test';
 
-test('offline service never pretends a game is playable', async ({page}) => {
+test('offline menu explains the blocker without pretending gameplay exists', async ({page}) => {
   await page.goto('/');
-  await expect(page.getByText('Not playable yet · No Unreal game is connected')).toBeVisible();
-  await expect(page.getByRole('button',{name:'Game not running'})).toBeDisabled();
-  await expect(page.getByText('Play Piece of Cake.command', {exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'START GAME',exact:true})).toBeDisabled();
+  await expect(page.getByText('Game offline · Not playable yet')).toBeVisible();
+  await page.getByRole('button',{name:'Why is the game offline?'}).click();
+  await expect(page.getByRole('dialog',{name:'NOT READY YET'})).toBeVisible();
+  await expect(page.getByText('Play Piece of Cake.command',{exact:true})).toBeVisible();
   await expect(page.locator('video')).toHaveCount(0);
 });
 
-test('the keyboard and controller field guide is usable', async ({page}) => {
+test('keyboard menu navigation opens a usable control guide', async ({page}) => {
   await page.goto('/');
-  await page.getByRole('button',{name:'How to play'}).click();
-  await expect(page.getByRole('dialog',{name:'Your paws know the way.'})).toBeVisible();
+  await expect(page.getByRole('button',{name:'START GAME',exact:true})).toBeDisabled();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByRole('button',{name:'OPTIONS',exact:true})).toBeFocused();
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('dialog',{name:'HOW TO PLAY'})).toBeVisible();
   await expect(page.getByText('Jump · hold for height')).toBeVisible();
-  await page.getByRole('button',{name:'Close controls'}).click();
+  await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).not.toBeVisible();
 });
 
-test('small viewport retains usable controls without horizontal overflow', async ({page}) => {
-  await page.setViewportSize({width:390,height:844});
+test('motion and volume preferences survive reload', async ({page}) => {
   await page.goto('/');
-  await expect(page.getByRole('button',{name:'Game not running'})).toBeVisible();
-  const widths = await page.evaluate(() => ({scroll:document.documentElement.scrollWidth,viewport:window.innerWidth}));
-  expect(widths.scroll).toBeLessThanOrEqual(widths.viewport);
-  await page.getByRole('button',{name:'How to play'}).click();
-  await expect(page.getByRole('button',{name:'Close controls'})).toBeVisible();
+  await page.getByRole('button',{name:'OPTIONS',exact:true}).click();
+  await page.getByLabel('Animate title screen').uncheck();
+  const slider=page.getByRole('slider',{name:'Menu music'});
+  await slider.focus();
+  await page.keyboard.press('Home');
+  await page.keyboard.press('ArrowRight');
+  await expect(slider).toHaveValue('1');
+  await page.reload();
+  await page.getByRole('button',{name:'OPTIONS',exact:true}).click();
+  await expect(page.getByLabel('Animate title screen')).not.toBeChecked();
+  await expect(page.getByRole('slider',{name:'Menu music'})).toHaveValue('1');
+  await expect(page.locator('body')).toHaveClass(/reduced-motion/);
 });
+
+for(const viewport of [{width:1470,height:875},{width:390,height:844},{width:844,height:390}]) {
+  test(`title and start remain on one screen at ${viewport.width}x${viewport.height}`,async ({page})=>{
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    await expect(page.getByRole('heading',{name:'Piece of Cake',exact:true})).toBeVisible();
+    const start=page.getByRole('button',{name:'START GAME',exact:true});
+    await expect(start).toBeVisible();
+    const bounds=await start.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds!.y+bounds!.height).toBeLessThanOrEqual(viewport.height);
+    const size=await page.evaluate(()=>({w:document.documentElement.scrollWidth,h:document.documentElement.scrollHeight}));
+    expect(size.w).toBeLessThanOrEqual(viewport.width);
+    expect(size.h).toBeLessThanOrEqual(viewport.height);
+  });
+}

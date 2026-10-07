@@ -99,3 +99,13 @@ engine patch version, GPU/driver, date, build commit and outcomes here.
 - The combined Desktop launcher exits immediately with the missing-Unreal diagnostic; it does not start a misleading empty player.
 - Browser regression assertions were updated for the disabled offline state.
 - Combined launch after installing Unreal remains untested. No game stream or gameplay has been verified.
+
+## Full-screen title menu redesign — 7 October 2026
+
+- Production TypeScript/Vite build passes; all six Node HTTP/signalling tests pass.
+- Live in-app browser: inspected the 1470×875 desktop layout and a 438×749 narrow layout; document dimensions matched viewport dimensions, with no page scrolling.
+- Original Nori PNG loads with genuine alpha transparency; valley PNG and original WAV assets return HTTP 200 with correct content types.
+- Verified Options, controls, offline explanation, keyboard activation, volume adjustment, animation toggle, persistence after reload, music toggle and fullscreen transition. No captured browser script errors.
+- Restored default menu motion/volume and muted test audio afterward.
+- Updated Playwright regression suite to cover offline behavior, keyboard navigation, persistent preferences and three viewport sizes. This authored suite was not executed in this session; live browser checks used the provided computer-use interface.
+- Gamepad navigation is implemented but not hardware-tested. Native Unreal gameplay and stream validation remain pending engine installation.

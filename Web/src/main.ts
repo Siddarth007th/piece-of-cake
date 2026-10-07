@@ -1,5 +1,6 @@
 import { Config, Flags, NumericParameters, PixelStreaming, TextParameters } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.8';
 import './style.css';
+import './title';
 
 const element = <T extends HTMLElement>(id: string) => {
   const value = document.getElementById(id);
@@ -62,8 +63,9 @@ async function checkAvailability() {
   const ready = status === 'ready';
   availability.dataset.ready = String(ready);
   playButton.disabled = !ready;
-  element('play-label').textContent = ready ? 'Play the adventure' : status === 'busy' ? 'Adventure occupied' : 'Game not running';
-  element('availability-text').textContent = ready ? 'The trail is open. Your adventure is ready.' : status === 'busy' ? 'An adventurer is on the trail. Try again shortly.' : status === 'offline' ? 'Not playable yet · No Unreal game is connected' : 'Not playable yet · The game server is unavailable';
+  element('play-label').textContent = 'START GAME';
+  element('setup-open').hidden = ready || status === 'busy';
+  element('availability-text').textContent = ready ? 'Ready for adventure' : status === 'busy' ? 'Adventure occupied · Try again soon' : 'Game offline · Not playable yet';
   element('local-setup').hidden = ready || status === 'busy' || !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
 }
 

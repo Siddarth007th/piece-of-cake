@@ -33,6 +33,17 @@ See [test results](docs/TEST_RESULTS.md) for the exact distinction between check
 ran and the acceptance work still pending. The landing-page illustration is original
 vector art; it is not a screenshot of the game.
 
+## Title screen
+
+The browser opens directly to a single-screen game menu: original layered valley and
+Nori artwork, animated light/fireflies, a bold title, Start Game, Options and How to Play.
+There are no marketing sections to scroll through. Arrow keys and Enter navigate the
+menu; gamepad navigation is implemented but still needs hardware verification.
+Menu music is opt-in. Volume and animation preferences persist locally.
+Start remains disabled until the real Unreal stream is available.
+Artwork and exact built-in image-generation prompts are recorded in `docs/TITLE_ART.json`.
+These illustrations are title art, not screenshots or finished Unreal character assets.
+
 ## Start here on this Mac
 
 1. The [official Epic Games Launcher](https://www.unrealengine.com/download) is installed

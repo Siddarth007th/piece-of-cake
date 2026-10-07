@@ -15,7 +15,7 @@ const production = process.env.NODE_ENV === 'production';
 if (production && !process.env.PUBLIC_ORIGIN) throw new Error('PUBLIC_ORIGIN is required in production');
 const origins = new Set((process.env.PUBLIC_ORIGIN || `http://127.0.0.1:${playerPort},http://localhost:${playerPort},http://localhost:5173,http://127.0.0.1:5173`).split(',').map(x => x.trim()));
 peerOptions(process.env); // Fail fast on invalid TURN configuration.
-const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json'};
+const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.wav':'audio/wav','.woff2':'font/woff2','.json':'application/json'};
 let signalling;
 
 function json(response, status, body) {
