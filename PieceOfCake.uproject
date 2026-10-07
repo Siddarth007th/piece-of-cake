@@ -1,0 +1,12 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "Games",
+  "Description": "Piece of Cake — The Long Way to Cake",
+  "Modules": [{"Name": "PieceOfCake", "Type": "Runtime", "LoadingPhase": "Default"}],
+  "Plugins": [
+    {"Name": "PixelStreaming2", "Enabled": true},
+    {"Name": "PythonScriptPlugin", "Enabled": true, "TargetAllowList": ["Editor"]},
+    {"Name": "EditorScriptingUtilities", "Enabled": true, "TargetAllowList": ["Editor"]}
+  ]
+}

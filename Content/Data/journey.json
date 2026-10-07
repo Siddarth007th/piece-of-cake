@@ -1,0 +1,4828 @@
+{
+  "version": 1,
+  "seed": 2718,
+  "name": "The Long Way to Cake",
+  "sections": [
+    "The Meadow",
+    "Forgotten Ruins",
+    "Ancient Forest",
+    "The Listening Temple",
+    "Underground Caverns",
+    "The Sunken City",
+    "The Long Way Down",
+    "One Last Climb"
+  ],
+  "target_minutes": [
+    10,
+    15
+  ],
+  "timing_verified": false,
+  "movement": {
+    "run_speed": 620,
+    "sprint_speed": 840,
+    "jump_speed": 650,
+    "gravity": 1568
+  },
+  "points": [
+    {
+      "index": 0,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw": 90.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 1,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -25.7,
+        1570.516,
+        3.333
+      ],
+      "yaw": 91.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 2,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -102.772,
+        3139.35,
+        6.667
+      ],
+      "yaw": 93.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 3,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -231.133,
+        4704.823,
+        10.0
+      ],
+      "yaw": 95.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 4,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -410.647,
+        6265.257,
+        13.333
+      ],
+      "yaw": 97.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 5,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -641.12,
+        7818.983,
+        16.667
+      ],
+      "yaw": 99.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 6,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -922.307,
+        9364.335,
+        20.0
+      ],
+      "yaw": 101.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 7,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -1253.905,
+        10899.661,
+        23.333
+      ],
+      "yaw": 103.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 8,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -1635.56,
+        12423.314,
+        26.667
+      ],
+      "yaw": 105.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 9,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -2066.864,
+        13933.665,
+        30.0
+      ],
+      "yaw": 106.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 10,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -2547.354,
+        15429.094,
+        33.333
+      ],
+      "yaw": 108.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 11,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -3076.516,
+        16908.002,
+        36.667
+      ],
+      "yaw": 110.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 12,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -3653.782,
+        18368.805,
+        40.0
+      ],
+      "yaw": 112.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 13,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -4278.536,
+        19809.937,
+        43.333
+      ],
+      "yaw": 114.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 14,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -4950.108,
+        21229.857,
+        46.667
+      ],
+      "yaw": 116.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 15,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -5667.779,
+        22627.043,
+        50.0
+      ],
+      "yaw": 118.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 16,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -6430.781,
+        24000.0,
+        53.333
+      ],
+      "yaw": 120.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 17,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -7238.295,
+        25347.257,
+        56.667
+      ],
+      "yaw": 121.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 18,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -8089.459,
+        26667.371,
+        60.0
+      ],
+      "yaw": 123.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 19,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -8983.359,
+        27958.929,
+        63.333
+      ],
+      "yaw": 125.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 20,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -9919.04,
+        29220.549,
+        66.667
+      ],
+      "yaw": 127.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 21,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -10895.498,
+        30450.878,
+        70.0
+      ],
+      "yaw": 129.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 22,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -11911.689,
+        31648.599,
+        73.333
+      ],
+      "yaw": 131.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 23,
+      "section": 0,
+      "name": "The Meadow",
+      "position": [
+        -12966.525,
+        32812.43,
+        76.667
+      ],
+      "yaw": 133.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 24,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -14058.875,
+        33941.125,
+        80.0
+      ],
+      "yaw": 135.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 25,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -15187.57,
+        35033.475,
+        87.5
+      ],
+      "yaw": 136.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 26,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -16351.401,
+        36088.311,
+        95.0
+      ],
+      "yaw": 138.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 27,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -17549.122,
+        37104.502,
+        102.5
+      ],
+      "yaw": 140.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 28,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -18779.451,
+        38080.96,
+        110.0
+      ],
+      "yaw": 142.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 29,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -20041.071,
+        39016.641,
+        117.5
+      ],
+      "yaw": 144.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 30,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -21332.629,
+        39910.541,
+        125.0
+      ],
+      "yaw": 146.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 31,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -22652.743,
+        40761.705,
+        132.5
+      ],
+      "yaw": 148.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 32,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -24000.0,
+        41569.219,
+        140.0
+      ],
+      "yaw": 150.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 33,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -25372.957,
+        42332.221,
+        147.5
+      ],
+      "yaw": 151.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 34,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -26770.143,
+        43049.892,
+        155.0
+      ],
+      "yaw": 153.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 35,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -28190.063,
+        43721.464,
+        162.5
+      ],
+      "yaw": 155.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 36,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -29631.195,
+        44346.218,
+        170.0
+      ],
+      "yaw": 157.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 37,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -31091.998,
+        44923.484,
+        177.5
+      ],
+      "yaw": 159.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 38,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -32570.906,
+        45452.646,
+        185.0
+      ],
+      "yaw": 161.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 39,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -34066.335,
+        45933.136,
+        192.5
+      ],
+      "yaw": 163.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 40,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -35576.686,
+        46364.44,
+        200.0
+      ],
+      "yaw": 165.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 41,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -37100.339,
+        46746.095,
+        207.5
+      ],
+      "yaw": 166.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 42,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -38635.665,
+        47077.693,
+        215.0
+      ],
+      "yaw": 168.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 43,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -40181.017,
+        47358.88,
+        222.5
+      ],
+      "yaw": 170.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 44,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -41734.743,
+        47589.353,
+        230.0
+      ],
+      "yaw": 172.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 45,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -43295.177,
+        47768.867,
+        237.5
+      ],
+      "yaw": 174.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 46,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -44860.65,
+        47897.228,
+        245.0
+      ],
+      "yaw": 176.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 47,
+      "section": 1,
+      "name": "Forgotten Ruins",
+      "position": [
+        -46429.484,
+        47974.3,
+        252.5
+      ],
+      "yaw": 178.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 48,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -48000.0,
+        48000.0,
+        260.0
+      ],
+      "yaw": 180.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 49,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -49570.516,
+        47974.3,
+        292.917
+      ],
+      "yaw": 181.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 50,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -51139.35,
+        47897.228,
+        325.833
+      ],
+      "yaw": 183.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 51,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -52704.823,
+        47768.867,
+        358.75
+      ],
+      "yaw": 185.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 52,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -54265.257,
+        47589.353,
+        391.667
+      ],
+      "yaw": 187.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 53,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -55818.983,
+        47358.88,
+        424.583
+      ],
+      "yaw": 189.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 54,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -57364.335,
+        47077.693,
+        457.5
+      ],
+      "yaw": 191.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 55,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -58899.661,
+        46746.095,
+        490.417
+      ],
+      "yaw": 193.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 56,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -60423.314,
+        46364.44,
+        523.333
+      ],
+      "yaw": 195.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 57,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -61933.665,
+        45933.136,
+        556.25
+      ],
+      "yaw": 196.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 58,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -63429.094,
+        45452.646,
+        589.167
+      ],
+      "yaw": 198.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 59,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -64908.002,
+        44923.484,
+        622.083
+      ],
+      "yaw": 200.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 60,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -66368.805,
+        44346.218,
+        655.0
+      ],
+      "yaw": 202.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 61,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -67809.937,
+        43721.464,
+        687.917
+      ],
+      "yaw": 204.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 62,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -69229.857,
+        43049.892,
+        720.833
+      ],
+      "yaw": 206.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 63,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -70627.043,
+        42332.221,
+        753.75
+      ],
+      "yaw": 208.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 64,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -72000.0,
+        41569.219,
+        786.667
+      ],
+      "yaw": 210.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 65,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -73347.257,
+        40761.705,
+        819.583
+      ],
+      "yaw": 211.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 66,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -74667.371,
+        39910.541,
+        852.5
+      ],
+      "yaw": 213.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 67,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -75958.929,
+        39016.641,
+        885.417
+      ],
+      "yaw": 215.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 68,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -77220.549,
+        38080.96,
+        918.333
+      ],
+      "yaw": 217.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 69,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -78450.878,
+        37104.502,
+        951.25
+      ],
+      "yaw": 219.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 70,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -79648.599,
+        36088.311,
+        984.167
+      ],
+      "yaw": 221.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 71,
+      "section": 2,
+      "name": "Ancient Forest",
+      "position": [
+        -80812.43,
+        35033.475,
+        1017.083
+      ],
+      "yaw": 223.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 72,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -81941.125,
+        33941.125,
+        1050.0
+      ],
+      "yaw": 225.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 73,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -83033.475,
+        32812.43,
+        1029.167
+      ],
+      "yaw": 226.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 74,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -84088.311,
+        31648.599,
+        1008.333
+      ],
+      "yaw": 228.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 75,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -85104.502,
+        30450.878,
+        987.5
+      ],
+      "yaw": 230.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 76,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -86080.96,
+        29220.549,
+        966.667
+      ],
+      "yaw": 232.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": 300,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 77,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -87016.641,
+        27958.929,
+        945.833
+      ],
+      "yaw": 234.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 300,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 78,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -87910.541,
+        26667.371,
+        925.0
+      ],
+      "yaw": 236.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 300,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 79,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -88761.705,
+        25347.257,
+        904.167
+      ],
+      "yaw": 238.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 80,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -89569.219,
+        24000.0,
+        883.333
+      ],
+      "yaw": 240.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 81,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -90332.221,
+        22627.043,
+        862.5
+      ],
+      "yaw": 241.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 82,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -91049.892,
+        21229.857,
+        841.667
+      ],
+      "yaw": 243.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": true,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 83,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -91721.464,
+        19809.937,
+        820.833
+      ],
+      "yaw": 245.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 84,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -92346.218,
+        18368.805,
+        800.0
+      ],
+      "yaw": 247.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": 301,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 85,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -92923.484,
+        16908.002,
+        779.167
+      ],
+      "yaw": 249.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 301,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 86,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -93452.646,
+        15429.094,
+        758.333
+      ],
+      "yaw": 251.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 301,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 87,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -93933.136,
+        13933.665,
+        737.5
+      ],
+      "yaw": 253.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 88,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -94364.44,
+        12423.314,
+        716.667
+      ],
+      "yaw": 255.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 89,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -94746.095,
+        10899.661,
+        695.833
+      ],
+      "yaw": 256.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 90,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95077.693,
+        9364.335,
+        675.0
+      ],
+      "yaw": 258.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": true,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 91,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95358.88,
+        7818.983,
+        654.167
+      ],
+      "yaw": 260.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 92,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95589.353,
+        6265.257,
+        633.333
+      ],
+      "yaw": 262.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 93,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95768.867,
+        4704.823,
+        612.5
+      ],
+      "yaw": 264.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 94,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95897.228,
+        3139.35,
+        591.667
+      ],
+      "yaw": 266.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 95,
+      "section": 3,
+      "name": "The Listening Temple",
+      "position": [
+        -95974.3,
+        1570.516,
+        570.833
+      ],
+      "yaw": 268.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 96,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -96000.0,
+        0.0,
+        550.0
+      ],
+      "yaw": 270.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 97,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95974.3,
+        -1570.516,
+        543.75
+      ],
+      "yaw": 271.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 98,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95897.228,
+        -3139.35,
+        537.5
+      ],
+      "yaw": 273.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 99,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95768.867,
+        -4704.823,
+        531.25
+      ],
+      "yaw": 275.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 100,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95589.353,
+        -6265.257,
+        525.0
+      ],
+      "yaw": 277.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 101,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95358.88,
+        -7818.983,
+        518.75
+      ],
+      "yaw": 279.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 102,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -95077.693,
+        -9364.335,
+        512.5
+      ],
+      "yaw": 281.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 103,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -94746.095,
+        -10899.661,
+        506.25
+      ],
+      "yaw": 283.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 104,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -94364.44,
+        -12423.314,
+        500.0
+      ],
+      "yaw": 285.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 105,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -93933.136,
+        -13933.665,
+        493.75
+      ],
+      "yaw": 286.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 106,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -93452.646,
+        -15429.094,
+        487.5
+      ],
+      "yaw": 288.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 107,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -92923.484,
+        -16908.002,
+        481.25
+      ],
+      "yaw": 290.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 108,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -92346.218,
+        -18368.805,
+        475.0
+      ],
+      "yaw": 292.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 109,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -91721.464,
+        -19809.937,
+        468.75
+      ],
+      "yaw": 294.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 110,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -91049.892,
+        -21229.857,
+        462.5
+      ],
+      "yaw": 296.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 111,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -90332.221,
+        -22627.043,
+        456.25
+      ],
+      "yaw": 298.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 112,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -89569.219,
+        -24000.0,
+        450.0
+      ],
+      "yaw": 300.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 113,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -88761.705,
+        -25347.257,
+        443.75
+      ],
+      "yaw": 301.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 114,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -87910.541,
+        -26667.371,
+        437.5
+      ],
+      "yaw": 303.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 115,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -87016.641,
+        -27958.929,
+        431.25
+      ],
+      "yaw": 305.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 116,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -86080.96,
+        -29220.549,
+        425.0
+      ],
+      "yaw": 307.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 117,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -85104.502,
+        -30450.878,
+        418.75
+      ],
+      "yaw": 309.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 118,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -84088.311,
+        -31648.599,
+        412.5
+      ],
+      "yaw": 311.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 119,
+      "section": 4,
+      "name": "Underground Caverns",
+      "position": [
+        -83033.475,
+        -32812.43,
+        406.25
+      ],
+      "yaw": 313.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 120,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -81941.125,
+        -33941.125,
+        400.0
+      ],
+      "yaw": 315.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 121,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -80812.43,
+        -35033.475,
+        418.75
+      ],
+      "yaw": 316.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 122,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -79648.599,
+        -36088.311,
+        437.5
+      ],
+      "yaw": 318.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 123,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -78450.878,
+        -37104.502,
+        456.25
+      ],
+      "yaw": 320.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 124,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -77220.549,
+        -38080.96,
+        475.0
+      ],
+      "yaw": 322.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": 500,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 125,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -75958.929,
+        -39016.641,
+        493.75
+      ],
+      "yaw": 324.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 500,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 126,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -74667.371,
+        -39910.541,
+        512.5
+      ],
+      "yaw": 326.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 500,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 127,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -73347.257,
+        -40761.705,
+        531.25
+      ],
+      "yaw": 328.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 128,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -72000.0,
+        -41569.219,
+        550.0
+      ],
+      "yaw": 330.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 129,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -70627.043,
+        -42332.221,
+        568.75
+      ],
+      "yaw": 331.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 130,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -69229.857,
+        -43049.892,
+        587.5
+      ],
+      "yaw": 333.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 131,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -67809.937,
+        -43721.464,
+        606.25
+      ],
+      "yaw": 335.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 132,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -66368.805,
+        -44346.218,
+        625.0
+      ],
+      "yaw": 337.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": 501,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 133,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -64908.002,
+        -44923.484,
+        643.75
+      ],
+      "yaw": 339.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 501,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 134,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -63429.094,
+        -45452.646,
+        662.5
+      ],
+      "yaw": 341.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "echo",
+      "group": 501,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 135,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -61933.665,
+        -45933.136,
+        681.25
+      ],
+      "yaw": 343.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 136,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -60423.314,
+        -46364.44,
+        700.0
+      ],
+      "yaw": 345.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 137,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -58899.661,
+        -46746.095,
+        718.75
+      ],
+      "yaw": 346.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 138,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -57364.335,
+        -47077.693,
+        737.5
+      ],
+      "yaw": 348.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 139,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -55818.983,
+        -47358.88,
+        756.25
+      ],
+      "yaw": 350.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 140,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -54265.257,
+        -47589.353,
+        775.0
+      ],
+      "yaw": 352.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 141,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -52704.823,
+        -47768.867,
+        793.75
+      ],
+      "yaw": 354.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 142,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -51139.35,
+        -47897.228,
+        812.5
+      ],
+      "yaw": 356.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 143,
+      "section": 5,
+      "name": "The Sunken City",
+      "position": [
+        -49570.516,
+        -47974.3,
+        831.25
+      ],
+      "yaw": 358.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 144,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -48000.0,
+        -48000.0,
+        850.0
+      ],
+      "yaw": 360.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 145,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -46429.484,
+        -47974.3,
+        872.917
+      ],
+      "yaw": 361.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 146,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -44860.65,
+        -47897.228,
+        895.833
+      ],
+      "yaw": 363.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 147,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -43295.177,
+        -47768.867,
+        918.75
+      ],
+      "yaw": 365.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 148,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -41734.743,
+        -47589.353,
+        941.667
+      ],
+      "yaw": 367.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 149,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -40181.017,
+        -47358.88,
+        964.583
+      ],
+      "yaw": 369.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 150,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -38635.665,
+        -47077.693,
+        987.5
+      ],
+      "yaw": 371.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 151,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -37100.339,
+        -46746.095,
+        1010.417
+      ],
+      "yaw": 373.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 152,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -35576.686,
+        -46364.44,
+        1033.333
+      ],
+      "yaw": 375.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 153,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -34066.335,
+        -45933.136,
+        1056.25
+      ],
+      "yaw": 376.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 154,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -32570.906,
+        -45452.646,
+        1079.167
+      ],
+      "yaw": 378.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": true,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 155,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -31091.998,
+        -44923.484,
+        1102.083
+      ],
+      "yaw": 380.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 2,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 156,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -29631.195,
+        -44346.218,
+        1125.0
+      ],
+      "yaw": 382.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 157,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -28190.063,
+        -43721.464,
+        1147.917
+      ],
+      "yaw": 384.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 158,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -26770.143,
+        -43049.892,
+        1170.833
+      ],
+      "yaw": 386.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 159,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -25372.957,
+        -42332.221,
+        1193.75
+      ],
+      "yaw": 388.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 160,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -24000.0,
+        -41569.219,
+        1216.667
+      ],
+      "yaw": 390.0,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 161,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -22652.743,
+        -40761.705,
+        1239.583
+      ],
+      "yaw": 391.875,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": true,
+      "secret": false
+    },
+    {
+      "index": 162,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -21332.629,
+        -39910.541,
+        1262.5
+      ],
+      "yaw": 393.75,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": true,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 163,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -20041.071,
+        -39016.641,
+        1285.417
+      ],
+      "yaw": 395.625,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 164,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -18779.451,
+        -38080.96,
+        1308.333
+      ],
+      "yaw": 397.5,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 165,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -17549.122,
+        -37104.502,
+        1331.25
+      ],
+      "yaw": 399.375,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 166,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -16351.401,
+        -36088.311,
+        1354.167
+      ],
+      "yaw": 401.25,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 167,
+      "section": 6,
+      "name": "The Long Way Down",
+      "position": [
+        -15187.57,
+        -35033.475,
+        1377.083
+      ],
+      "yaw": 403.125,
+      "size": [
+        1340,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 168,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -14058.875,
+        -33941.125,
+        1400.0
+      ],
+      "yaw": 405.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 169,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -12966.525,
+        -32812.43,
+        1439.583
+      ],
+      "yaw": 406.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 170,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -11911.689,
+        -31648.599,
+        1479.167
+      ],
+      "yaw": 408.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 171,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -10895.498,
+        -30450.878,
+        1518.75
+      ],
+      "yaw": 410.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 172,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -9919.04,
+        -29220.549,
+        1558.333
+      ],
+      "yaw": 412.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 173,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -8983.359,
+        -27958.929,
+        1597.917
+      ],
+      "yaw": 414.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 174,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -8089.459,
+        -26667.371,
+        1637.5
+      ],
+      "yaw": 416.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 175,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -7238.295,
+        -25347.257,
+        1677.083
+      ],
+      "yaw": 418.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 176,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -6430.781,
+        -24000.0,
+        1716.667
+      ],
+      "yaw": 420.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 177,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -5667.779,
+        -22627.043,
+        1756.25
+      ],
+      "yaw": 421.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 178,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -4950.108,
+        -21229.857,
+        1795.833
+      ],
+      "yaw": 423.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 179,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -4278.536,
+        -19809.937,
+        1835.417
+      ],
+      "yaw": 425.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 180,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -3653.782,
+        -18368.805,
+        1875.0
+      ],
+      "yaw": 427.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 181,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -3076.516,
+        -16908.002,
+        1914.583
+      ],
+      "yaw": 429.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 182,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -2547.354,
+        -15429.094,
+        1954.167
+      ],
+      "yaw": 431.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 183,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -2066.864,
+        -13933.665,
+        1993.75
+      ],
+      "yaw": 433.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 184,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -1635.56,
+        -12423.314,
+        2033.333
+      ],
+      "yaw": 435.0,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 185,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -1253.905,
+        -10899.661,
+        2072.917
+      ],
+      "yaw": 436.875,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 186,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -922.307,
+        -9364.335,
+        2112.5
+      ],
+      "yaw": 438.75,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 187,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -641.12,
+        -7818.983,
+        2152.083
+      ],
+      "yaw": 440.625,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 188,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -410.647,
+        -6265.257,
+        2191.667
+      ],
+      "yaw": 442.5,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true
+    },
+    {
+      "index": 189,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -231.133,
+        -4704.823,
+        2231.25
+      ],
+      "yaw": 444.375,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 190,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -102.772,
+        -3139.35,
+        2270.833
+      ],
+      "yaw": 446.25,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    },
+    {
+      "index": 191,
+      "section": 7,
+      "name": "One Last Climb",
+      "position": [
+        -25.7,
+        -1570.516,
+        2310.417
+      ],
+      "yaw": 448.125,
+      "size": [
+        1340,
+        1200,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false
+    }
+  ]
+}
