@@ -1,0 +1,24 @@
+PIECE OF CAKE
+=============
+Project: ~/Desktop/PieceOfCake
+
+SOURCE + WEB PLAYER READY FOR THE FIRST UNREAL BUILD.
+THE GAME IS NOT YET VERIFIED PLAYABLE.
+
+Unreal Engine 5.8 still needs to be installed via Epic Games Launcher.
+The Mac currently has Xcode and around 99 GiB of free space.
+
+Open README.md for exact steps and the validation status.
+
+Double-click shortcuts:
+  Check Setup.command             Detect Unreal and report setup
+  Open Unreal.command             Build/generate assets, then open Unreal
+  Start Browser Player.command    Start the page and signalling server
+  Stream Unreal.command           Start Unreal's real video/audio stream
+
+Local browser page: http://127.0.0.1:8080
+The page correctly says offline until Unreal is running and connected.
+
+No packaged executable or cloud deployment exists yet.
+No claim is made that the Unreal source compiles or the 10-15 minute
+journey is playable until those checks run in the real engine.

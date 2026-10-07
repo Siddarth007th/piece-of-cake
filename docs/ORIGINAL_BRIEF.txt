@@ -1,0 +1,1477 @@
+You are the lead game developer, technical director, gameplay programmer, level designer, environment artist, UI developer, build engineer, and deployment engineer for this project.
+
+PROJECT NAME:
+PIECE OF CAKE
+
+CORE CONCEPT:
+Build a polished third-person 3D action-platforming game called "Piece of Cake".
+
+The game should feel like a premium stylized adventure platformer inspired by the gameplay principles of classic mascot platformers such as Crash Bandicoot, combined with the environmental adventure/exploration feeling of Tomb Raider and the visual wonder of cinematic fantasy games.
+
+IMPORTANT:
+Do NOT copy Crash Bandicoot's characters, models, animations, environments, names, UI, sounds, music, branding, or exact mechanics.
+
+Use only high-level genre inspiration:
+- fast third-person platforming
+- momentum-based movement
+- jumping
+- enemy encounters
+- collectibles
+- secrets
+- environmental traversal
+- cinematic set pieces
+- readable linear level design
+- optional exploration
+
+The final game must have its own character, world, mechanics, visual identity, story, animations, UI, sounds, and level design.
+
+==================================================
+1. GAME EXPERIENCE
+==================================================
+
+The player controls a small, extremely cute but capable creature.
+
+The character is visually small compared with the world.
+
+The world should feel enormous.
+
+The central contrast is:
+
+CUTE CHARACTER
++
+ANCIENT / MYSTERIOUS / BEAUTIFUL WORLD
++
+FAST PLATFORMING
++
+LIGHT DANGER
++
+HUMOR
+
+The game should NOT be horror.
+
+It should be:
+- mysterious
+- adventurous
+- beautiful
+- occasionally dangerous
+- playful
+- cinematic
+- charming
+
+Avoid:
+- gore
+- disturbing horror
+- jumpscares
+- excessive darkness
+- grimdark presentation
+- overly childish environments
+
+The character should be adorable while the world remains majestic and ancient.
+
+==================================================
+2. GAMEPLAY LENGTH
+==================================================
+
+The primary experience is ONE large continuous level.
+
+Target first-playthrough gameplay time:
+
+10–15 minutes.
+
+The player should NOT feel like they are playing separate small levels.
+
+It should feel like one continuous journey through one enormous interconnected environment.
+
+The game should have a clear beginning, escalation, climax, and reward.
+
+Structure:
+
+START
+↓
+beautiful introductory area
+↓
+ruins
+↓
+forest
+↓
+temple
+↓
+underground/cavern section
+↓
+ancient city
+↓
+large cinematic traversal sequence
+↓
+final ascent
+↓
+cake reward
+
+The transitions should be visually seamless whenever practical.
+
+Use tunnels, caves, doors, traversal sequences, waterfalls, narrow paths, or other natural level-streaming boundaries when useful.
+
+==================================================
+3. THE STORY
+==================================================
+
+Keep the story simple and visual.
+
+The character sees a piece of cake at the beginning of the journey.
+
+The character wants the cake.
+
+The cake becomes the player's simple motivation.
+
+The joke:
+
+The entire journey is extremely difficult.
+
+The player survives:
+- ruins
+- enemies
+- traps
+- platforming
+- environmental hazards
+- collapsing structures
+- caves
+- ancient mechanisms
+- large traversal sequences
+
+The game repeatedly makes it feel like getting the cake should be easy.
+
+It isn't.
+
+The final reward is literally:
+
+ONE NORMAL PIECE OF CAKE.
+
+Do NOT make the cake a magical artifact.
+
+Do NOT make it the source of world-ending power.
+
+Do NOT overcomplicate the joke.
+
+After the player completes the journey, the character reaches the cake, sits down or approaches it, and eats it.
+
+The final title/reward moment should communicate:
+
+"Piece of Cake"
+
+The humor should come from the absurd contrast between the epic journey and the completely ordinary reward.
+
+==================================================
+4. VISUAL DIRECTION
+==================================================
+
+Use the attached reference image only as visual inspiration for:
+- sense of scale
+- cinematic composition
+- deep blue environments
+- glowing magical elements
+- gigantic structures
+- mountains
+- atmospheric depth
+- warm/cool lighting contrast
+- fantasy adventure mood
+
+DO NOT reproduce the image.
+
+DO NOT copy its exact tree, architecture, composition, character, or artistic assets.
+
+Create an original visual identity.
+
+Target:
+
+STYLIZED CINEMATIC FANTASY.
+
+The desired look is:
+
+- highly polished stylized 3D
+- detailed environments
+- expressive stylized character
+- cinematic lighting
+- strong atmospheric perspective
+- rich environmental storytelling
+- beautiful silhouettes
+- strong color grading
+- warm/cool contrast
+- high visual readability during gameplay
+
+The environment should look more sophisticated than a simple cartoon game.
+
+The character should be more stylized and cute than the environment.
+
+The world should feel old, enormous, mysterious, and believable.
+
+==================================================
+5. COLOR LANGUAGE
+==================================================
+
+Use a controlled color progression through the level.
+
+Beginning:
+- warm natural daylight
+- greens
+- soft blues
+- natural stone
+
+Forest:
+- deep greens
+- teal
+- blue
+- filtered sunlight
+
+Ruins:
+- blue stone
+- muted greens
+- warm ancient lighting
+
+Caverns:
+- deep blue
+- cyan
+- subtle magical glow
+
+Ancient city:
+- deep blue
+- gold
+- amber
+- cyan
+- dramatic lighting
+
+Final sequence:
+- warmer sunset/orange tones
+
+Ending:
+- warm peaceful lighting around the cake
+
+Do not make every area visually saturated.
+
+Use visual pacing.
+
+==================================================
+6. CHARACTER DESIGN
+==================================================
+
+Create an ORIGINAL cute creature.
+
+Requirements:
+- small body
+- expressive face
+- strong silhouette
+- large readable eyes
+- slightly exaggerated proportions
+- capable athletic movement
+- cute without being baby-like
+- recognizable from silhouette alone
+
+Give the character one visually distinctive accessory.
+
+Recommended:
+A scarf/cape-like cloth and a small adventure backpack.
+
+The scarf should react to:
+- running
+- jumping
+- falling
+- attacking
+- wind
+- landing
+- fear/surprise
+
+The backpack should visually communicate that this is an adventurer.
+
+Do NOT make the character visually similar to Crash Bandicoot.
+
+No orange anthropomorphic marsupial design.
+No Crash-like clothing.
+No Crash-like face.
+No Crash-like silhouette.
+
+==================================================
+7. MOVEMENT SYSTEM
+==================================================
+
+Movement quality is one of the highest priorities.
+
+Build a responsive third-person movement system.
+
+Required:
+
+- walk
+- run
+- sprint
+- jump
+- variable jump height
+- air control
+- landing detection
+- directional air movement
+- crouch/slide
+- attack
+- aerial attack
+- ground slam
+- bounce interaction
+- ledge detection where appropriate
+- basic climbing/traversal where appropriate
+
+Movement should feel:
+- responsive
+- weighty but fast
+- readable
+- forgiving
+- satisfying
+
+Do NOT simply copy Crash movement values.
+
+Develop an original movement model.
+
+The player should be able to chain actions.
+
+Example:
+
+RUN
+→ JUMP
+→ AIR ATTACK
+→ ENEMY BOUNCE
+→ WALL/TRAVERSAL
+→ LAND
+→ SPRINT
+
+The game should reward momentum and flow.
+
+==================================================
+8. PRIMARY ATTACK
+==================================================
+
+Do NOT use Crash's spin attack.
+
+Create an original attack.
+
+Recommended concept:
+
+"BONK"
+
+The character performs a quick physical forward strike.
+
+Variants:
+- ground bonk
+- running bonk
+- aerial bonk
+- downward slam
+
+The attack should feel playful rather than violent.
+
+Enemies should react with exaggerated animation.
+
+No gore.
+
+==================================================
+9. SIGNATURE MECHANIC
+==================================================
+
+Create an original environmental mechanic called:
+
+ECHO
+
+The character can activate certain ancient objects.
+
+Echo temporarily reveals or reconstructs traces of the ancient world.
+
+Examples:
+
+A destroyed bridge temporarily reappears.
+
+A broken mechanism becomes functional.
+
+Ancient paths become visible.
+
+Ghost-like environmental memories briefly show how an area was used.
+
+Keep this mechanic visually spectacular but mechanically simple.
+
+It should support:
+- traversal
+- environmental puzzles
+- storytelling
+- level progression
+
+Do not turn the game into a puzzle game.
+
+Echo interactions should generally take seconds, not minutes.
+
+==================================================
+10. LEVEL DESIGN
+==================================================
+
+Create ONE large continuous playable level.
+
+Working level name:
+
+THE LONG WAY TO CAKE
+
+Suggested structure:
+
+SECTION 1 — THE MEADOW
+Duration: approximately 1–2 minutes
+
+Purpose:
+- introduce character
+- introduce movement
+- introduce basic jumping
+- introduce attack
+- establish the cake objective
+
+Environment:
+- grass
+- water
+- small ruins
+- flowers
+- cliffs
+- distant giant structures
+
+The cake should be visible or hinted at in the distance.
+
+--------------------------------------------------
+
+SECTION 2 — FORGOTTEN RUINS
+Duration: approximately 1.5–2 minutes
+
+Introduce:
+- enemies
+- moving platforms
+- basic hazards
+- broken bridges
+- traversal chains
+- collectibles
+
+--------------------------------------------------
+
+SECTION 3 — ANCIENT FOREST
+Duration: approximately 2 minutes
+
+Environment:
+- giant trees
+- roots
+- waterfalls
+- ruins consumed by vegetation
+- glowing plants
+- small creatures
+
+Introduce vertical traversal.
+
+--------------------------------------------------
+
+SECTION 4 — TEMPLE
+Duration: approximately 2 minutes
+
+Environment:
+- giant stone architecture
+- statues
+- mechanisms
+- traps
+- pressure plates
+- rotating structures
+- collapsing areas
+
+Use Echo here.
+
+Keep puzzles fast.
+
+--------------------------------------------------
+
+SECTION 5 — UNDERGROUND CAVERNS
+Duration: approximately 1–1.5 minutes
+
+Environment:
+- caves
+- crystals
+- underground ruins
+- ancient machinery
+- water
+- subtle darkness
+
+Atmosphere becomes mysterious.
+
+Do NOT make it horror.
+
+--------------------------------------------------
+
+SECTION 6 — ANCIENT CITY
+Duration: approximately 2 minutes
+
+This should be the major visual reveal.
+
+The player emerges from the cave.
+
+The camera reveals a gigantic ancient civilization.
+
+Use:
+- huge towers
+- bridges
+- statues
+- waterfalls
+- mountains
+- distant architecture
+- atmospheric depth
+- warm/cool lighting
+
+The player should feel tiny.
+
+This is one of the primary showcase moments.
+
+--------------------------------------------------
+
+SECTION 7 — COLLAPSE
+Duration: approximately 1.5–2 minutes
+
+Trigger a major cinematic traversal sequence.
+
+The environment begins collapsing.
+
+The player must:
+- run
+- jump
+- slide
+- attack
+- bounce
+- traverse
+- avoid falling debris
+- react quickly
+
+Make this feel like a playable cinematic.
+
+Do not take control away from the player unnecessarily.
+
+--------------------------------------------------
+
+SECTION 8 — FINAL ASCENT
+Duration: approximately 1 minute
+
+Everything becomes calmer.
+
+The player climbs toward the final structure.
+
+Reduce enemy density.
+
+Increase atmosphere.
+
+The player finally reaches the destination.
+
+==================================================
+11. THE CAKE
+==================================================
+
+Final scene:
+
+A peaceful platform.
+
+A small table or pedestal.
+
+A completely ordinary piece of cake.
+
+The character approaches.
+
+Brief character reaction.
+
+The character eats the cake.
+
+Make this animation funny and satisfying.
+
+Then show:
+
+PIECE OF CAKE
+
+Do not create an elaborate final boss unless it naturally improves the experience.
+
+The cake is the final reward.
+
+==================================================
+12. ENEMIES
+==================================================
+
+Create a small number of original enemy types.
+
+Prioritize quality over quantity.
+
+Example categories:
+
+1. Small wandering creature
+2. Ancient stone guardian
+3. Flying nuisance
+4. Environment-based hazard creature
+
+Each enemy should have:
+- readable silhouette
+- clear attack telegraph
+- simple behavior
+- predictable interaction
+- exaggerated reaction to player attacks
+
+Do not create dozens of enemy types.
+
+The player should understand enemies immediately.
+
+==================================================
+13. BOSSES
+==================================================
+
+A traditional boss is optional.
+
+If included, create ONE short mini-boss/guardian encounter.
+
+The encounter should combine:
+
+platforming
++
+dodging
++
+environmental interaction
+
+Avoid a conventional health-bar-heavy combat system.
+
+The game is primarily an adventure platformer.
+
+==================================================
+14. COLLECTIBLES
+==================================================
+
+Create original collectibles.
+
+Recommended:
+
+Memory Shards:
+- common
+- visually attractive
+- scattered throughout level
+
+Relics:
+- hidden
+- difficult
+- reward exploration
+
+Optional Lost Creatures:
+- hidden
+- cute
+- collectible
+
+Do NOT copy Wumpa Fruit or Crash collectibles.
+
+==================================================
+15. SECRETS
+==================================================
+
+Add optional secrets throughout the level.
+
+Examples:
+- hidden caves
+- alternate routes
+- small treasure areas
+- collectibles
+- visual environmental discoveries
+
+Do not make secrets required to finish the level.
+
+Reward curiosity.
+
+==================================================
+16. CAMERA
+==================================================
+
+Use a polished third-person camera.
+
+Requirements:
+- smooth follow
+- dynamic distance
+- collision avoidance
+- controlled camera lag
+- gameplay readability
+- optional cinematic widening
+- automatic framing during major set pieces
+
+During major reveals:
+temporarily widen the camera and reveal environmental scale.
+
+Never sacrifice gameplay readability for cinematic effects.
+
+==================================================
+17. ANIMATION
+==================================================
+
+Animation quality is extremely important.
+
+Prioritize:
+- expressive idle
+- anticipation before jump
+- satisfying jump
+- landing reaction
+- attack anticipation
+- attack recovery
+- hit reactions
+- falling
+- getting back up
+- running
+- sprinting
+- sliding
+- celebration
+- cake-eating animation
+
+The character should feel alive even when standing still.
+
+Add subtle:
+- breathing
+- blinking
+- looking around
+- reacting to nearby events
+
+==================================================
+18. AUDIO
+==================================================
+
+Create an original audio direction.
+
+Music progression:
+
+Beginning:
+light adventurous music
+
+Ruins:
+mysterious percussion
+
+Forest:
+organic / magical atmosphere
+
+Temple:
+ancient / rhythmic
+
+Caverns:
+ambient / mysterious
+
+Ancient city:
+large cinematic musical reveal
+
+Collapse:
+high-energy music
+
+Final ascent:
+calm music
+
+Cake:
+small playful musical payoff
+
+Use original/generated/appropriately licensed assets only.
+
+Never use copyrighted Crash Bandicoot music or sound effects.
+
+==================================================
+19. VFX
+==================================================
+
+Use polished but controlled VFX.
+
+Examples:
+- dust
+- leaves
+- water spray
+- glowing Echo effect
+- magical particles
+- enemy impact effects
+- stone debris
+- environmental destruction
+- subtle atmospheric particles
+- fireflies
+- falling embers
+
+Avoid excessive particle spam.
+
+VFX must support gameplay readability.
+
+==================================================
+20. ENVIRONMENT
+==================================================
+
+Build modular environment assets where practical.
+
+Required categories:
+
+- rocks
+- cliffs
+- ruins
+- walls
+- stairs
+- bridges
+- pillars
+- statues
+- trees
+- roots
+- waterfalls
+- vegetation
+- temple pieces
+- cavern pieces
+- ancient city pieces
+
+Use procedural/material variation where appropriate.
+
+Avoid obvious repetition.
+
+Create strong landmarks so the player always understands where they are.
+
+==================================================
+21. GRAPHICS TARGET
+==================================================
+
+Target a polished stylized AAA-inspired presentation.
+
+Prioritize:
+
+1. lighting
+2. composition
+3. character quality
+4. environment silhouettes
+5. materials
+6. VFX
+7. animation
+8. post-processing
+
+Use Unreal Engine 5 features where appropriate.
+
+Use:
+- Lumen where performance allows
+- Nanite where appropriate
+- Niagara
+- modern material workflows
+- virtual shadowing where appropriate
+- world/level streaming systems appropriate to the UE version
+
+Do not blindly enable every expensive feature.
+
+Maintain a good performance/quality balance.
+
+==================================================
+22. PERFORMANCE
+==================================================
+
+The game must remain playable.
+
+Profile continuously.
+
+Avoid:
+- unnecessary tick functions
+- excessive dynamic lights
+- excessive particles
+- inefficient blueprint graphs
+- huge unoptimized textures
+- unnecessary actor counts
+- uncontrolled physics
+- memory leaks
+
+Use LODs, culling, instancing, streaming, and appropriate asset optimization.
+
+The game should target stable performance rather than simply maximizing graphical settings.
+
+==================================================
+23. ENGINE
+==================================================
+
+Use:
+
+UNREAL ENGINE 5
+
+Prefer the latest stable UE5 version available in the development environment.
+
+Use C++ for systems where appropriate.
+
+Use Blueprints for:
+- rapid iteration
+- level scripting
+- simple interactions
+- cinematic triggers
+- designers' tuning
+
+Do not unnecessarily put everything in C++.
+
+Maintain clean architecture.
+
+==================================================
+24. PROJECT STRUCTURE
+==================================================
+
+Create a clean Unreal project.
+
+Use clear folders such as:
+
+Content/
+    Characters/
+    Environments/
+    Materials/
+    VFX/
+    Audio/
+    UI/
+    Gameplay/
+    Levels/
+    Pickups/
+    Enemies/
+    Cinematics/
+
+Source/
+    PieceOfCake/
+
+Create clear naming conventions.
+
+Do not dump assets into random folders.
+
+==================================================
+25. UI
+==================================================
+
+Keep UI minimal.
+
+During gameplay:
+
+small collectible counter
+small objective indicator if necessary
+minimal interaction prompts
+
+Avoid clutter.
+
+Create:
+- title screen
+- start game
+- settings
+- pause menu
+- restart
+- completion screen
+
+The visual design should match the game.
+
+==================================================
+26. INPUT
+==================================================
+
+Support:
+
+Keyboard:
+WASD
+Space
+Mouse
+appropriate attack/action keys
+
+Gamepad:
+left stick movement
+right stick camera
+jump
+attack
+slide/ability
+interaction
+
+Make input remappable where practical.
+
+==================================================
+27. ACCESSIBILITY
+==================================================
+
+Include practical basics:
+
+- subtitles
+- volume controls
+- music/effects volume
+- sensitivity controls
+- controller support
+- fullscreen/windowed
+- graphics quality options
+
+Do not allow accessibility systems to compromise the core experience.
+
+==================================================
+28. SAVE SYSTEM
+==================================================
+
+For the first version, keep saving simple.
+
+Persist:
+- completion
+- collectibles if practical
+- settings
+
+The primary experience is short enough that complex save architecture is unnecessary.
+
+==================================================
+29. TECHNICAL QUALITY
+==================================================
+
+Do not create fake systems that only look functional.
+
+Everything presented as playable must actually work.
+
+No:
+- placeholder buttons that do nothing
+- fake loading screens
+- fake deployment
+- fake game completion
+- nonfunctional movement
+- dead UI controls
+- broken collision
+- invisible required objectives
+
+If a system cannot be fully implemented, implement the simplest real version.
+
+==================================================
+30. DEVELOPMENT PROCESS
+==================================================
+
+Work in phases.
+
+PHASE 1:
+Project setup.
+
+PHASE 2:
+Playable character.
+
+PHASE 3:
+Movement and camera.
+
+PHASE 4:
+Basic enemy.
+
+PHASE 5:
+Greybox complete 10–15 minute level.
+
+PHASE 6:
+Gameplay polish.
+
+PHASE 7:
+Environment art.
+
+PHASE 8:
+Lighting and atmosphere.
+
+PHASE 9:
+VFX and audio.
+
+PHASE 10:
+Cinematics and set pieces.
+
+PHASE 11:
+UI and menus.
+
+PHASE 12:
+Optimization.
+
+PHASE 13:
+Packaging.
+
+PHASE 14:
+Browser deployment.
+
+Do not spend excessive time making art before the complete level is playable.
+
+The full level must be playable in greybox form before final art polish.
+
+==================================================
+31. ITERATIVE TESTING
+==================================================
+
+After every major milestone:
+
+BUILD
+RUN
+TEST
+FIX
+REBUILD
+
+Test:
+- movement
+- collisions
+- camera
+- enemy behavior
+- checkpoints
+- collectibles
+- level progression
+- final cake
+- restart
+- pause
+- completion
+
+Do not assume something works because the code compiles.
+
+Actually test the game.
+
+==================================================
+32. CHECKPOINTS
+==================================================
+
+Use forgiving checkpoints.
+
+The player should not lose significant progress because of a single failed jump.
+
+Checkpoint locations should be placed after meaningful sections.
+
+Restart should be fast.
+
+==================================================
+33. DEVELOPMENT DEBUGGING
+==================================================
+
+Create development-only debug tools where useful.
+
+Examples:
+- teleport to checkpoint
+- restart section
+- toggle FPS
+- toggle collision visualization
+- reset collectibles
+- test final sequence
+
+Ensure debug tools are disabled or hidden in shipping builds.
+
+==================================================
+34. BROWSER DEPLOYMENT — REQUIRED
+==================================================
+
+THIS IS A HARD REQUIREMENT.
+
+The final project must be playable through a normal web browser.
+
+Do NOT assume that the Unreal game itself can simply be converted into ordinary HTML5/WebGL.
+
+For a graphics-heavy UE5 game, use Unreal Pixel Streaming / Pixel Streaming 2.
+
+The final architecture should be:
+
+PLAYER BROWSER
+      ↓
+WEB FRONTEND
+      ↓
+WEBRTC / PIXEL STREAMING
+      ↓
+GPU SERVER
+      ↓
+UNREAL ENGINE GAME
+
+The player should be able to open a URL and play.
+
+No Unreal Engine installation should be required on the player's computer.
+
+No game executable download should be required for normal browser play.
+
+==================================================
+35. PIXEL STREAMING
+==================================================
+
+Use the Pixel Streaming system compatible with the selected Unreal Engine version.
+
+Prefer Pixel Streaming 2 when supported by the selected engine version.
+
+Use the corresponding compatible Pixel Streaming Infrastructure version.
+
+Do not mix incompatible engine/infrastructure versions.
+
+Create/configure:
+- signaling server
+- web frontend
+- streaming configuration
+- required WebRTC configuration
+- HTTPS-ready deployment configuration
+- browser input forwarding
+- gamepad/input support where practical
+
+The web player should be customized to match the Piece of Cake visual identity.
+
+==================================================
+36. WEB PLAYER
+==================================================
+
+Create a polished web page around the streamed game.
+
+The page should contain:
+
+PIECE OF CAKE
+
+[PLAY]
+
+Then the game stream.
+
+The page should be minimal and cinematic.
+
+Include:
+- loading state
+- connecting state
+- connection failure message
+- fullscreen button
+- basic volume controls
+- restart control where practical
+- responsive layout
+
+The actual game should remain the primary visual element.
+
+Do not build a generic ugly developer Pixel Streaming page.
+
+==================================================
+37. WEB RESPONSIVENESS
+==================================================
+
+Desktop browser is the primary target.
+
+Support modern:
+- Chrome
+- Edge
+- Firefox
+- Safari where the selected Pixel Streaming deployment supports it
+
+Keyboard and gamepad are primary controls.
+
+Touch support can be implemented if practical, but desktop playability has priority.
+
+==================================================
+38. DEPLOYMENT
+==================================================
+
+The final deployment should use a GPU-capable server capable of running the packaged Unreal application and Pixel Streaming.
+
+The deployment should include:
+
+- packaged Unreal build
+- Pixel Streaming infrastructure
+- web frontend
+- HTTPS
+- domain/subdomain configuration documentation
+- server startup scripts
+- health checks
+- logging
+- restart procedure
+
+Use an appropriate cloud GPU/server provider based on availability and cost.
+
+Do not claim deployment is complete unless the deployed service is actually reachable and tested.
+
+==================================================
+39. LOCAL DEVELOPMENT
+==================================================
+
+The project must also be runnable locally.
+
+Create clear scripts/documentation for:
+
+1. launching Unreal
+2. packaging
+3. launching Pixel Streaming
+4. starting the web frontend
+5. testing browser connectivity
+
+Document environment requirements.
+
+==================================================
+40. DEPLOYMENT FALLBACK
+==================================================
+
+If real cloud credentials or GPU hosting credentials are unavailable during development:
+
+DO NOT PRETEND THE GAME HAS BEEN DEPLOYED.
+
+Instead:
+
+1. complete the deployable configuration
+2. create deployment scripts
+3. create Docker/container configuration where appropriate
+4. create environment variable documentation
+5. create exact deployment instructions
+6. test the local Pixel Streaming deployment
+7. clearly identify the remaining external credential/server step
+
+The final output must distinguish:
+
+LOCAL TESTED
+from
+CLOUD DEPLOYED.
+
+==================================================
+41. WEB URL
+==================================================
+
+The end goal is:
+
+https://<game-domain>/ 
+
+Opening this URL should present the Piece of Cake web player.
+
+The player clicks PLAY.
+
+The game loads.
+
+The player can play the entire 10–15 minute experience.
+
+The player reaches the cake.
+
+The game displays the completion state.
+
+==================================================
+42. DOCUMENTATION
+==================================================
+
+Create:
+
+README.md
+
+Include:
+
+- game overview
+- controls
+- technology stack
+- project structure
+- how to run locally
+- how to package
+- how to run Pixel Streaming
+- how to deploy
+- required server specifications
+- environment variables
+- troubleshooting
+- browser requirements
+- known limitations
+- final deployment URL once available
+
+Also create:
+
+docs/ARCHITECTURE.md
+docs/DEVELOPMENT.md
+docs/DEPLOYMENT.md
+docs/GAMEPLAY.md
+
+==================================================
+43. GIT
+==================================================
+
+Use Git properly.
+
+Make logical commits.
+
+Do not commit:
+- secrets
+- credentials
+- huge generated build artifacts unless intentionally required
+- machine-specific configuration
+
+Create an appropriate .gitignore.
+
+Keep the repository clean.
+
+==================================================
+44. FINAL ACCEPTANCE TEST
+==================================================
+
+The project is NOT complete until all of the following are true:
+
+[ ] Game launches.
+[ ] Character can move.
+[ ] Camera works.
+[ ] Jump works.
+[ ] Attack works.
+[ ] Enemies work.
+[ ] Collectibles work.
+[ ] Checkpoints work.
+[ ] Echo mechanic works.
+[ ] Environment traversal works.
+[ ] Entire level can be completed.
+[ ] Level takes approximately 10–15 minutes for a normal first playthrough.
+[ ] Major environmental transitions work.
+[ ] Collapse/set-piece sequence works.
+[ ] Final ascent works.
+[ ] Cake exists.
+[ ] Character can eat cake.
+[ ] Completion state works.
+[ ] Restart works.
+[ ] Pause works.
+[ ] UI works.
+[ ] Audio works.
+[ ] Gamepad works.
+[ ] Performance has been profiled.
+[ ] Packaged build works.
+[ ] Pixel Streaming works locally.
+[ ] Web player works.
+[ ] Browser receives game stream.
+[ ] Browser input controls the game.
+[ ] Deployment configuration exists.
+[ ] Deployment has been actually tested if cloud credentials are available.
+[ ] README is complete.
+
+==================================================
+45. IMPORTANT DEVELOPMENT RULE
+==================================================
+
+Do not stop after creating a design document.
+
+Do not stop after creating a prototype.
+
+Do not stop after creating placeholder mechanics.
+
+Actually BUILD the game.
+
+Prioritize a complete playable vertical slice over incomplete ambition.
+
+If a feature is too large:
+simplify it while preserving the experience.
+
+Never replace the core game with a static demo.
+
+==================================================
+46. QUALITY BAR
+==================================================
+
+The final result should feel like:
+
+"An actual small commercial game prototype."
+
+NOT:
+
+"a programming demo."
+
+Gameplay quality comes first.
+
+Then:
+visual quality
+animation
+sound
+VFX
+cinematics
+UI
+deployment
+
+The game should be fun even before the final art pass.
+
+==================================================
+47. FINAL DELIVERABLE
+==================================================
+
+At completion provide:
+
+1. repository structure
+2. source code
+3. Unreal project
+4. playable packaged build
+5. browser player
+6. Pixel Streaming configuration
+7. deployment configuration
+8. documentation
+9. test results
+10. known limitations
+11. deployed URL if successfully deployed
+
+Most importantly:
+
+THE PLAYER MUST BE ABLE TO OPEN A WEBPAGE AND PLAY "PIECE OF CAKE."
+
+Begin by inspecting the current development environment.
+
+Determine:
+- operating system
+- Unreal Engine availability/version
+- GPU availability
+- required tools
+- repository state
+- available disk space
+- available build tools
+
+Then create an implementation plan.
+
+Do not ask unnecessary questions.
+
+Make reasonable engineering decisions yourself.
+
+Start building.
