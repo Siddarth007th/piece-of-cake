@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c202c" />
+  <meta name="description" content="A tiny adventurer. An enormous journey. One perfectly ordinary piece of cake." />
+  <title>Piece of Cake — The Long Way to Cake</title>
+  <link rel="icon" type="image/svg+xml" href="/mark.svg" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="masthead">
+      <a class="wordmark" href="/" aria-label="Piece of Cake home"><img src="/mark.svg" alt="" width="26" height="26" /> piece of cake<span class="wordmark-dot">.</span></a>
+      <span class="masthead-note">A LITTLE ADVENTURE, A LONG WAY HOME</span>
+      <button id="controls-open" class="text-button">How to play <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="game-title">
+        <div class="landscape" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> THE LONG WAY TO CAKE</p>
+          <h1 id="game-title">Small paws.<br />Big adventure.<br /><em>Just cake.</em></h1>
+          <p class="intro">Beyond the forgotten ruins, above the clouds,<br class="desktop-break" /> a perfectly ordinary dessert awaits.</p>
+          <div class="play-row">
+            <button id="play" class="play-button"><span class="play-icon" aria-hidden="true">▶</span><span>Play the adventure</span><span class="play-arrow" aria-hidden="true">↗</span></button>
+            <span class="play-note">Made for the curious.<br />Best with a keyboard or controller.</span>
+          </div>
+          <p id="availability" class="availability" role="status"><span class="status-dot"></span><span id="availability-text">Checking the trail…</span></p>
+        </div>
+        <div class="art-note"><span class="art-note-line"></span><span>AN ANCIENT WORLD.<br /><strong>A VERY SMALL REASON TO EXPLORE IT.</strong></span></div>
+        <span class="concept-label">Original journey illustration</span>
+        <div class="hero-bottom"><span>SCROLL FOR THE SMALL PRINT</span><span aria-hidden="true">↓</span><span>01 — 08 &nbsp; / &nbsp; ONE CONTINUOUS JOURNEY</span></div>
+      </section>
+
+      <section id="player-panel" class="player-panel" hidden aria-label="Game stream">
+        <div id="stream-frame" class="stream-frame">
+          <div id="stream" tabindex="0" aria-label="Piece of Cake game. Use WASD to move and Space to jump."></div>
+          <div id="stream-overlay" class="stream-overlay" hidden>
+            <div class="connection-orbit" aria-hidden="true"></div>
+            <p class="eyebrow">A LITTLE PATIENCE</p><h2 id="stream-status">Connecting to your adventure…</h2>
+            <p id="stream-detail">Finding your place in the world.</p>
+            <button id="resume-video" class="play-button" hidden>Continue to the game</button>
+            <button id="cancel-connect" class="text-button">Back to the meadow</button>
+          </div>
+          <div class="stream-toolbar">
+            <span class="stream-brand">piece of cake.</span>
+            <span class="stream-hint">Esc to pause · Click the game to control the camera</span>
+            <label class="volume-control">Volume <input id="volume" type="range" min="0" max="100" value="75" aria-label="Stream volume" /></label>
+            <button id="restart" class="icon-button" disabled title="Restart from the latest checkpoint">Restart checkpoint</button>
+            <button id="fullscreen" class="icon-button" aria-label="Enter fullscreen">⛶</button>
+            <button id="leave" class="icon-button">Leave</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-strip" aria-label="About the adventure">
+        <div class="strip-title"><span class="section-number">01 /</span><p>A long way<br /><em>for one little slice.</em></p></div>
+        <div class="strip-detail"><span class="detail-icon" aria-hidden="true">◇</span><div><h2>Follow the echoes</h2><p>Wake the old paths.<br />Find what time left behind.</p></div></div>
+        <div class="strip-detail"><span class="detail-icon" aria-hidden="true">⌁</span><div><h2>Keep your momentum</h2><p>Leap, slide, bounce, bonk.<br />Try to look graceful.</p></div></div>
+        <div class="strip-detail"><span class="detail-icon cake-icon" aria-hidden="true">▱</span><div><h2>Earn your dessert</h2><p>No chosen one. No prophecy.<br />Just a very hungry adventurer.</p></div></div>
+      </section>
+    </main>
+    <footer><span>PIECE OF CAKE <span class="footer-diamond">✦</span> AN ORIGINAL ADVENTURE</span><span>Take the scenic route.</span><span>DESKTOP & GAMEPAD</span></footer>
+  </div>
+
+  <dialog id="controls-dialog" aria-labelledby="controls-title">
+    <button class="dialog-close" data-close="controls-dialog" aria-label="Close controls">×</button>
+    <p class="eyebrow">A QUICK FIELD GUIDE</p><h2 id="controls-title">Your paws know the way.</h2>
+    <div class="control-row"><span>Move</span><kbd>W A S D</kbd><span>Left stick</span></div>
+    <div class="control-row"><span>Look around</span><kbd>Mouse</kbd><span>Right stick</span></div>
+    <div class="control-row"><span>Jump · hold for height</span><kbd>Space</kbd><span>A / Cross</span></div>
+    <div class="control-row"><span>Sprint</span><kbd>Shift</kbd><span>LB / L1</span></div>
+    <div class="control-row"><span>Bonk · ground or air</span><kbd>J / Click</kbd><span>X / Square</span></div>
+    <div class="control-row"><span>Slide · slam in the air</span><kbd>C / Ctrl</kbd><span>B / Circle</span></div>
+    <div class="control-row"><span>Echo · interact</span><kbd>E</kbd><span>Y / Triangle</span></div>
+    <div class="control-row"><span>Pause · settings</span><kbd>Esc</kbd><span>Menu / Options</span></div>
+    <p class="dialog-note">Gold lanterns mark checkpoints. If you fall, you’ll be back in a moment. Cake can wait.</p>
+  </dialog>
+
+  <dialog id="error-dialog" aria-labelledby="error-title">
+    <button class="dialog-close" data-close="error-dialog" aria-label="Close message">×</button>
+    <p class="eyebrow">A SMALL DETOUR</p><h2 id="error-title">The trail is resting.</h2>
+    <p id="error-message">The game server is not running yet. Please try again when it’s available.</p>
+    <div class="dialog-actions"><button id="retry" class="play-button">Try again <span aria-hidden="true">↗</span></button><button class="text-button" data-close="error-dialog">Back to the meadow</button></div>
+  </dialog>
+  <div id="notice" role="status" class="notice" hidden></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

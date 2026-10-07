@@ -1,0 +1,23 @@
+[Unit]
+Description=Piece of Cake Unreal Pixel Streaming game
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pieceofcake
+WorkingDirectory=/opt/pieceofcake
+EnvironmentFile=/opt/pieceofcake/Deploy/.env
+ExecStart=/opt/pieceofcake/Deploy/launch-game.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=25
+KillSignal=SIGTERM
+NoNewPrivileges=true
+UMask=0077
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

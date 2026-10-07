@@ -1,0 +1,48 @@
+services:
+  signalling:
+    build:
+      context: ..
+      dockerfile: Deploy/Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      BIND_HOST: 127.0.0.1
+      PLAYER_PORT: 8080
+      STREAMER_PORT: 8888
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:?Set PUBLIC_ORIGIN}
+      TURN_URL: ${TURN_URL:?Set TURN_URL}
+      TURN_SECRET: ${TURN_SECRET:?Set TURN_SECRET}
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+  https:
+    image: caddy:2.10.2-alpine
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      GAME_DOMAIN: ${GAME_DOMAIN:?Set GAME_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?Set ACME_EMAIL}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      signalling:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+  turn:
+    image: coturn/coturn:4.7.0
+    network_mode: host
+    restart: unless-stopped
+    command: ["-c", "/etc/coturn/turnserver.conf"]
+    volumes:
+      - ./runtime/turnserver.conf:/etc/coturn/turnserver.conf:ro
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+volumes:
+  caddy_data:
+  caddy_config:

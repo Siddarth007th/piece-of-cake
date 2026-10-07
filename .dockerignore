@@ -1,0 +1,14 @@
+.git
+Web/node_modules
+Web/dist
+Web/test-results
+Deploy/.env
+Deploy/runtime
+Builds
+Saved
+Intermediate
+Binaries
+Artifacts
+Content
+Source
+docs
