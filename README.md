@@ -35,7 +35,8 @@ vector art; it is not a screenshot of the game.
 
 ## Start here on this Mac
 
-1. Install **Unreal Engine 5.8** with the [official Epic Games Launcher](https://www.unrealengine.com/download).
+1. The [official Epic Games Launcher](https://www.unrealengine.com/download) is installed
+   in `/Applications`. Open it, sign in, and install **Unreal Engine 5.8**.
    Sign in and complete Epic's license prompts yourself. Xcode is already installed.
 2. If installed somewhere other than `/Users/Shared/Epic Games/UE_5.8`, set `UE_ROOT`
    in your terminal to the directory containing `Engine/`.

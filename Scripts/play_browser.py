@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import shutil
 import socket
 import subprocess
 import sys
@@ -18,10 +19,11 @@ def main():
     # Fail before starting a tempting but unplayable browser page.
     ue.engine_root()
     for program in ("node", "npm"):
-        if not ue.shutil.which(program):
+        if not shutil.which(program):
             raise SystemExit(f"Missing {program}. Install Node.js before continuing.")
     for port in (8080, 8888):
         with socket.socket() as probe:
+            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try: probe.bind(("127.0.0.1", port))
             except OSError:
                 raise SystemExit(f"Port {port} is already in use. Close the existing browser-player/server terminal, then retry. No existing process was stopped.")

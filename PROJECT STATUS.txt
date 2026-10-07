@@ -5,7 +5,8 @@ Project: ~/Desktop/PieceOfCake
 SOURCE + WEB PLAYER READY FOR THE FIRST UNREAL BUILD.
 THE GAME IS NOT YET VERIFIED PLAYABLE.
 
-Unreal Engine 5.8 still needs to be installed via Epic Games Launcher.
+Epic Games Launcher is installed in /Applications and open for sign-in.
+Unreal Engine 5.8 still needs to be installed after signing in.
 The Mac currently has Xcode and around 99 GiB of free space.
 
 Open README.md for exact steps and the validation status.
