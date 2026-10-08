@@ -107,6 +107,10 @@ private:
     float DashTrail = 0;
     bool StrikePending = false;
     float GaitPhase = 0;
+    float MotionBlend = 0;
+    float AirPose = 0;
+    float FlipRemaining = 0;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> SpinRibbons;
     float BodyLean = 0;
     float PreviousFacing = 0;
     UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> HeadbandTails;

@@ -5,6 +5,8 @@ standalone Mac application as the priority. **No public stream has been deployed
 
 ## Native Mac release
 
+[v0.3.0 complete Mac download](https://github.com/Siddarth007th/piece-of-cake/releases/tag/v0.3.0) is the playable delivery. It includes the configured Supabase Free backend; each player opts in through Cloud saves → Connect. The ZIP is 368.7 MiB and does not require the author’s Mac to remain online. See [final runtime evidence](TEST_RESULTS.md).
+
 Package with `python3 Scripts/package_mac.py Development`, run the actual packaged
 journeys, validate the dependency closure and signature, then archive the complete
 `.app`. Publish the tested archive as a GitHub release; do not commit engine binaries.

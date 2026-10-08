@@ -14,7 +14,7 @@ def finalize(app):
     app=Path(app).resolve()
     info_file=app/'Contents/Info.plist'
     info=plistlib.loads(info_file.read_bytes())
-    info.update(CFBundleIdentifier='com.siddarth007th.pieceofcake', CFBundleDisplayName='Piece of Cake', CFBundleName='Piece of Cake', CFBundleShortVersionString='0.2.0', CFBundleVersion='2')
+    info.update(CFBundleIdentifier='com.siddarth007th.pieceofcake', CFBundleDisplayName='Piece of Cake', CFBundleName='Piece of Cake', CFBundleShortVersionString='0.3.0', CFBundleVersion='3')
     info.pop('CFBundleIconName',None)
     info['CFBundleIconFile']='AppIcon.icns'
     icon=Path(__file__).resolve().parents[1]/'Build/Mac/Resources/Application.icns'
@@ -27,11 +27,6 @@ def finalize(app):
         config=app/'Contents/UE/PieceOfCake/Config'
         config.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(defaults,config/defaults.name)
-    cloud=Path(__file__).resolve().parents[1]/'Config/Cloud.ini'
-    if cloud.is_file():
-        config=app/'Contents/UE/PieceOfCake/Config'
-        config.mkdir(parents=True,exist_ok=True)
-        shutil.copyfile(cloud,config/cloud.name)
     executable=app/'Contents/MacOS/PieceOfCake'
     if not executable.is_file(): raise RuntimeError('Missing Mac game executable')
     libraries=list(app.rglob('*.dylib'))

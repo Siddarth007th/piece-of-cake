@@ -6,7 +6,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 ROOT=Path(__file__).resolve().parents[2]
 config=configparser.ConfigParser();config.read(ROOT/'Config/Cloud.ini')
-url=config.get('PieceOfCake.Cloud','URL');key=config.get('PieceOfCake.Cloud','PublishableKey')
+url=config.get('PieceOfCake.Cloud','URL').strip('"');key=config.get('PieceOfCake.Cloud','PublishableKey')
 if not url.startswith('https://') or not url.endswith('.supabase.co'):raise SystemExit('Expected the configured Supabase HTTPS project')
 def call(path,body=None,token=None,method=None):
  headers={'apikey':key,'Content-Type':'application/json'}

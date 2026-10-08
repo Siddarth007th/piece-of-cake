@@ -24,13 +24,17 @@ This first version does not provide email accounts, account recovery, cross-devi
 
 ```ini
 [PieceOfCake.Cloud]
-URL=https://PROJECT.supabase.co
+URL="https://PROJECT.supabase.co"
 PublishableKey=sb_publishable_PUBLIC_VALUE
 ```
 
-Never put the database password, secret API key or service-role JWT in this file. The packaging script copies this public configuration into the bundle before signing.
+Never put the database password, secret API key or service-role JWT in this file. The packaging script merges this public configuration into the staged DefaultGame.ini before cooking. The native client reads Unreal's normal Game configuration; cooked games intentionally reject arbitrary loose INI files.
 
-6. Run `npm ci && npm test` in Backend, then `python3 Backend/tests/live_cloud.py`. Run the packaged native cloud test and a complete gameplay regression before releasing.
+6. Run `npm ci && npm test` in Backend, then `python3 Backend/tests/live_cloud.py`. Run `Scripts/verify_native_features.py --executable /path/to/PieceOfCake.app/Contents/MacOS/PieceOfCake --cloud` and complete gameplay regressions before releasing.
+
+## Deployed project
+
+The Free project `brzacmgdmgvyzzztcsgx` is provisioned in Seoul. The migration and anonymous Auth are enabled. Real HTTPS tests passed ownership isolation, validation, idempotence and refreshed-session persistence on 8 October 2026. Native app validation is recorded separately in `docs/TEST_RESULTS.md`.
 
 ## Tests and operating limits
 

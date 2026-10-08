@@ -9,6 +9,9 @@
 #include "HAL/PlatformTime.h"
 #include "HAL/PlatformMisc.h"
 #include "Misc/FileHelper.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+#include "HAL/FileManager.h"
 #include "Misc/Paths.h"
 #include "Serialization/JsonSerializer.h"
 #include "UnrealClient.h"
@@ -20,12 +23,15 @@ void APOCFlightTest::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);
     if(Phase==99) return;
     const double Now=FPlatformTime::Seconds(); if(!Born) Born=Now;
-    if(Now-Born>45) { Finish(false,TEXT("Flight test timeout"));return; }
+    if(Now-Born>70) { Finish(false,TEXT("Flight test timeout"));return; }
     auto* PC=Cast<APOCController>(UGameplayStatics::GetPlayerController(this,0));
     auto* P=PC?Cast<APOCCharacter>(PC->GetPawn()):nullptr;
     if(!P || !PC->Journey || !PC->Journey->Ready) return;
     auto* GI=GetGameInstance<UPOCGameInstance>();
     auto Key=[&](FKey K,EInputEvent E) { PC->InputKey(FInputKeyEventArgs::CreateSimulated(K,E,E==IE_Released?0:1)); };
+    FString ShotDir;FParse::Value(FCommandLine::Get(),TEXT("POCArtifacts="),ShotDir);
+    if(ShotDir.IsEmpty()) ShotDir=FPaths::ProjectSavedDir()/TEXT("FlightQA");
+    IFileManager::Get().MakeDirectory(*ShotDir,true);
     auto Code=[&]() { for(TCHAR C:FString(TEXT("SIDDARTHISGOD"))) { FKey K(FName(*FString::Chr(C))); Key(K,IE_Pressed);Key(K,IE_Released); } };
     if(Phase==-1)
     {
@@ -33,6 +39,8 @@ void APOCFlightTest::Tick(float DeltaSeconds)
         if(PC->Menu==EPOCMenu::Title) { PC->Selection=0;PC->ActivateSelection();return; }
         if(PC->Menu!=EPOCMenu::Playing || !P->GetCharacterMovement()->IsMovingOnGround()) return;
         InitialRespawns=P->RespawnCount; InitialShards=GI->Shards;
+        PC->Journey->Complete(P,PC->Journey->Route.Last().Position);
+        NormalGateProtected=!P->Eating && !GI->Won;
         Code();
         if(!P->DeveloperFlight || P->GetActorEnableCollision() || P->RespawnCount!=InitialRespawns)
         { Finish(false,TEXT("Phrase did not enable flight cleanly"));return; }
@@ -59,16 +67,20 @@ void APOCFlightTest::Tick(float DeltaSeconds)
         else
         {
             if(GI->Shards!=InitialShards) { Finish(false,TEXT("Flight collected gameplay shards"));return; }
-            FScreenshotRequest::RequestScreenshot(FPaths::ProjectDir()/TEXT("Artifacts/developer-flight-native.png"),false,false);
+            FScreenshotRequest::RequestScreenshot(ShotDir/TEXT("developer-flight-native.png"),false,false);
         }
         return;
     }
     if(Phase==6)
     {
         if(Now-PhaseAt<.3) return;
+        const auto& LandingPoint=PC->Journey->Route[1];
+        P->SetActorLocation(LandingPoint.Position+FVector(0,0,220));
+        const FVector Before=P->GetActorLocation();
         Code();
+        LandedWhereExplored=FVector::Dist2D(Before,P->GetActorLocation())<2 && P->RespawnCount==InitialRespawns;
         Restored=!P->DeveloperFlight && P->GetActorEnableCollision() && P->GetCharacterMovement()->GravityScale==1.6f
-            && FVector::Dist(P->GetActorLocation(),P->Checkpoint.GetLocation())<100;
+            && LandedWhereExplored;
         Phase=7;PhaseAt=Now;return;
     }
     if(Phase==7)
@@ -81,8 +93,35 @@ void APOCFlightTest::Tick(float DeltaSeconds)
         NormalJumpHeight=FMath::Max(NormalJumpHeight,float(P->GetActorLocation().Z-NormalStart.Z));
         if(!NormalJumpReleased && Now-PhaseAt>.05) { Key(EKeys::SpaceBar,IE_Released);NormalJumpReleased=true; }
         if(Now-PhaseAt<1.2) return;
-        Finish(DamageBlocked && BelowFloor && Restored && NormalJumpHeight>80 && P->GetCharacterMovement()->IsMovingOnGround(),
-            TEXT("Six-axis flight, floor traversal, damage immunity, safe exit and ordinary tap jump"));
+        if(!P->GetCharacterMovement()->IsMovingOnGround()) {Finish(false,TEXT("Ordinary jump did not land"));return;}
+        Code();P->SetActorLocation(PC->Journey->Route[1].Position-FVector(0,0,2300));Code();
+        UnsafeExitBlocked=P->DeveloperFlight && !P->GetActorEnableCollision();
+        Key(EKeys::R,IE_Pressed);Key(EKeys::R,IE_Released);Phase=9;PhaseAt=Now;return;
+    }
+    if(Phase==9)
+    {
+        if(Now-PhaseAt<1) return;
+        ExplicitRescue=!P->DeveloperFlight && P->GetActorEnableCollision() && FVector::Dist(P->GetActorLocation(),P->Checkpoint.GetLocation())<100;
+        if(!ExplicitRescue) {Finish(false,TEXT("R failed to restore checkpoint"));return;}
+        InitialShards=GI->Shards; // Normal landing/jump may legitimately collect a shard.
+        Code();
+        const auto& Last=PC->Journey->Route.Last();
+        P->SetActorLocation(Last.Position+FRotator(0,Last.Yaw,0).Vector()*680+FVector(0,0,100));
+        P->GetCharacterMovement()->StopMovementImmediately();
+        Key(EKeys::E,IE_Pressed);Key(EKeys::E,IE_Released);Phase=10;PhaseAt=Now;return;
+    }
+    if(Phase==10)
+    {
+        if(Now-PhaseAt<5) return;
+        CakeCompleted=GI->Won && PC->Menu==EPOCMenu::Complete && !P->DeveloperFlight && PC->Journey->GateIsOpen();
+        AssistedUnranked=GI->AssistedRun && GI->Shards==InitialShards && GI->ShardsSpent==0 && GI->Save->PendingRuns.IsEmpty();
+        FScreenshotRequest::RequestScreenshot(ShotDir/TEXT("developer-cake-ending.png"),true,false);
+        Phase=11;PhaseAt=Now;return;
+    }
+    if(Phase==11 && Now-PhaseAt>.4)
+    {
+        Finish(DamageBlocked && BelowFloor && Restored && NormalJumpHeight>80 && NormalGateProtected && UnsafeExitBlocked && ExplicitRescue && CakeCompleted && AssistedUnranked,
+            TEXT("Flight directions, land here, blocked unsafe exit, R rescue, normal gate and assisted cake ending"));
     }
 #endif
 }
@@ -93,7 +132,13 @@ void APOCFlightTest::Finish(bool Passed,const FString& Reason)
     TSharedRef<FJsonObject> Report=MakeShared<FJsonObject>();
     Report->SetBoolField(TEXT("passed"),Passed);Report->SetStringField(TEXT("reason"),Reason);
     Report->SetBoolField(TEXT("damage_blocked"),DamageBlocked);Report->SetBoolField(TEXT("below_floor_without_death"),BelowFloor);
-    Report->SetBoolField(TEXT("collision_gravity_checkpoint_restored"),Restored);Report->SetNumberField(TEXT("normal_50ms_tap_jump_height_cm"),NormalJumpHeight);
+    Report->SetBoolField(TEXT("collision_gravity_restored"),Restored);
+    Report->SetBoolField(TEXT("lands_where_explored_without_respawn"),LandedWhereExplored);
+    Report->SetBoolField(TEXT("normal_shard_gate_preserved"),NormalGateProtected);
+    Report->SetBoolField(TEXT("unsafe_exit_stays_in_flight"),UnsafeExitBlocked);
+    Report->SetBoolField(TEXT("explicit_R_restores_checkpoint"),ExplicitRescue);
+    Report->SetBoolField(TEXT("fly_to_cake_completes_game"),CakeCompleted);
+    Report->SetBoolField(TEXT("assisted_without_fake_shards_or_ranked_score"),AssistedUnranked);Report->SetNumberField(TEXT("normal_50ms_tap_jump_height_cm"),NormalJumpHeight);
     TArray<TSharedPtr<FJsonValue>> Moves;
     for(const FVector& Delta:Deltas)
     {
@@ -102,7 +147,10 @@ void APOCFlightTest::Finish(bool Passed,const FString& Reason)
     }
     Report->SetArrayField(TEXT("deltas_down_up_forward_backward_right_left"),Moves);
     FString Text;FJsonSerializer::Serialize(Report,TJsonWriterFactory<>::Create(&Text));
-    FFileHelper::SaveStringToFile(Text,*(FPaths::ProjectDir()/TEXT("Artifacts/developer-flight-test.json")));
+    FString Dir;FParse::Value(FCommandLine::Get(),TEXT("POCArtifacts="),Dir);
+    if(Dir.IsEmpty()) Dir=FPaths::ProjectDir()/TEXT("Artifacts");
+    IFileManager::Get().MakeDirectory(*Dir,true);
+    FFileHelper::SaveStringToFile(Text,*(Dir/TEXT("developer-flight-test.json")));
     UE_LOG(LogTemp,Display,TEXT("POC_FLIGHT_TEST passed=%d %s"),Passed,*Reason);FPlatformMisc::RequestExit(false);
 #endif
 }

@@ -1,0 +1,46 @@
+{
+	"passed": true,
+	"reason": "Flight directions, land here, blocked unsafe exit, R rescue, normal gate and assisted cake ending",
+	"damage_blocked": true,
+	"below_floor_without_death": true,
+	"collision_gravity_restored": true,
+	"lands_where_explored_without_respawn": true,
+	"normal_shard_gate_preserved": true,
+	"unsafe_exit_stays_in_flight": true,
+	"explicit_R_restores_checkpoint": true,
+	"fly_to_cake_completes_game": true,
+	"assisted_without_fake_shards_or_ranked_score": true,
+	"normal_50ms_tap_jump_height_cm": 108.26264953613281,
+	"deltas_down_up_forward_backward_right_left": [
+		[
+			0,
+			0,
+			-2877.5367065946607
+		],
+		[
+			0,
+			0,
+			2852.7992633244739
+		],
+		[
+			2.3151092246373668e-13,
+			817.2600229074327,
+			28.215047811870264
+		],
+		[
+			-2.2682492513740531e-13,
+			-800.71791663656472,
+			0
+		],
+		[
+			-800.7802902738681,
+			0,
+			0
+		],
+		[
+			800.69285800983209,
+			0,
+			0
+		]
+	]
+}

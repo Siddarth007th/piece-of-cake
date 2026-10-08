@@ -1,0 +1,8 @@
+{
+	"passed": true,
+	"reason": "New native process restored Keychain session and cloud progress",
+	"status": "Cloud progress saved",
+	"native_https_connected": true,
+	"outbox_empty": true,
+	"keychain_session_restored_new_process": true
+}

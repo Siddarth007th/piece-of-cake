@@ -1,0 +1,14 @@
+{
+  "provider": "Supabase",
+  "plan": "Free",
+  "project_ref": "brzacmgdmgvyzzztcsgx",
+  "region": "ap-northeast-2",
+  "migration": "migrations/001_cloud_progress.sql",
+  "migration_sha256": "24000af8b2ce5363abacdcd60a2566f18fbefb9988263c50f0fb7e446e547e6f",
+  "applied_via": "Owner-authorized dashboard SQL editor",
+  "anonymous_auth": true,
+  "automatic_rls": true,
+  "automatic_table_grants": false,
+  "live_api_report": "../docs/validation/cloud-api-validation.json",
+  "verified_at_utc": "2026-10-08T12:17:13.372821+00:00"
+}

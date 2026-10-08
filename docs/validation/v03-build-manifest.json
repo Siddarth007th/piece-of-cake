@@ -1,0 +1,16 @@
+{
+  "version": "0.3.0",
+  "configuration": "Development",
+  "architecture": "arm64",
+  "engine": "5.8.3",
+  "executable_sha256": "70de15a77c9054e56409e7c7c4e9caeb3b859369c7d0ebaec780c1506c86ab95",
+  "ucas_sha256": "717007f4c336998d1012fe96d4937e27b293f4b1b84aa4f28a9a13a048d91e47",
+  "runtime_evidence": "Artifacts/release-03-journeys",
+  "status": "Three full journeys, installed feature/cloud checks, archive extraction and signature checks passed",
+  "installed_path": "/Users/siddarthguruprasad/Applications/PieceOfCake.app",
+  "archive": "PieceOfCake-0.3.0-mac-arm64.zip",
+  "archive_bytes": 386567153,
+  "archive_sha256": "b849459d646d0910f7913b7ac6b7767dfdceb4d75cec4ffcadf9a22658c823e8",
+  "supabase_project_ref": "brzacmgdmgvyzzztcsgx",
+  "cloud_profile": "Opt-in anonymous identity per installation; Keychain session; no cross-device recovery"
+}

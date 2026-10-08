@@ -1,0 +1,28 @@
+{
+  "succeeded": 5,
+  "failed": 0,
+  "notRun": 0,
+  "mode": "Unreal automation; NullRHI unit/integration checks, not rendered gameplay",
+  "tests": [
+    {
+      "fullTestPath": "PieceOfCake.Content.OriginalMeshes",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "PieceOfCake.Content.RouteAndPhysics",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "PieceOfCake.Input.DeveloperPhrase",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "PieceOfCake.Persistence.MemoryRoundTrip",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "PieceOfCake.Reward.ShardBudget",
+      "state": "Success"
+    }
+  ]
+}

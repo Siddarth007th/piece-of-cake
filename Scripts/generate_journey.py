@@ -63,6 +63,12 @@ def generate():
         if section == 2 and local in (3,19): enemy = -1; bomb = False
         if section == 6 and 17 <= local <= 22: enemy = -1; bomb = hazard = sweeper = False
         if section == 4 and beat in (2,3,4,5,6): enemy = -1; bomb = sweeper = False
+        # Each district has an introduction, a quieter middle approach, and a finale.
+        # Avoid stacking a bomb and an enemy on the same end stair.
+        if section in (1,3,5) and room==1 and beat==4: hazard=False
+        if section in (0,1,3,5) and room==1 and beat==7: bomb=True
+        if section==7 and 17<=local<=22:
+            enemy = -1 if local in (18,20,21) else enemy
         if checkpoint: enemy=-1
         points.append(dict(index=index, section=section, name=NAMES[section],
             position=[round(RADIUS*(math.cos(angle)-1),3), round(RADIUS*math.sin(angle),3), HEIGHTS[section]+(80 if section==0 and 5<=local<=7 else z_steps[local]*.4 if section==4 else 200+(local-16)*200 if section==7 and local>=17 else z_steps[local])],

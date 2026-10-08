@@ -95,6 +95,8 @@ public:
 private:
     UPROPERTY() TObjectPtr<USceneComponent> Visual;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Shell;
+    UPROPERTY() TObjectPtr<UStaticMeshComponent> AttackMarker;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Limbs;
     UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> Surface;
     FVector Home;
     FVector Forward;
@@ -133,6 +135,7 @@ public:
     UPROPERTY(BlueprintReadOnly) FString LoadError;
     UPROPERTY() TObjectPtr<APOCCharacter> Player;
     UPROPERTY() TObjectPtr<ACameraActor> IntroCamera;
+    UPROPERTY() TObjectPtr<ACameraActor> RewardCamera;
     UPROPERTY(EditAnywhere, Category="Journey") TSubclassOf<APOCProp> PropClass;
     UPROPERTY(EditAnywhere, Category="Journey") TSubclassOf<APOCEnemy> EnemyClass;
     TArray<FPOCRoutePoint> Route;

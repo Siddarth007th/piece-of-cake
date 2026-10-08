@@ -19,7 +19,7 @@ material = library.load_asset(material_path) if library.does_asset_exist(materia
 editing = unreal.MaterialEditingLibrary
 # Versioned graph: centimetre-scaled surfaces with clean mortar and subtle grain.
 # The character uses style zero, preserving its clean, readable silhouette.
-if library.get_metadata_tag(material, "POCSurfaceVersion") != "2":
+if library.get_metadata_tag(material, "POCSurfaceVersion") != "3":
     editing.delete_all_material_expressions(material)
     def scalar(name, value, x, y):
         node=editing.create_material_expression(material, unreal.MaterialExpressionScalarParameter, x, y)
@@ -42,18 +42,19 @@ if library.get_metadata_tag(material, "POCSurfaceVersion") != "2":
         if (Style < 0.5) return TintColor;
         float3 an=abs(N);
         float2 uv=an.z > .6 ? P.xy : (an.x > an.y ? P.yz : P.xz);
-        float2 scale=Style < 1.5 ? float2(140,65) : Style < 2.5 ? float2(240,38) : float2(105,105);
+        float2 scale=Style < 1.5 ? (an.z > .6 ? float2(210,145) : float2(230,105)) : Style < 2.5 ? float2(310,55) : float2(230,230);
         float row=floor(uv.y/scale.y);
-        uv.x += Style < 1.5 ? fmod(abs(row),2.0)*70 : 0;
+        uv.x += Style < 1.5 ? fmod(abs(row),2.0)*scale.x*.5 : 0;
         float2 cell=floor(uv/scale);
         float2 f=frac(uv/scale);
         float2 edge=min(f,1-f)*scale;
-        float mortar=smoothstep(1.0,3.2,min(edge.x,edge.y));
+        float mortar=smoothstep(.6,2.4,min(edge.x,edge.y));
         float tone=frac(sin(dot(cell,float2(127.1,311.7)))*43758.5453);
         float grain=sin(uv.x*.12+sin(uv.y*.09)*2)*sin(uv.y*.18)*.022;
         if(Style>3.5) return TintColor*(.88+.10*sin(P.z*.042+sin(P.x*.014)*2)+grain);
         float detail=Style>1.5 && Style<2.5 ? sin(uv.x*.08+sin(uv.y*.12)*4)*.045 : grain;
-        return TintColor*lerp(.43,.88+tone*.18+detail,mortar);
+        float wash=.035*sin(uv.x*.007+sin(uv.y*.009)*2);
+        return TintColor*lerp(.72,.90+tone*.13+detail+wash,mortar);
     """)
     for node,name in ((position,"P"),(normal,"N"),(tint,"TintColor"),(style,"Style")):
         editing.connect_material_expressions(node,"",pattern,name)
@@ -63,7 +64,7 @@ if library.get_metadata_tag(material, "POCSurfaceVersion") != "2":
     editing.connect_material_property(pattern,"",unreal.MaterialProperty.MP_BASE_COLOR)
     editing.connect_material_property(emission,"",unreal.MaterialProperty.MP_EMISSIVE_COLOR)
     editing.connect_material_property(roughness,"",unreal.MaterialProperty.MP_ROUGHNESS)
-    library.set_metadata_tag(material,"POCSurfaceVersion","2")
+    library.set_metadata_tag(material,"POCSurfaceVersion","3")
 material.set_editor_property("used_with_instanced_static_meshes", True)
 editing.recompile_material(material)
 library.save_loaded_asset(material)

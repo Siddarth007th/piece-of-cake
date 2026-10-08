@@ -19,7 +19,7 @@ flowchart LR
 | Native frontend | Original Nori mascot, animated title, intentional cake thought sequence, settings, controls and cloud panel | Packaged screenshots and intro transition assertions; not a webpage launcher |
 | Gameplay | Eight enclosed districts, free ground movement, double jump, dash, spin, bombs, enemies, Echo, checkpoints, two reward switches, cake and restart | Actual packaged engine traversal; manual play remains important |
 | Authentication | Private anonymous Supabase identity and rotating refresh token in Mac Keychain | No emails collected; no cross-device recovery yet |
-| API | Authenticated HTTPS RPCs, 8-second async timeout, explicit save states | Real-cloud check must pass after provisioning |
+| API | Authenticated HTTPS RPCs, 8-second async timeout, explicit save states | Real HTTPS isolation tests and native save/upload plus new-process Keychain restore pass |
 | Database | Progress and run tables, constraints, ownership RLS, monotonic merge, idempotent uploads | Nine PostgreSQL test results including the parent suite |
 | Offline resilience | Small local cache plus at most 100 pending completed runs | Unreal serialization and new-process persistence checks |
 | Leaderboard | Generated nickname and best non-assisted completed time | Casual client-reported scores; not cheat-proof or suitable for prizes |

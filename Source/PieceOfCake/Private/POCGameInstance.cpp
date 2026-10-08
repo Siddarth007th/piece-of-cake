@@ -15,6 +15,8 @@ namespace
     {
 #if !UE_BUILD_SHIPPING
         if (FParse::Param(FCommandLine::Get(), TEXT("POCPresentationTest"))) return TEXT("PieceOfCake_PresentationQA");
+        if (FParse::Param(FCommandLine::Get(), TEXT("POCFlightTest"))) return TEXT("PieceOfCake_FlightQA");
+        if (FString(FCommandLine::Get()).Contains(TEXT("POCCloudSmoke"))) return TEXT("PieceOfCake_CloudQA");
         int32 TestRun = 0;
         if (FParse::Value(FCommandLine::Get(), TEXT("POCAutoRun="), TestRun) && TestRun > 0) return TEXT("PieceOfCake_QA");
 #endif

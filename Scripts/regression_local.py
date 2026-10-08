@@ -24,7 +24,7 @@ def main():
     else:
         root=ue.engine_root();ue.build_editor(root)
         command=[ue.tools(root)[1],ue.PROJECT,'/Game/Levels/L_LongWayToCake','-game']
-    runtime_flags=['-windowed','-ForceRes','-ResX=1280','-ResY=720','-AudioMixer','-Unattended','-log','-stdout','-FullStdOutLogOutput','-ExecCmds=stat hitches'] if args.native else ue.stream_arguments()
+    runtime_flags=['-windowed','-ForceRes','-ResX=1280','-ResY=720','-AudioMixer','-Unattended','-stdout','-FullStdOutLogOutput','-ExecCmds=stat hitches'] if args.native else ue.stream_arguments()
     summary=[]
     for run in args.runs:
         report=evidence/f'journey-run-{run}.json';started=time.time()

@@ -1,4 +1,45 @@
-> Historical results below are preserved. The owner authorized a tested release on 8 October 2026; the new packaged candidate is being validated.
+# v0.3.0 tested Mac preview — 8 October 2026
+
+The exact final executable and cooked content were installed on the Desktop and archived only after three complete native gameplay regressions passed. The app includes the broader environment/animation pass, working developer land-here and cake shortcut, and live Supabase Free integration.
+
+| Journey | Cake and restart | Mean FPS | p95 frame | Worst frame | Frames >50 ms |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Pass | 59.98 | 16.76 ms | 26.48 ms | 0 |
+| 2 | Pass | 59.99 | 16.77 ms | 17.73 ms | 0 |
+| 3 | Pass | 59.98 | 16.77 ms | 56.81 ms | 1 |
+
+All three runs landed on all 192 platforms without developer flight. Run 2 verified deliberate falls, empty hearts, checkpoint recovery, live bomb health loss and knockback. Run 3 verified pause/resume, Echo expiry/reactivation, rejected underfunded switches, backtracking to earn the missing shards, cake and restart. No frame exceeded 100 ms; one frame in run 3 took 56.81 ms. Its cause was not established and is retained in the results, so these measurements are not a promise of hitch-free play.
+
+These are automated **real Unreal physics traversals**, not manual or browser-input playthroughs. Measurements apply to this Apple M4, macOS 26.7.1, native 1280×720, Medium (80% internal resolution), 60 FPS cap. They do not establish performance on every Mac or measure physical input-to-display latency.
+
+The installed application passed developer movement, land-here, unsafe-exit protection, checkpoint rescue, normal shard gates and the unranked cake shortcut. Its title/story check observed 499 frames with zero invisible-character frames, no teleport/fall/damage and a grounded return to play. Actual rendered screenshots cover all eight districts; intentional screenshot-tour teleports are visual evidence only.
+
+Live Supabase Auth/API/database ownership tests passed. The installed native app authenticated, saved progress and acknowledged an assisted run, then a fresh process with a fresh local cache restored its isolated QA Keychain session and downloaded the saved progress. QA data does not alter the owner's normal save. Profiles are opt-in and private per installation, with no email login or cross-device recovery yet.
+
+Thirteen Python checks and five Unreal content/input/persistence tests passed. GitHub Actions also validates PostgreSQL ownership rules, seven optional web/signalling tests and the TypeScript production build; its status is available on the repository Actions page.
+
+The complete arm64 ZIP is 368.7 MiB. The extracted bundle passes deep strict code-signature verification and matches the tested executable and cooked-content hashes. It contains the runtime and needs no Unreal installation or author-hosted server. It is ad-hoc signed, **not Apple notarized**; only Apple silicon Mac is supported by this download.
+
+Archive SHA-256: `b849459d646d0910f7913b7ac6b7767dfdceb4d75cec4ffcadf9a22658c823e8`.
+
+Current evidence: [build manifest](validation/v03-build-manifest.json), [run 1](validation/v03-journey-run-1.json), [run 2](validation/v03-journey-run-2.json), [run 3](validation/v03-journey-run-3.json), [flight](validation/v03-developer-flight-test.json), [presentation](validation/v03-presentation.json), [cloud write](validation/v03-cloud-native-write.json), [cloud reload](validation/v03-cloud-native-reload.json), [live API security checks](validation/cloud-api-validation.json).
+
+## Historical results below
+
+The following dated records describe earlier builds, including superseded blockers and interrupted tests. Use the v0.3.0 results above for the current download.
+
+## 2026-10-08 v0.3 functional fixes and live cloud
+
+- Native developer-flight checks pass: all six axes, safe landing at the explored position, unsafe exits staying in flight, explicit R checkpoint rescue, normal shard gates preserved, and E at the cake completing an assisted/unranked ending without fake shards.
+- Presentation checks inspected 500 title/story frames with zero disappearing-character frames, a grounded return to play, unchanged health and no teleport.
+- Supabase Free is deployed. Real HTTPS tests pass for private ownership, rejected forged writes, validated progress, idempotent run uploads, session refresh, leaderboard privacy and persisted cloud data.
+- The packaged native app uploaded an assisted test run, emptied its outbox, then restored its Keychain session and downloaded cloud progress from a fresh process with a fresh local cache. Test credentials are isolated from the owner's ordinary game profile.
+- Before the broader visual pass, normal run 1 completed all 192 platforms, both 180-shard seals, cake and restart without falling. Mean 59.99 FPS, p95 16.82 ms, worst 31.52 ms; zero frames over 33.34 ms.
+- Baseline run 2 passed deliberate death, empty hearts, checkpoint rescue, live bomb damage/knockback, the full route and restart. Its measurement was interrupted by an externally opened pause menu, which was resumed manually. It remains functional evidence; the replacement build will receive clean performance runs.
+- The updated Desktop Finder alias uses the Nori character icon and resolves to the installed application. The replacement application awaits final validation.
+
+Evidence: `validation/v03-developer-flight-test.json`, `validation/v03-presentation.json`, `validation/cloud-api-validation.json`, `validation/v03-cloud-native-write.json`, `validation/v03-cloud-native-reload.json`.
+
 
 ## 2026-10-08 native app and cloud integration
 

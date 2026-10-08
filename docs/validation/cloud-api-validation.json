@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "unauthenticated read denied",
+    "cloud progress write",
+    "second profile cannot read first profile",
+    "forged ownership write denied",
+    "invalid progress rejected",
+    "stale update preserves cloud best",
+    "assisted run submission accepted",
+    "assisted run submission accepted",
+    "retry stores one run",
+    "run history is private",
+    "public score projection contains no identifiers",
+    "session refresh works",
+    "progress persists across renewed session"
+  ],
+  "provider": "Supabase Free",
+  "scope": "real HTTPS Auth and Postgres API; disposable assisted test profiles",
+  "timestamp": "2026-10-08T11:55:50Z"
+}

@@ -13,6 +13,7 @@
 #include "POCCloud.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
 #include "Engine/Canvas.h"
 #include "CanvasItem.h"
 #include "Engine/Texture.h"
@@ -47,7 +48,7 @@ void APOCGameMode::StartPlay()
     GetGameInstance<UPOCGameInstance>()->ApplySettings();
     GetWorld()->SpawnActor<APOCWorld>();
 #if !UE_BUILD_SHIPPING
-    if(FParse::Param(FCommandLine::Get(),TEXT("POCPresentationTest"))) GetWorld()->SpawnActor<APOCPresentationTest>();
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCPresentationTest")) || FString(FCommandLine::Get()).Contains(TEXT("POCCloudSmoke"))) GetWorld()->SpawnActor<APOCPresentationTest>();
     if(FParse::Param(FCommandLine::Get(),TEXT("POCCameraTest"))) GetWorld()->SpawnActor<APOCCameraTest>();
     if(FParse::Param(FCommandLine::Get(),TEXT("POCFlightTest"))) GetWorld()->SpawnActor<APOCFlightTest>();
     int32 TestRun = 0;
@@ -76,6 +77,10 @@ void APOCController::SetupInputComponent()
 }
 bool APOCController::InputKey(const FInputKeyEventArgs& Params)
 {
+#if !UE_BUILD_SHIPPING
+    // Engine traversal owns input; typing in another app must not pause a measurement.
+    if(FString(FCommandLine::Get()).Contains(TEXT("POCAutoRun="))) return true;
+#endif
     if (CodeKeys.Contains(Params.Key))
     {
         if (Params.Event == IE_Released) CodeKeys.Remove(Params.Key);
@@ -127,6 +132,20 @@ void APOCController::OpenMenu(EPOCMenu NewMenu)
     }
     FlushPressedKeys();
     if (NewMenu == EPOCMenu::Title && Journey && Journey->IntroCamera) SetViewTarget(Journey->IntroCamera);
+    if(NewMenu==EPOCMenu::Complete && Journey)
+        if(auto* Player=Cast<APOCCharacter>(GetPawn()))
+        {
+            // Only the completed-game portrait cuts camera; gameplay keeps its manual camera.
+            const FVector P=Player->GetActorLocation();
+            const FVector Eye=P+Player->GetActorForwardVector()*160+Player->GetActorRightVector()*390+FVector(0,0,140);
+            const FVector ViewRight=FRotationMatrix((P-Eye).Rotation()).GetUnitAxis(EAxis::Y);
+            const FVector Target=P-ViewRight*75+FVector(0,0,32);
+            Player->SetActorRotation(FRotator(0,(Eye-P).Rotation().Yaw,0));
+            if(!Journey->RewardCamera) Journey->RewardCamera=GetWorld()->SpawnActor<ACameraActor>(Eye,(Target-Eye).Rotation());
+            Journey->RewardCamera->GetCameraComponent()->SetFieldOfView(50);
+            SetViewTarget(Journey->RewardCamera);
+        }
+
 }
 void APOCController::TogglePause()
 {
@@ -219,7 +238,7 @@ void APOCController::ActivateSelection()
 void APOCController::FinishDream()
 {
     if(Journey) Journey->ShowDream(false);
-    if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=false; P->InvulnerableRemaining=0; P->ResetHeldInput();P->GetCharacterMovement()->SetMovementMode(MOVE_Walking); }
+    if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=false; P->SetActorRotation(FRotator(0,Journey->Route[0].Yaw,0)); P->InvulnerableRemaining=0; P->ResetHeldInput();P->GetCharacterMovement()->SetMovementMode(MOVE_Walking); }
     OpenMenu(EPOCMenu::Playing); SetViewTargetWithBlend(GetPawn(),.8f);
     Journey->ShowCaption(TEXT("One dream. One cake. Collect shards to open the final door."),5);
 }
@@ -238,7 +257,7 @@ void APOCController::PlayerTick(float DeltaSeconds)
         auto* Player=Cast<APOCCharacter>(GetPawn());
         Journey->Player=Player; Player->Journey=Journey;
         Player->Checkpoint=FTransform(FRotator(0,Journey->Route[0].Yaw,0),Journey->Route[0].Position+FVector(0,0,52));
-        Player->SetActorLocation(Journey->Route[0].Position+FVector(0,0,44)); Player->SetActorRotation(FRotator(0,Journey->Route[0].Yaw+35,0)); Player->Dreaming=true; Player->InvulnerableRemaining=0; Player->GetCharacterMovement()->DisableMovement();
+        Player->SetActorLocation(Journey->Route[0].Position+FVector(0,0,44)); Player->SetActorRotation(FRotator(0,Journey->Route[0].Yaw+135,0)); Player->Dreaming=true; Player->InvulnerableRemaining=0; Player->GetCharacterMovement()->DisableMovement();
         OpenMenu(EPOCMenu::Title);
     }
     if(Menu==EPOCMenu::Dream)
@@ -320,6 +339,9 @@ void APOCHUD::DrawHUD()
     const float W = Canvas->SizeX / UIScale, H = Canvas->SizeY / UIScale;
     const FLinearColor Ivory(.95, .91, .79), Muted(.55, .66, .67), Gold(.9, .65, .32), Dark(.025, .055, .075, .94);
     ButtonRects.Reset();
+#if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCSceneryTour"))) return;
+#endif
     if(PC->Menu==EPOCMenu::Title)
     {
         // A readable game logo and simple menu leave most of the live scene to Nori.
@@ -348,6 +370,27 @@ void APOCHUD::DrawHUD()
         if(PC->Journey && !PC->Journey->Ready) Text(PC->Journey->LoadError,76,H-73,.34,FLinearColor(1,.4,.2));
         return;
     }
+    if(PC->Menu==EPOCMenu::Complete)
+    {
+        for(int32 I=0;I<55;++I)
+            DrawRect(FLinearColor(.025,.020,.035,.93f*FMath::Pow(1-I/55.f,1.3f)),I*15*UIScale,0,15*UIScale,Canvas->SizeY);
+        Text(TEXT("THE LONG WAY WAS WORTH IT"),70,118,.42,Gold);
+        Text(TEXT("SWEET"),64,167,2.0,Ivory);
+        Text(TEXT("VICTORY."),64,242,2.0,Gold);
+        Text(TEXT("One small rabbit. One well-earned slice."),70,337,.43,Ivory);
+        Text(FString::Printf(TEXT("%d:%02d  JOURNEY     %d  SHARDS     %d / 8  RELICS"),int32(GI->RunSeconds)/60,int32(GI->RunSeconds)%60,GI->Shards,GI->Relics),70,385,.40,Gold);
+        Text(GI->AssistedRun?TEXT("Developer-assisted ending / unranked"):GI->Cloud?GI->Cloud->Status:TEXT("Adventure complete"),70,423,.34,Muted);
+        const auto Labels=PC->MenuLabels();
+        for(int32 I=0;I<Labels.Num();++I)
+        {
+            const float X=70,Y=488+I*56;const bool Selected=PC->Selection==I;
+            DrawRect(Selected?Gold:Dark,X*UIScale,Y*UIScale,430*UIScale,43*UIScale);
+            Text(Labels[I],X+24,Y+9,.52,Selected?Dark:Ivory);
+            ButtonRects.Add(FBox2D(FVector2D(X,Y)*UIScale,FVector2D(X+430,Y+43)*UIScale));
+        }
+        Text(TEXT("ARROWS choose    ENTER select"),70,H-43,.32,Muted);
+        return;
+    }
     if(PC->Menu==EPOCMenu::Cloud)
     {
         DrawRect(FLinearColor(.018,.045,.065,.97),0,0,Canvas->SizeX,Canvas->SizeY);
@@ -356,7 +399,7 @@ void APOCHUD::DrawHUD()
         Text(TEXT("Best shards, relics and completed runs are saved online."),W*.5,172,.4,Ivory,true);
         Text(TEXT("This installation has its own private profile, remembered in Mac Keychain."),W*.5,202,.34,Muted,true);
         Text(TEXT("CASUAL LEADERBOARD"),W*.5,258,.5,Gold,true);
-        if(GI->Cloud->Board.IsEmpty()) Text(TEXT("No records loaded yet. Connect to see the board."),W*.5,305,.4,Muted,true);
+        if(GI->Cloud->Board.IsEmpty()) Text(GI->Cloud->Connected()?TEXT("No ranked runs to display. Finish a journey or sync to refresh."):TEXT("Connect your profile to see the board."),W*.5,305,.4,Muted,true);
         for(int32 I=0;I<FMath::Min(6,GI->Cloud->Board.Num());++I) Text(GI->Cloud->Board[I],W*.5,300+I*29,.43,Ivory,true);
         Text(TEXT("Client-reported runs. Developer-flight runs are excluded."),W*.5,495,.32,Muted,true);
         const auto Labels=PC->MenuLabels();
@@ -409,7 +452,7 @@ void APOCHUD::DrawHUD()
             DrawRect(FLinearColor(.015,.09,.12,.92),(W*.5f-300)*UIScale,65*UIScale,600*UIScale,88*UIScale);
             Text(TEXT("DEVELOPER FLIGHT  /  NO CLIP"),W*.5f,73,.55,FLinearColor(.3,1,.83),true);
             Text(TEXT("WASD move   SPACE up   C / CTRL down   SHIFT fast"),W*.5f,104,.38,Ivory,true);
-            Text(TEXT("Type siddarthisgod again or R: return to checkpoint"),W*.5f,128,.34,Muted,true);
+            Text(TEXT("Type siddarthisgod: land here   R: checkpoint   E: cake"),W*.5f,128,.34,Muted,true);
             Text(FString::Printf(TEXT("X %.0f   Y %.0f   Z %.0f   /   F: mouse camera   X: center"),Player->GetActorLocation().X,Player->GetActorLocation().Y,Player->GetActorLocation().Z),W*.5f,160,.35,Ivory,true);
         }
         if(Player && Player->Dying)
@@ -455,7 +498,8 @@ void APOCHUD::DrawHUD()
         if (PC->Menu == EPOCMenu::Complete)
         {
             Text(TEXT("It was, in fact, a piece of cake."), W * .5, 215, .6, Ivory, true);
-            if(GI->Cloud) Text(GI->Cloud->Status,W*.5,299,.34,Muted,true);
+            if(GI->AssistedRun) Text(TEXT("Developer-assisted ending / unranked"),W*.5,299,.34,Muted,true);
+            else if(GI->Cloud) Text(GI->Cloud->Status,W*.5,299,.34,Muted,true);
             Text(FString::Printf(TEXT("%d:%02d     |     %d memory shards     |     %d relics"), int32(GI->RunSeconds) / 60, int32(GI->RunSeconds) % 60, GI->Shards, GI->Relics), W * .5, 260, .48, Gold, true);
         }
         if (Controls)

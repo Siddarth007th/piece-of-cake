@@ -1,6 +1,6 @@
 # The Long Way to Cake — local redesign
 
-**Release is on hold until the user explicitly approves it.** This version replaces the open-air route with enclosed districts and a more demanding movement/combat loop. Nori is an original ninja rabbit with cream ears and face, an indigo cloth outfit, light wraps, a red headband and flowing scarf, looking for an ordinary slice of vanilla cake.
+**The owner authorized distribution after testing; each updated binary must pass runtime validation before publication.** This version replaces the open-air route with enclosed districts and a more demanding movement/combat loop. Nori is an original ninja rabbit with cream ears and face, an indigo cloth outfit, light wraps, a red headband and flowing scarf, looking for an ordinary slice of vanilla cake.
 
 | District | Interior and mood | Main challenges |
 |---|---|---|
@@ -50,7 +50,7 @@ Charging guards lock their direction during a 0.7-second warning and cannot chas
 
 Echo stones activate their linked bridges for 18 seconds. Expiring bridges pulse and never remove support directly beneath the player. The final approach has actual 25 cm stair treads and additional enemies that can knock Nori back down. At the cake room, each of two side switches consumes 180 shards. Insufficient funds consume nothing; players can go back for more, with return Echo controls available. Both switches raise a physical door, then E at the cake starts the eating animation and completion menu. Paid switches and collected shards survive checkpoint deaths. Restart clears the run and shard spending.
 
-A short, skippable opening shows Nori asleep and dreaming of cake before the playable journey begins.
+A short, skippable opening shows Nori thinking about a slice of cake, with a visible thought bubble and a blended return to movement.
 
 ## Validation
 
@@ -59,7 +59,7 @@ The Python route checks establish geometric reachability and safe checkpoint pla
 
 ## Developer flight and the opening practice sequence
 
-Type `siddarthisgod` during gameplay or while paused to toggle developer flight. No console is needed. The phrase is case insensitive and allows three seconds between letters. Flight controls: WASD moves on the horizontal plane, Space rises, C or Ctrl descends, and Shift increases speed. Tap F to enable mouse look, or use the arrow keys. X centers behind Nori. The green developer banner includes coordinates. Collision and damage are disabled in this mode; collectibles, checkpoint triggers and cake interactions are suspended. Type the phrase again, or press R, to turn flight off and return safely to the last checkpoint. This mode starts off on every new journey and is never used to certify beatability.
+Type `siddarthisgod` during gameplay or while paused to toggle developer flight. No console is needed. The phrase is case insensitive and allows three seconds between letters. Flight controls: WASD moves on the horizontal plane, Space rises, C or Ctrl descends, and Shift increases speed. Tap F to enable mouse look, or use the arrow keys. X centers behind Nori. The green developer banner includes coordinates. Collision and damage are disabled in this mode; ordinary collectibles and checkpoint triggers are suspended. Type the phrase again to land at the current position when there is clear, walkable ground below; an unsafe exit stays in flight. R explicitly returns to the checkpoint. E beside the cake previews the ending without buying switches or fabricating shards. The run stays developer-assisted and excluded from the leaderboard even after flight is turned off. This mode starts off on every new journey and is never used to certify beatability.
 
 The first practice room now has no enemy or timed vent, a checkpoint immediately before its first gap, a lower 80 cm introductory rise and a shorter 260 cm practice gap. Quick taps retain at least 120 ms of lift, with a gentler jump cut; holding Space still gives full height. Coyote time is 160 ms and the jump buffer is 180 ms. Later encounters retain their harder double jump, dash, bomb and enemy demands.
 
@@ -78,3 +78,10 @@ The first practice room now has no enemy or timed vent, a checkpoint immediately
 Ceiling heights now vary from a low 950 cm industrial passage to a 2100 cm crystal chamber. All districts remain enclosed and free of cast shadows. Arena enemies reset on checkpoint recovery, along with their gate.
 
 Medium now uses 80% internal rendering into a 1280×720 stream, while HUD text remains at stream resolution. High/Epic retain 100%. The current performance evidence still includes stutters; see TEST_RESULTS.md.
+
+
+## v0.3 visual direction
+
+Large structural arches and distinct room fixtures break up the corridor shells: warm garden lanterns and planters, foundry grilles, tall library shelves, purple sanctum windows, two-tone crystal clusters, tidal portholes, gearwork and velvet/gold chamber details. Surface courses are larger and mortar is softened. All new scenery is non-colliding and uses instanced meshes without cast shadows.
+
+Nori has blended strides and airborne poses, responsive ears, a visual somersault on the second jump and short spin ribbons. Guards have clearer silhouettes and a visible wind-up marker. The cake slice has icing detail and a dressed plinth; the completed-game portrait frames Nori beside the result menu. Normal gameplay retains the manually controlled camera.

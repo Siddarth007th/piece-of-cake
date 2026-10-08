@@ -19,6 +19,8 @@ private:
     TArray<FVector> Deltas;
     bool DamageBlocked = false, BelowFloor = false, Restored = false;
     bool NormalJumpReleased = false;
+    bool LandedWhereExplored=false, NormalGateProtected=false, UnsafeExitBlocked=false;
+    bool ExplicitRescue=false, CakeCompleted=false, AssistedUnranked=false;
     float NormalJumpHeight = 0;
     int32 InitialRespawns = 0, InitialShards = 0;
 };

@@ -251,6 +251,10 @@ void APOCWorld::BuildJourney()
                     FVector(Point.Size.X/100,.2,.18),Rotation,Palettes[Section]*.5f);
             }
         }
+        if(Point.Kind==TEXT("ground") && Point.Index<185)
+            for(int32 Side:{-1,1})
+                AddInstance(Prefix+TEXT("CarvedFascia"),TEXT("DressedStone"),Point.Position+Right*Side*(Point.Size.Y*.5-12)-FVector(0,0,30),
+                    FVector(Point.Size.X/100,.42,.52),Rotation,Palettes[Section]*1.5f);
         if(Point.Kind==TEXT("lift"))
             for(int32 Side:{-1,1}) AddInstance(Prefix+TEXT("LiftGuide"),TEXT("Cylinder"),Point.Position+Right*Side*(Point.Size.Y*.5+70)+FVector(0,0,160),FVector(.28,.28,7),Rotation,FLinearColor(.3,.75,.8),false,.35);
         if(Point.Index>=3 && Point.Index<=6)
@@ -270,19 +274,31 @@ void APOCWorld::BuildJourney()
     AddInstance(TEXT("7RewardRug"),TEXT("Cube"),CakePosition-FVector(0,0,1),FVector(4,4,.03),FinalFacing,FLinearColor(.56,.045,.09));
     for(int32 Side:{-1,1})
     {
-        AddInstance(TEXT("7CakePillar"),TEXT("DressedStone"),CakePosition+FinalRight*Side*230+FVector(0,0,190),FVector(.6,.6,3.8),FinalFacing,FLinearColor(.58,.36,.13));
-        AddInstance(TEXT("7CakeLight"),TEXT("Sphere"),CakePosition+FinalRight*Side*230+FVector(0,0,410),FVector(.55),FinalFacing,FLinearColor(1,.6,.2),false,2);
+        AddInstance(TEXT("7CakePillar"),TEXT("DressedStone"),CakePosition+FinalRight*Side*430+FVector(0,0,190),FVector(.6,.6,3.8),FinalFacing,FLinearColor(.58,.36,.13));
+        AddInstance(TEXT("7CakeLight"),TEXT("Sphere"),CakePosition+FinalRight*Side*430+FVector(0,0,410),FVector(.55),FinalFacing,FLinearColor(1,.6,.2),false,2);
     }
+    AddInstance(TEXT("7CakeDais"),TEXT("Cylinder"),CakePosition-FVector(0,0,6),FVector(3.7,3.7,.10),FinalFacing,FLinearColor(.86,.57,.20));
+    AddInstance(TEXT("7CakeVelvet"),TEXT("Cylinder"),CakePosition,FVector(3.35,3.35,.03),FinalFacing,FLinearColor(.42,.035,.10));
+    const FVector Crest=Last.Position+FinalForward*1330+FVector(0,0,440);
+    for(int32 Ray=0;Ray<24;++Ray)
+    {
+        const float A=Ray*PI/12;
+        const FVector Radial=FinalRight*FMath::Cos(A)+FVector::UpVector*FMath::Sin(A);
+        AddInstance(TEXT("7Sunburst"),TEXT("DressedStone"),Crest+Radial*(Ray%2?270:235),FVector(.2,.34,Ray%2?2.4:1.6),FRotator(0,Last.Yaw,90-Ray*15),FLinearColor(.98,.62,.18),false,.22);
+    }
+    for(int32 Tier=0;Tier<3;++Tier)
+        AddInstance(TEXT("7CrestCake"),TEXT("DressedStone"),Crest+FVector(0,0,Tier*45-70),FVector(.30,2.7-Tier*.50,.40),FinalFacing,FLinearColor(1,.83,.55),false,.25);
+    AddInstance(TEXT("7CrestCherry"),TEXT("Sphere"),Crest+FVector(0,0,55),FVector(.35),FinalFacing,FLinearColor(.95,.07,.16),false,.35);
     SpawnProp(EPOCProp::Cake, CakePosition, Last.Yaw, FVector(1), 90000);
     // Nori and the title share the lit starting room, keeping the mascot and scenery in range.
     const FVector Start=Route[0].Position;
     const FVector SF=FRotator(0,Route[0].Yaw,0).Vector(), SR=FRotationMatrix(FRotator(0,Route[0].Yaw,0)).GetUnitAxis(EAxis::Y);
-    const FVector IntroPosition=Start+SF*300+SR*310+FVector(0,0,148);
+    const FVector IntroPosition=Start-SF*300+SR*310+FVector(0,0,148);
     const FVector ViewRight=FRotationMatrix((Start-IntroPosition).Rotation()).GetUnitAxis(EAxis::Y);
     const FVector IntroTarget=Start-ViewRight*74+FVector(0,0,65);
     IntroCamera=GetWorld()->SpawnActor<ACameraActor>(IntroPosition,(IntroTarget-IntroPosition).Rotation());
     IntroCamera->GetCameraComponent()->SetFieldOfView(48);
-    const FVector DreamEye=Start+SF*390+SR*330+FVector(0,0,190);
+    const FVector DreamEye=Start-SF*390+SR*330+FVector(0,0,190);
     DreamCamera=GetWorld()->SpawnActor<ACameraActor>(DreamEye,(Start-SR*25+FVector(0,0,110)-DreamEye).Rotation());
     DreamCamera->GetCameraComponent()->SetFieldOfView(52);
     const FVector Bubble=Start-SR*75+SF*25+FVector(0,0,180);
@@ -316,8 +332,8 @@ void APOCWorld::BuildJourney()
     Fog = GetWorld()->SpawnActor<AExponentialHeightFog>();
     Fog->GetComponent()->SetFogDensity(.002f);
     Fog->GetComponent()->SetFogHeightFalloff(.12f);
-    Fog->GetComponent()->SetStartDistance(1200);
-    Fog->GetComponent()->SetFogMaxOpacity(.7);
+    Fog->GetComponent()->SetStartDistance(1800);
+    Fog->GetComponent()->SetFogMaxOpacity(.52);
     auto* Post = GetWorld()->SpawnActor<APostProcessVolume>();
     Post->bUnbound = true;
     Post->Settings.bOverride_BloomIntensity = true; Post->Settings.BloomIntensity = .18;
@@ -387,6 +403,143 @@ void APOCWorld::AddScenery(const FPOCRoutePoint& Point)
             AddInstance(Key+TEXT("WallPanel"),TEXT("Cube"),Pillar+Forward*390-Right*Side*20+FVector(0,0,450),FVector(4,.1,4.8),Rot,Palettes[Section]*1.3f);
             for(int32 J=-1;J<=1;++J)
                 AddInstance(Key+TEXT("PanelInlay"),TEXT("Cube"),Pillar+Forward*(390+J*90)-Right*Side*30+FVector(0,0,450),FVector(.12,.12,3.4-FMath::Abs(J)),Rot,Accent[Section],false,.3);
+        }
+    }
+    // Repeated structural bays have different silhouettes and centrepieces in each district.
+    // Decorations never change the landing surfaces, camera collision, or hazard timings.
+    if(Local%4==0)
+    {
+        const float Spring=Section==6?470.f:620.f;
+        for(int32 Segment=0;Segment<13;++Segment)
+        {
+            const float Angle=Segment*PI/12;
+            const FVector Crown=Point.Position+Right*(FMath::Cos(Angle)*990)+FVector(0,0,Spring+FMath::Sin(Angle)*430);
+            const float Tangent=FMath::RadiansToDegrees(FMath::Atan2(430*FMath::Cos(Angle),-990*FMath::Sin(Angle)));
+            const float Course=(FMath::Sqrt(FMath::Square(990*FMath::Sin(Angle))+FMath::Square(430*FMath::Cos(Angle)))*PI/12+18)/100;
+            AddInstance(Key+TEXT("VaultRib"),TEXT("DressedStone"),Crown,FVector(1.3,Course,.9),FRotator(0,Point.Yaw,-Tangent),Palettes[Section]*1.65f);
+            if(Segment%3==0) AddInstance(Key+TEXT("RibStud"),TEXT("Sphere"),Crown-Forward*72,FVector(.22),Rot,Accent[Section],false,.6);
+        }
+        for(int32 Side:{-1,1})
+        {
+            const FVector Bay=Point.Position+Forward*380+Right*Side*1015;
+            if(Section==0)
+            {
+                AddInstance(Key+TEXT("GardenPlanter"),TEXT("DressedStone"),Bay+FVector(0,0,65),FVector(4.8,1.4,1.3),Rot,FLinearColor(.31,.25,.12));
+                for(int32 Leaf=0;Leaf<7;++Leaf)
+                {
+                    const FVector Tip=Bay+Forward*(Leaf*57-171)-Right*Side*30+FVector(0,0,185);
+                    AddInstance(Key+TEXT("GardenFan"),TEXT("Fern"),Tip,FVector(2.5,2.8,3.4),FRotator(0,Point.Yaw+Leaf*23,0),FLinearColor(.18,.48,.19));
+                    AddInstance(Key+TEXT("FlowerHeart"),TEXT("Sphere"),Tip+FVector(0,0,48+(Leaf%3)*23),FVector(.27),Rot,FLinearColor(1,.57,.13),false,.2);
+                }
+                AddInstance(Key+TEXT("LanternCord"),TEXT("Cylinder"),Bay-Right*Side*250+FVector(0,0,780),FVector(.025,.025,4),Rot,FLinearColor(.24,.19,.1));
+                AddInstance(Key+TEXT("PaperLantern"),TEXT("Sphere"),Bay-Right*Side*250+FVector(0,0,565),FVector(1.15,.9,1.25),Rot,FLinearColor(1,.64,.23),false,.65);
+                for(int32 Band:{-1,1}) AddInstance(Key+TEXT("LanternBand"),TEXT("Cylinder"),Bay-Right*Side*250+FVector(0,0,565+Band*46),FVector(.78,.78,.08),Rot,FLinearColor(.38,.16,.07));
+            }
+            else if(Section==1)
+            {
+                AddInstance(Key+TEXT("FurnaceFrame"),TEXT("DressedStone"),Bay+FVector(0,0,320),FVector(6,.9,5.5),Rot,FLinearColor(.17,.12,.13));
+                AddInstance(Key+TEXT("FurnaceHeart"),TEXT("Cube"),Bay-Right*Side*50+FVector(0,0,310),FVector(4.9,.08,3.8),Rot,FLinearColor(1,.16,.025),false,1.1);
+                for(int32 Bar=0;Bar<7;++Bar) AddInstance(Key+TEXT("FurnaceBars"),TEXT("Cylinder"),Bay+Forward*(Bar*68-204)-Right*Side*62+FVector(0,0,310),FVector(.10,.10,4.2),Rot,FLinearColor(.095,.12,.15));
+                for(int32 Rivet=0;Rivet<6;++Rivet) AddInstance(Key+TEXT("FurnaceRivet"),TEXT("Sphere"),Bay+Forward*(Rivet*88-220)-Right*Side*62+FVector(0,0,555),FVector(.18),Rot,FLinearColor(.72,.44,.14));
+            }
+            else if(Section==2)
+            {
+                AddInstance(Key+TEXT("LibraryBacking"),TEXT("DressedStone"),Bay+FVector(0,0,355),FVector(7,.8,6.6),Rot,FLinearColor(.12,.17,.14));
+                for(int32 Shelf=0;Shelf<4;++Shelf)
+                {
+                    AddInstance(Key+TEXT("LibraryShelf"),TEXT("Cube"),Bay-Right*Side*60+FVector(0,0,110+Shelf*160),FVector(7,1.3,.14),Rot,FLinearColor(.48,.29,.12));
+                    for(int32 Book=0;Book<9;++Book)
+                        AddInstance(Key+FString::Printf(TEXT("LibraryVolume%d"),Book%3),TEXT("DressedStone"),Bay+Forward*(Book*68-272)-Right*Side*63+FVector(0,0,170+Shelf*160),FVector(.44,.60,.95+(Book%2)*.20),Rot,
+                            Book%3==0?FLinearColor(.65,.18,.10):Book%3==1?FLinearColor(.08,.47,.39):FLinearColor(.80,.56,.18));
+                }
+            }
+            else if(Section==3 || Section==5)
+            {
+                const FVector Hub=Bay+FVector(0,0,480);
+                AddInstance(Key+TEXT("OculusGlass"),TEXT("Cylinder"),Hub,FVector(5.4,5.4,.12),FRotator(0,Point.Yaw,90),Section==3?FLinearColor(.30,.16,.68):FLinearColor(.025,.45,.56),false,.45);
+                for(int32 Spoke=0;Spoke<16;++Spoke)
+                {
+                    const float A=Spoke*PI/8;
+                    const FVector Rim=Hub+Forward*FMath::Cos(A)*290+FVector(0,0,FMath::Sin(A)*290)-Right*Side*15;
+                    AddInstance(Key+TEXT("OculusRim"),TEXT("DressedStone"),Rim,FVector(.45,.4,1.2),FRotator(Spoke*22.5,Point.Yaw,0),Section==3?FLinearColor(.75,.59,.37):FLinearColor(.56,.40,.19));
+                }
+                for(int32 Stripe=-2;Stripe<=2;++Stripe)
+                    AddInstance(Key+TEXT("OculusInlay"),TEXT("Cube"),Hub+Forward*(Stripe*78)-Right*Side*24,FVector(.07,.035,4.3-FMath::Abs(Stripe)*.55),Rot,Accent[Section],false,.8);
+            }
+            else if(Section==4)
+            {
+                AddInstance(Key+TEXT("CrystalBed"),TEXT("WeatheredRock"),Bay+FVector(0,0,90),FVector(6,2.3,2.5),Rot,FLinearColor(.07,.18,.30));
+                for(int32 Crystal=0;Crystal<5;++Crystal)
+                    AddInstance(Key+FString::Printf(TEXT("PrismCluster%d"),Crystal%2),TEXT("Cone"),Bay+Forward*(Crystal*107-214)-Right*Side*75+FVector(0,0,250+(Crystal%3)*100),FVector(1.25,1.25,5+(Crystal%3)*2),FRotator((Crystal-2)*12,Point.Yaw,Side*13),Crystal%2?FLinearColor(.41,.19,.80):FLinearColor(.06,.66,.81),false,.42);
+            }
+            else if(Section==6)
+            {
+                for(int32 Tooth=0;Tooth<16;++Tooth)
+                {
+                    const float A=Tooth*PI/8;
+                    const FVector Gear=Bay+Forward*FMath::Cos(A)*240+FVector(0,0,380+FMath::Sin(A)*240);
+                    AddInstance(Key+TEXT("GearTooth"),TEXT("DressedStone"),Gear,FVector(.75,.65,.7),FRotator(Tooth*22.5,Point.Yaw,0),FLinearColor(.67,.37,.10));
+                }
+                AddInstance(Key+TEXT("GearSpindle"),TEXT("Cylinder"),Bay+FVector(0,0,380),FVector(3.9,3.9,.38),FRotator(0,Point.Yaw,90),FLinearColor(.24,.17,.09));
+                AddInstance(Key+TEXT("GearHand"),TEXT("Cube"),Bay-Right*Side*32+FVector(0,0,460),FVector(.15,.2,2.2),FRotator(25,Point.Yaw,0),Accent[Section],false,.3);
+            }
+            else
+            {
+                for(int32 Flute=0;Flute<6;++Flute)
+                    AddInstance(Key+TEXT("RoyalFlute"),TEXT("Cylinder"),Bay+Forward*(Flute*92-230)+FVector(0,0,315),FVector(.42,.42,6.3),Rot,FLinearColor(.83,.56,.22));
+                AddInstance(Key+TEXT("VelvetDrape"),TEXT("DressedStone"),Bay-Right*Side*30+FVector(0,0,680),FVector(6.8,.4,2.2),Rot,FLinearColor(.51,.045,.12));
+                for(int32 Tassel=0;Tassel<7;++Tassel) AddInstance(Key+TEXT("DrapeTassel"),TEXT("Sphere"),Bay+Forward*(Tassel*90-270)-Right*Side*52+FVector(0,0,555),FVector(.18,.18,.38),Rot,FLinearColor(1,.70,.23),false,.1);
+            }
+        }
+    }
+    // Checkpoint alcoves provide recognisable resting places between encounter peaks.
+    if(Point.Checkpoint)
+    {
+        for(int32 Side:{-1,1})
+        {
+            const FVector Alcove=Point.Position+Right*Side*(Point.Size.Y*.5f-95)-Forward*250;
+            AddInstance(Key+TEXT("RestBasin"),TEXT("Cylinder"),Alcove+FVector(0,0,40),FVector(.75,.75,.8),Rot,Palettes[Section]*1.3f);
+            AddInstance(Key+TEXT("RestGem"),TEXT("Cone"),Alcove+FVector(0,0,113),FVector(.65),Rot,Accent[Section],false,.65);
+            for(int32 J=0;J<3;++J)
+                AddInstance(Key+TEXT("AlcoveInlay"),TEXT("Cube"),Alcove+Forward*(J*50-50)+FVector(0,0,2),FVector(.12,1.8,.03),Rot,Accent[Section]*.65f,false,.15);
+        }
+    }
+    // Large wall landmarks punctuate each room; all details are static, instanced and shadowless.
+    if(Local==8 || Local==16)
+    {
+        for(int32 Side:{-1,1})
+        {
+            const FVector Landmark=Point.Position+Right*Side*990+FVector(0,0,570);
+            if(Section==1 || Section==6)
+            {
+                AddInstance(Key+TEXT("FlywheelHub"),TEXT("Cylinder"),Landmark,FVector(1.5,1.5,.35),FRotator(0,Point.Yaw,90),FLinearColor(.48,.28,.10));
+                for(int32 Spoke=0;Spoke<12;++Spoke)
+                {
+                    const float Angle=Spoke*PI/6;
+                    const FVector Radial=Forward*FMath::Cos(Angle)+FVector::UpVector*FMath::Sin(Angle);
+                    AddInstance(Key+TEXT("FlywheelSpoke"),TEXT("Cube"),Landmark+Radial*160,FVector(2.5,.25,.22),FRotator(Spoke*30,Point.Yaw,0),Accent[Section]*.65f,false,.1);
+                    AddInstance(Key+TEXT("FlywheelRim"),TEXT("Cube"),Landmark+Radial*290,FVector(.65,.35,1.55),FRotator(Spoke*30,Point.Yaw,0),FLinearColor(.43,.28,.14));
+                }
+            }
+            else if(Section==0 || Section==2)
+            {
+                for(int32 Stem=0;Stem<5;++Stem)
+                {
+                    const FVector Shoot=Landmark+Forward*(Stem*75-150)-FVector(0,0,410-(Stem%2)*35);
+                    AddInstance(Key+TEXT("GardenStem"),TEXT("Cylinder"),Shoot,FVector(.13,.13,1.8),Rot,FLinearColor(.2,.38,.12));
+                    AddInstance(Key+TEXT("GardenCap"),TEXT("Sphere"),Shoot+FVector(0,0,90),FVector(.8,.8,.32),Rot,Stem%2?FLinearColor(.95,.50,.17):FLinearColor(.35,.8,.59),false,.15);
+                }
+            }
+            else
+            {
+                for(int32 Ray=0;Ray<7;++Ray)
+                {
+                    const float Height=2.2f+3.f*FMath::Sin((Ray+1)*PI/8);
+                    AddInstance(Key+TEXT("RoomCrown"),Section==4?TEXT("Cone"):TEXT("Cube"),Landmark+Forward*(Ray*85-255),
+                        FVector(.32,.3,Height),Rot,Accent[Section],false,.3);
+                    AddInstance(Key+TEXT("CrownFinial"),TEXT("Sphere"),Landmark+Forward*(Ray*85-255)+FVector(0,0,Height*50+28),FVector(.25),Rot,Accent[Section]*1.15f,false,.55);
+                }
+            }
         }
     }
     if(Section==2)
@@ -474,6 +627,14 @@ void APOCWorld::Burst(FVector Position, FLinearColor Color, int32 Count)
 
 bool APOCWorld::ActivateEcho(APOCCharacter* Character)
 {
+    if(Character->DeveloperFlight)
+    {
+        for(const auto& Prop:Props)
+            if(Prop->Kind==EPOCProp::Cake && FVector::Dist(Prop->GetActorLocation(),Character->GetActorLocation())<200)
+            { Complete(Character,Prop->GetActorLocation()); return Character->Eating; }
+        ShowCaption(TEXT("Developer flight: E beside the cake previews the ending. Type the phrase again to land here."),3);
+        return false;
+    }
     for (const auto& Prop : Props)
     {
         const float Distance = FVector::Dist(Prop->GetActorLocation(), Character->GetActorLocation());
@@ -535,7 +696,12 @@ void APOCWorld::AnimateDream(float Time)
 
 void APOCWorld::Complete(APOCCharacter* Character, FVector CakePosition)
 {
-    if(!GateIsOpen()) { ShowCaption(TEXT("Two switches. 180 shards each. Dessert has a cover charge."),4); return; }
+    auto* GI=GetGameInstance<UPOCGameInstance>();
+    if(!GateIsOpen() && !GI->AssistedRun) { ShowCaption(TEXT("Two switches. 180 shards each. Dessert has a cover charge."),4); return; }
+    if(Character->DeveloperFlight) Character->SetDeveloperFlight(false);
+    if(Character->DeveloperFlight) return; // A blocked landing stays in safe flight.
+    if(GI->AssistedRun) LeftSwitch=RightSwitch=true; // Preview the ending without fabricating shards.
+    if(Character->Eating) return;
     Burst(CakePosition+FVector(0,0,150),FLinearColor(1,.45,.12),48);
     Character->EatCake(CakePosition);
     ShowCaption(TEXT("No ancient prophecy. Just vanilla."), 4);

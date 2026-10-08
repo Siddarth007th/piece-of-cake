@@ -75,6 +75,17 @@ void APOCProp::BeginPlay()
         Mesh->SetCollisionResponseToAllChannels(ECR_Block);
         for (int32 Side : {-1, 1})
             POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Gate%d"), Side), TEXT("Cube"), FVector(0, Side * 410, 60), FVector(1.3, .8, 1.2), Color);
+        for(int32 Face:{-1,1})
+        {
+            for(int32 Border:{-1,1}) POCVisuals::Part(this,Visual,*FString::Printf(TEXT("GateBorder%d_%d"),Face,Border),TEXT("Cube"),FVector(Face*66,0,195+Border*114),FVector(.025,8.6,.09),FLinearColor(.34,.79,.69),.25);
+            for(int32 Arrow=-1;Arrow<=1;++Arrow)
+                for(int32 Side:{-1,1})
+                {
+                    auto* Mark=POCVisuals::Part(this,Visual,*FString::Printf(TEXT("DuckMark%d_%d_%d"),Face,Arrow,Side),TEXT("DressedStone"),FVector(Face*68,Arrow*245+Side*25,186),FVector(.035,.68,.12),FLinearColor(.94,.72,.32),.1);
+                    Mark->SetRelativeRotation(FRotator(0,0,-Side*35));
+                }
+        }
+
     }
     else if (Kind == EPOCProp::Shard || Kind == EPOCProp::Relic)
     {
@@ -169,11 +180,16 @@ void APOCProp::BeginPlay()
         Mesh->SetRelativeScale3D(FVector(.8, .8, .72));
         Mesh->SetRelativeLocation(FVector(0, 0, 36));
         Color = FLinearColor(.42, .31, .21); Glow = 0;
-        POCVisuals::Part(this, Visual, TEXT("Plate"), TEXT("Cylinder"), FVector(0, 0, 73), FVector(.55, .55, .025), FLinearColor(.91, .88, .76));
-        POCVisuals::Part(this, Visual, TEXT("Sponge"), TEXT("Cube"), FVector(0, 0, 82), FVector(.28, .22, .15), FLinearColor(1,.58,.12));
-        POCVisuals::Part(this, Visual, TEXT("Jam"), TEXT("Cube"), FVector(0, 0, 82), FVector(.283, .223, .023), FLinearColor(.9,.035,.16));
-        POCVisuals::Part(this, Visual, TEXT("Icing"), TEXT("Cube"), FVector(0, 0, 91), FVector(.29, .23, .045), FLinearColor(1,.88,.68));
-        POCVisuals::Part(this, Visual, TEXT("Berry"), TEXT("Sphere"), FVector(0, 0, 96), FVector(.06), FLinearColor(1,.06,.14));
+        POCVisuals::Part(this, Visual, TEXT("Plate"), TEXT("Cylinder"), FVector(0, 0, 73), FVector(1.05, 1.05, .045), FLinearColor(.91, .88, .76));
+        POCVisuals::Part(this, Visual, TEXT("Sponge"), TEXT("Cube"), FVector(0, 0, 93), FVector(.68, .54, .36), FLinearColor(1,.58,.12));
+        POCVisuals::Part(this, Visual, TEXT("Jam"), TEXT("Cube"), FVector(0, 0, 93), FVector(.69, .55, .045), FLinearColor(.9,.035,.16));
+        POCVisuals::Part(this, Visual, TEXT("Icing"), TEXT("Cube"), FVector(0, 0, 114), FVector(.72, .58, .09), FLinearColor(1,.88,.68));
+        POCVisuals::Part(this, Visual, TEXT("Berry"), TEXT("Sphere"), FVector(0, 0, 128), FVector(.19), FLinearColor(1,.06,.14));
+        for(int32 I=0;I<7;++I)
+            POCVisuals::Part(this,Visual,*FString::Printf(TEXT("Frosting%d"),I),TEXT("Sphere"),FVector((I-3)*9,-28,112),FVector(.12,.10,.13),FLinearColor(1,.88,.68));
+        for(int32 Side:{-1,1})
+            POCVisuals::Part(this,Visual,*FString::Printf(TEXT("GoldHandle%d"),Side),TEXT("Sphere"),FVector(0,Side*48,72),FVector(.18,.15,.075),FLinearColor(1,.68,.18),.3);
+
     }
     Surface = POCVisuals::Material(this, Color, Glow);
     Mesh->SetMaterial(0, Surface);
@@ -243,7 +259,8 @@ void APOCProp::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);
     Age += DeltaSeconds;
     auto* Player = Journey ? Journey->Player.Get() : nullptr;
-    if (!Player || Player->Dying || Player->DeveloperFlight || Taken) return;
+    if (!Player || Player->Dying || Taken) return;
+    if(Player->DeveloperFlight && Kind!=EPOCProp::Cake && Kind!=EPOCProp::CakeDoor) return;
     const FVector Delta = Player->GetActorLocation() - GetActorLocation();
     const float FlatDistance = Delta.Size2D();
     const FVector Local = GetActorTransform().InverseTransformPosition(Player->GetActorLocation());
@@ -472,9 +489,15 @@ void APOCEnemy::BeginPlay()
     for (int32 Side : {-1, 1})
     {
         POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Eye%d"), Side), TEXT("Sphere"), FVector(32, Side * 17, 7), FVector(.06, .09, .08), FLinearColor(.95, .68, .26), .8);
-        POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Limb%d"), Side), Species == 2 ? TEXT("NoriEar") : TEXT("NoriPaw"), FVector(0, Side * 39, -15),
-            Species == 2 ? FVector(.7, .3, .08) : FVector(.24, .22, .2), Color);
+        Limbs.Add(POCVisuals::Part(this, Visual, *FString::Printf(TEXT("Limb%d"), Side), Species == 2 ? TEXT("NoriEar") : TEXT("NoriPaw"), FVector(0, Side * 39, -15),
+            Species == 2 ? FVector(.7, .3, .08) : FVector(.24, .22, .2), Color));
+        auto* Brow=POCVisuals::Part(this,Visual,*FString::Printf(TEXT("Brow%d"),Side),TEXT("DressedStone"),FVector(34,Side*17,17),FVector(.09,.22,.075),FLinearColor(.075,.095,.12));
+        Brow->SetRelativeRotation(FRotator(0,0,Side*18));
+        if(Species==1) POCVisuals::Part(this,Visual,*FString::Printf(TEXT("Armour%d"),Side),TEXT("DressedStone"),FVector(0,Side*44,23),FVector(.34,.30,.40),FLinearColor(.51,.34,.17));
     }
+    POCVisuals::Part(this,Visual,TEXT("GuardCrest"),Species==2?TEXT("Cylinder"):TEXT("DressedStone"),FVector(-8,0,Species==1?52:27),Species==2?FVector(.22,.22,.35):FVector(.50,.14,.12),FLinearColor(.87,.38,.085),.1);
+    AttackMarker=POCVisuals::Part(this,Visual,TEXT("AttackRead"),TEXT("Cone"),FVector(0,0,120),FVector(.23,.23,.42),FLinearColor(1,.59,.06),.8);
+    AttackMarker->SetRelativeRotation(FRotator(180,0,0));AttackMarker->SetVisibility(false);
 }
 
 void APOCEnemy::Bonked(APOCCharacter* Player, bool Slam)
@@ -503,8 +526,13 @@ void APOCEnemy::Tick(float DeltaSeconds)
     Age += DeltaSeconds; Cooldown -= DeltaSeconds; HitCooldown -= DeltaSeconds;
     auto* Player = Journey ? Journey->Player.Get() : nullptr;
     if (!Player || Player->Dying || Player->DeveloperFlight) return;
+    AttackMarker->SetVisibility(DefeatTime<0 && (Windup>=0 || ChargeRemaining>0));
+    AttackMarker->SetRelativeLocation(FVector(0,0,120+FMath::Sin(Age*16)*5));
+    for(int32 I=0;I<Limbs.Num();++I)
+        Limbs[I]->SetRelativeRotation(FRotator(Species==2?0:FMath::Sin(Age*9+I*PI)*17,0,Species==2?FMath::Sin(Age*18+I*PI)*32:0));
     if (DefeatTime >= 0)
     {
+        AttackMarker->SetVisibility(false);
         DefeatTime += DeltaSeconds;
         SetActorScale3D(FVector(1+DefeatTime,1+DefeatTime,FMath::Max(.001f,1-DefeatTime*2.5f)));
         AddActorWorldRotation(FRotator(0,DeltaSeconds*330,0));
@@ -522,14 +550,16 @@ void APOCEnemy::Tick(float DeltaSeconds)
         const FVector Offset=Position-Home;
         if(Offset.Size2D()<420) SetActorLocation(Position);
         if(Delta.Size2D()<100 && FMath::Abs(Delta.Z)<105) Player->Hurt(GetActorLocation(),480,900);
-        if(ChargeRemaining<=0) Cooldown=1.25;
+        if(ChargeRemaining<=0) Cooldown=1.55;
         return;
     }
     if(Windup>=0)
     {
         Windup+=DeltaSeconds;
         Surface->SetScalarParameterValue(TEXT("Glow"),.4+.6*FMath::Abs(FMath::Sin(Windup*20)));
-        if(Windup>=.7)
+        const float Telegraph=Species==0?.82f:Species==1?.95f:.9f;
+        Visual->SetRelativeScale3D(FVector(1+FMath::Min(Windup/Telegraph,1.f)*.16f,1,1-FMath::Min(Windup/Telegraph,1.f)*.12f));
+        if(Windup>=Telegraph)
         {
             if(Species==0) ChargeRemaining=.42;
             else if(Species==1)
@@ -543,6 +573,7 @@ void APOCEnemy::Tick(float DeltaSeconds)
         }
         return;
     }
+    Visual->SetRelativeScale3D(FMath::VInterpTo(Visual->GetRelativeScale3D(),FVector(1),DeltaSeconds,12));
     Surface->SetScalarParameterValue(TEXT("Glow"),HitCooldown>0 ? .6f : .08f);
     FVector Idle=Home+Forward*FMath::Sin(Age*.9)*110+FVector(0,0,Species==2?FMath::Sin(Age*2)*25:0);
     if(Species!=2)

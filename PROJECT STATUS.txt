@@ -1,23 +1,30 @@
-PIECE OF CAKE — NATIVE APP + FREE CLOUD BACKEND
-================================================
+PIECE OF CAKE — v0.3.0 TESTED NATIVE APP + LIVE FREE CLOUD
+=======================================================
 Project: ~/Desktop/PieceOfCake
-Unreal 5.8.3 is installed. Installer polling remains paused.
+Desktop: Piece of Cake Finder alias with Nori icon
+Installed: ~/Applications/PieceOfCake.app
+Download: https://github.com/Siddarth007th/piece-of-cake/releases/tag/v0.3.0
+Source: https://github.com/Siddarth007th/piece-of-cake
 
-Native game: rebuilt with a Nori character icon, live mascot title and an eased
-cake-thought sequence. Packaged intro/persistence and full-route tests pass.
-The clean-session run averaged 59.53 FPS (p95 16.92 ms), with no frames over
-100 ms; occasional spikes up to 70.31 ms remain. The final intro stayed visible
-for all 499 checked frames. Read docs/TEST_RESULTS.md for full evidence.
+Three full native engine-physics journeys passed: all 192 platforms, cake and
+restart, plus falls, bomb damage/knockback, checkpoints, Echo expiration and
+underfunded-shard backtracking. Means 59.98–59.99 FPS on this M4 Mac. One frame
+was 56.81 ms; none exceeded 100 ms. No universal bug-free claim is made.
 
-Cloud backend: Supabase Free organization created. PostgreSQL migration,
-private-player Auth/RLS rules, async native API client, Keychain session storage,
-run outbox and casual leaderboard are implemented. Database tests pass.
-Project creation is waiting for the owner to enter/generate a database password
-and click Create new project in the open Supabase Chrome tab. No cloud deployment
-or live-cloud validation is claimed yet. No billing was enabled.
+New: distinct enclosed room fixtures/arches, softer materials, somersault,
+spin trails, clearer guard windups, encounter breathing room, cake finale.
+Developer flight lands where explored. R rescues to checkpoint; E beside
+cake previews an unranked ending without fake shard purchases.
 
-Source is uploaded to https://github.com/Siddarth007th/piece-of-cake and stays
-here on the Desktop. The CI test race is fixed, passed 20 local repeats, and GitHub source validation passed.
-Validation: https://github.com/Siddarth007th/piece-of-cake/actions/runs/37769833331 The standalone app is in ~/Applications;
-Desktop/Piece of Cake.app opens it. Public release is pending final validation.
-The browser-streaming host remains deferred in favor of a shareable Mac app.
+Supabase Free is LIVE: Auth, HTTPS APIs, protected PostgreSQL, cloud progress,
+run history, casual leaderboard and offline retry. Installed native write and
+fresh-process Keychain reload passed. Cloud saves -> Connect creates a private
+guest profile per installation; cross-device account recovery is not included.
+
+Full stack MVP: complete client, backend schema, editable original art/assets,
+build scripts, tests and documentation included in source. Runtime binaries are
+in the full 368.7 MiB release ZIP, not Git source. Apple silicon Mac only; ad-hoc
+signed and not notarized. Other OS/hardware have not been tested.
+
+Public browser streaming remains deferred. The downloadable app runs without
+the author's Mac or a paid host. Installer polling stays paused.

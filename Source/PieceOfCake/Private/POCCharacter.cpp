@@ -105,6 +105,11 @@ void APOCCharacter::BeginPlay()
         if (auto* Material = Cast<UMaterialInstanceDynamic>(Eye->GetMaterial(0))) Material->SetScalarParameterValue(TEXT("Roughness"), .22f);
     for (const auto& Detail : EyeDetails)
         if (auto* Material = Cast<UMaterialInstanceDynamic>(Detail->GetMaterial(0))) Material->SetScalarParameterValue(TEXT("Roughness"), .28f);
+    for(int32 I=0;I<10;++I)
+    {
+        auto* Ribbon=POCVisuals::Part(this,VisualRoot,*FString::Printf(TEXT("SpinRibbon%d"),I),TEXT("Sphere"),FVector::ZeroVector,FVector(.2),I%2?FLinearColor(1,.58,.18):FLinearColor(.19,.88,.78),.65);
+        Ribbon->SetVisibility(false);SpinRibbons.Add(Ribbon);
+    }
     Checkpoint = GetActorTransform();
 }
 
@@ -196,6 +201,23 @@ void APOCCharacter::LookPitchKeys(float Value)
 void APOCCharacter::SetDeveloperFlight(bool Enabled)
 {
     if (DeveloperFlight == Enabled || Eating || Dreaming || Dying) return;
+    FVector Landing = GetActorLocation();
+    if (!Enabled)
+    {
+        // Leave flight where the player explored, without placing the capsule in a wall.
+        FHitResult Floor;
+        FCollisionQueryParams Query(SCENE_QUERY_STAT(FlightLanding), false, this);
+        const float HalfHeight = GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+        const bool Ground = GetWorld()->LineTraceSingleByChannel(Floor, Landing,
+            Landing-FVector(0,0,1600), ECC_Visibility, Query) && Floor.ImpactNormal.Z>.7f;
+        if (Ground) Landing = Floor.ImpactPoint+FVector(0,0,HalfHeight+3);
+        if (!Ground || GetWorld()->OverlapBlockingTestByChannel(Landing,FQuat::Identity,ECC_Pawn,
+            FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius(),HalfHeight),Query))
+        {
+            if(Journey) Journey->ShowCaption(TEXT("Fly above a clear platform to land here. R returns to your checkpoint."),4);
+            return;
+        }
+    }
     DeveloperFlight = Enabled;
     if(Enabled) GetGameInstance<UPOCGameInstance>()->AssistedRun=true;
     auto* Movement = GetCharacterMovement();
@@ -212,8 +234,13 @@ void APOCCharacter::SetDeveloperFlight(bool Enabled)
     Movement->MaxFlySpeed = 1400;
     Movement->BrakingDecelerationFlying = 8000;
     Movement->SetMovementMode(Enabled ? MOVE_Flying : MOVE_Walking);
-    if (!Enabled) Respawn(); // Always exit on known safe ground, never inside a wall.
-    if (Journey) Journey->ShowCaption(Enabled ? TEXT("Developer flight enabled. Progress collection is paused.") : TEXT("Developer flight off. Back at your checkpoint."),3);
+    if (!Enabled)
+    {
+        SetActorLocation(Landing,false,nullptr,ETeleportType::TeleportPhysics);
+        InvulnerableRemaining=.6f;
+        LastGroundTime=GetWorld()->GetTimeSeconds();
+    }
+    if (Journey) Journey->ShowCaption(Enabled ? TEXT("Developer flight. Explore freely; E at the cake previews the ending.") : TEXT("Landed here. This assisted run stays off the leaderboard."),3);
     UE_LOG(LogTemp,Display,TEXT("POC_DEV_FLIGHT enabled=%d collision=%d xyz=%s"),Enabled,GetActorEnableCollision(),*GetActorLocation().ToCompactString());
 }
 
@@ -242,7 +269,7 @@ void APOCCharacter::TryBufferedJump()
     if (!FirstJump && (!AirJumpRequested || DoubleJumpUsed)) return;
     if (!FirstJump)
     {
-        DoubleJumpUsed = true; ++DoubleJumpsPerformed;
+        DoubleJumpUsed = true; ++DoubleJumpsPerformed; FlipRemaining=.42f;
         if (Journey) Journey->Burst(GetActorLocation() - FVector(0,0,30), FLinearColor(.25,1,.85), 14);
     }
     DashRemaining = 0;
@@ -320,7 +347,7 @@ void APOCCharacter::Strike(float Radius, bool Radial)
     if (Journey) Journey->Burst(Center, FLinearColor(.9, .7, .3), Radial ? 20 : 7);
 }
 
-void APOCCharacter::Echo() { if (Journey && !DeveloperFlight && !Eating && !Dreaming && !Dying) Journey->ActivateEcho(this); }
+void APOCCharacter::Echo() { if (Journey && !Eating && !Dreaming && !Dying) Journey->ActivateEcho(this); }
 
 void APOCCharacter::Landed(const FHitResult& Hit)
 {
@@ -387,7 +414,12 @@ void APOCCharacter::BeginDeath(bool Fell)
 void APOCCharacter::Respawn()
 {
     if (Eating || Dreaming) return;
-    if (DeveloperFlight) { SetDeveloperFlight(false); return; }
+    if (DeveloperFlight)
+    {
+        // R is the explicit rescue action; toggling the phrase never respawns.
+        DeveloperFlight=false; SetActorEnableCollision(true); Boom->bDoCollisionTest=true;
+        GetCharacterMovement()->bCheatFlying=false;
+    }
     ResetHeldInput();
     Dying = false; DeathRemaining = 0;
     ++RespawnCount;
@@ -401,6 +433,7 @@ void APOCCharacter::Respawn()
     Slamming = JumpUsed = SprintHeld = JumpHeld = AirBonkUsed = StrikePending = false;
     SlideRemaining = AttackRemaining = DashRemaining = DashCooldown = 0;
     DoubleJumpUsed = AirDashUsed = AirJumpRequested = false;
+    FlipRemaining=0;
     GetCharacterMovement()->GravityScale = 1.6f;
     JumpQueuedUntil = LastGroundTime = -100;
     AirTime = 0;
@@ -552,15 +585,20 @@ bool APOCCharacter::IsPresentationVisible() const { return VisualRoot && VisualR
 void APOCCharacter::Animate(float DeltaSeconds)
 {
     AnimationTime += DeltaSeconds;
+    FlipRemaining=FMath::Max(0.f,FlipRemaining-DeltaSeconds);
     ThoughtBlend = FMath::FInterpTo(ThoughtBlend, Dreaming ? 1.f : 0.f, DeltaSeconds, 3.f);
     VisualRoot->SetVisibility(Dreaming || InvulnerableRemaining <= 0 || FMath::Fmod(AnimationTime, .16f) < .1f, true);
     LandSquash = FMath::FInterpTo(LandSquash, 0, DeltaSeconds, 12);
-    const float Speed = FMath::Clamp(static_cast<float>(GetVelocity().Size2D()) / RunSpeed, 0.f, 1.5f);
+    MotionBlend=FMath::FInterpTo(MotionBlend,FMath::Clamp(static_cast<float>(GetVelocity().Size2D())/RunSpeed,0.f,1.5f),DeltaSeconds,12.f);
+    const float Speed = MotionBlend;
     const bool Airborne = GetCharacterMovement()->IsFalling();
     GaitPhase += DeltaSeconds * (SprintHeld ? 25.f : 20.f) * FMath::Min(Speed, 1.25f);
     const float Gait = GaitPhase;
     const float GroundSpeed = Airborne ? 0.f : Speed;
     const float SpinProgress = AttackRemaining > 0 ? (.48f-AttackRemaining)/.48f : 0;
+    const float SpinEase = SpinProgress*SpinProgress*(3.f-2.f*SpinProgress);
+    AirPose=FMath::FInterpTo(AirPose,Airborne ? 1.f : 0.f,DeltaSeconds,14.f);
+    const float Tuck=AirPose*FMath::Clamp(static_cast<float>(GetVelocity().Z)/650.f,0.f,1.f);
     const float BonkOffset = AttackRemaining > 0 ? FMath::Sin(SpinProgress*PI) : 0;
     const float TurnRate = FMath::FindDeltaAngleDegrees(PreviousFacing,GetActorRotation().Yaw)/FMath::Max(DeltaSeconds,.001f);
     PreviousFacing = GetActorRotation().Yaw;
@@ -569,20 +607,25 @@ void APOCCharacter::Animate(float DeltaSeconds)
     Body->SetRelativeScale3D(FVector(.51 * (1 + LandSquash - Stretch*.35f), .44 * (1 + LandSquash - Stretch*.35f), .55 * (1 - LandSquash + Stretch)));
     const float Bob = FMath::Sin(Gait * 2) * GroundSpeed * 2 + FMath::Sin(AnimationTime * 2.2f) * 1.5;
     VisualRoot->SetRelativeLocation(FVector(BonkOffset * 12, 0, Bob - (bIsCrouched ? 15 : 0)));
-    VisualRoot->SetRelativeRotation(FRotator(FMath::Lerp(bIsCrouched ? -55.f : Slamming ? -30.f : Speed * -9.f, -3.f, ThoughtBlend), SpinProgress*720, Eating ? FMath::Sin(EatTime * 15) * 6 : FMath::Lerp(BodyLean, 2.f, ThoughtBlend)));
+    const float Flip=FlipRemaining>0&&!Eating&&!Dreaming ? -360.f*FMath::SmoothStep(0.f,1.f,1-FlipRemaining/.42f) : 0.f;
+    VisualRoot->SetRelativeRotation(FRotator(Flip+FMath::Lerp(bIsCrouched ? -55.f : Slamming ? -30.f : Speed * -9.f, -3.f, ThoughtBlend), SpinEase*720, Eating ? FMath::Sin(EatTime * 15) * 6 : FMath::Lerp(BodyLean, 2.f, ThoughtBlend)));
     HeadRoot->SetRelativeLocation(FVector(7 + BonkOffset * 13 + (Eating ? FMath::Sin(EatTime * 13) * 4 : 0), 0, 25));
-    HeadRoot->SetRelativeRotation(FRotator(ThoughtBlend * (5.f + FMath::Sin(AnimationTime * 1.3f)), ThoughtBlend * -9.f, ThoughtBlend * -7.f));
+    HeadRoot->SetRelativeRotation(FRotator(FMath::Lerp(-Stretch*22.f,5.f+FMath::Sin(AnimationTime*1.3f),ThoughtBlend),
+        FMath::Lerp(-BodyLean*.25f,-9.f,ThoughtBlend),FMath::Lerp(-BodyLean*.45f,-7.f,ThoughtBlend)));
     for (int32 Index = 0; Index < Feet.Num(); ++Index)
     {
         const float Phase = Gait + Index * PI;
-        Feet[Index]->SetRelativeLocation(FVector(6 + FMath::Sin(Phase) * GroundSpeed * 20, (Index == 0 ? -15 : 15), -34 + FMath::Max(0.f, FMath::Cos(Phase)) * GroundSpeed * 8 + (Airborne ? 6 : 0)));
-        EarRoots[Index]->SetRelativeRotation(FRotator(-12 - Speed * 16 + FMath::Sin(Gait - Index) * Speed * 6, 0, (Index == 0 ? -19 : 19)));
-        const bool Blink = FMath::Fmod(AnimationTime + .5f, 4.6f) < .12f;
+        Feet[Index]->SetRelativeLocation(FVector(6 + FMath::Sin(Phase) * GroundSpeed * 20, (Index == 0 ? -15 : 15), -34 + FMath::Max(0.f, FMath::Cos(Phase)) * GroundSpeed * 8 + AirPose*6 + Tuck*8));
+        Feet[Index]->SetRelativeRotation(FRotator(FMath::Sin(Phase)*GroundSpeed*18-Tuck*24,0,0));
+        const FRotator EarTarget(-12-Speed*16+FMath::Sin(Gait-Index)*Speed*6-Tuck*18+LandSquash*35,
+            BodyLean*.3f,(Index==0?-19:19)+BodyLean*.5f);
+        EarRoots[Index]->SetRelativeRotation(FMath::RInterpTo(EarRoots[Index]->GetRelativeRotation(),EarTarget,DeltaSeconds,9.f));
+        const bool Blink = Eating && EatTime>2.4f ? true : FMath::Fmod(AnimationTime + .5f, 4.6f) < .12f;
         Eyes[Index]->SetRelativeScale3D(FVector(.07, .135, Blink ? .018 : .175));
         const float Side = Index == 0 ? -1.f : 1.f;
         Paws[Index]->SetRelativeLocation(FVector(13 - FMath::Sin(Phase) * GroundSpeed * 17 + BonkOffset * 12,
-            Side * (24 + (Airborne ? 10 : 0) + BonkOffset*20), -3 + (Airborne ? 9 : 0) + (Eating ? FMath::Sin(EatTime * 13) * 5 + 13 : 0)));
-        Paws[Index]->SetRelativeRotation(FRotator(BonkOffset * 60 - FMath::Sin(Phase)*GroundSpeed*24, 0, Side * (Airborne ? -40 : -BonkOffset*60)));
+            Side * (24 + AirPose*10 + BonkOffset*20), -3 + AirPose*9 + (Eating ? FMath::Sin(EatTime * 13) * 5 + 13 : 0)));
+        Paws[Index]->SetRelativeRotation(FRotator(BonkOffset * 60 - FMath::Sin(Phase)*GroundSpeed*24, 0, Side * FMath::Lerp(-BonkOffset*60,-40.f,AirPose)));
         if (ThoughtBlend > .001f)
         {
             // One paw beneath the muzzle, the other at the hip: an unambiguous thinking pose.
@@ -591,6 +634,27 @@ void APOCCharacter::Animate(float DeltaSeconds)
             Paws[Index]->SetRelativeRotation(FMath::Lerp(Paws[Index]->GetRelativeRotation(), FRotator(Index==0 ? -28.f : 8.f,0,0), ThoughtBlend));
         }
         for (int32 Detail = Index * 3; Detail < Index * 3 + 3; ++Detail) EyeDetails[Detail]->SetVisibility(!Blink && VisualRoot->IsVisible());
+    }
+    if(Eating && EatTime>2.2f)
+    {
+        const float Proud=FMath::Clamp((EatTime-2.2f)/.65f,0.f,1.f);
+        HeadRoot->SetRelativeRotation(FRotator(-7*Proud,0,6*Proud));
+        VisualRoot->SetRelativeRotation(FRotator(0,0,0));
+        for(int32 I=0;I<Paws.Num();++I)
+            Paws[I]->SetRelativeLocation(FMath::Lerp(Paws[I]->GetRelativeLocation(),FVector(15,I?30:-30,22),Proud));
+    }
+    for(int32 I=0;I<SpinRibbons.Num();++I)
+    {
+        const bool Show=AttackRemaining>.07f && AttackRemaining<.39f && !Eating && !Dreaming;
+        SpinRibbons[I]->SetVisibility(Show);
+        if(Show)
+        {
+            const float Angle=I*.30f+SpinProgress*PI*6;
+            const float Radius=63+I*2;
+            SpinRibbons[I]->SetRelativeLocation(FVector(FMath::Cos(Angle)*Radius,FMath::Sin(Angle)*Radius,5+FMath::Sin(Angle*2)*8));
+            SpinRibbons[I]->SetRelativeScale3D(FVector(.09,.11+.013*I,.045));
+            SpinRibbons[I]->SetRelativeRotation(FRotator(0,FMath::RadiansToDegrees(Angle),0));
+        }
     }
     for(int32 I=0; I<HeadbandTails.Num(); ++I)
     {

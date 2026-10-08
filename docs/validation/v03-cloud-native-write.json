@@ -1,0 +1,8 @@
+{
+	"passed": true,
+	"reason": "Native client authenticated, synced progress and acknowledged an assisted run",
+	"status": "Cloud progress and run saved",
+	"native_https_connected": true,
+	"outbox_empty": true,
+	"keychain_session_restored_new_process": false
+}

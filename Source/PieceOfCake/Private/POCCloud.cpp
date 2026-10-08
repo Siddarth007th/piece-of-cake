@@ -25,7 +25,7 @@ namespace {
   auto Q=CFDictionaryCreateMutable(nullptr,0,&kCFTypeDictionaryKeyCallBacks,&kCFTypeDictionaryValueCallBacks);
   CFDictionarySetValue(Q,kSecClass,kSecClassGenericPassword);
   CFDictionarySetValue(Q,kSecAttrService,CFSTR("com.siddarth007th.pieceofcake.cloud"));
-  auto Account=CFStringCreateWithCString(nullptr,TCHAR_TO_UTF8(*URL),kCFStringEncodingUTF8);
+  auto Account=CFStringCreateWithCString(nullptr,TCHAR_TO_UTF8(*(FString(FCommandLine::Get()).Contains(TEXT("POCCloudSmoke")) ? URL+TEXT("/qa-smoke") : URL)),kCFStringEncodingUTF8);
   CFDictionarySetValue(Q,kSecAttrAccount,Account);CFRelease(Account);return Q;
  }
 #endif
@@ -36,11 +36,18 @@ void UPOCCloud::Initialize(UPOCGameInstance* Owner)
  // Automated traversal never posts artificial scores or opens the owner's Keychain.
  const FString Cmd=FCommandLine::Get();
  if(Cmd.Contains(TEXT("POCAutoRun")) || Cmd.Contains(TEXT("POCPresentationTest")) || Cmd.Contains(TEXT("POCFlightTest")) || Cmd.Contains(TEXT("POCCameraTest"))) {Status=TEXT("Cloud disabled during automated tests");return;}
- FConfigFile Config;Config.Read(FPaths::ProjectDir()/TEXT("Config/Cloud.ini"));
- Config.GetString(TEXT("PieceOfCake.Cloud"),TEXT("URL"),URL);
- Config.GetString(TEXT("PieceOfCake.Cloud"),TEXT("PublishableKey"),Key);
+ // Cooked games reject arbitrary loose INI files. The packager merges the public
+ // connection into DefaultGame.ini, which Unreal loads through its normal config hierarchy.
+ GConfig->GetString(TEXT("PieceOfCake.Cloud"),TEXT("URL"),URL,GGameIni);
+ GConfig->GetString(TEXT("PieceOfCake.Cloud"),TEXT("PublishableKey"),Key,GGameIni);
+ if(!FPlatformProperties::RequiresCookedData() && URL.IsEmpty())
+ {
+  FConfigFile Config;Config.Read(FPaths::ProjectDir()/TEXT("Config/Cloud.ini"));
+  Config.GetString(TEXT("PieceOfCake.Cloud"),TEXT("URL"),URL);
+  Config.GetString(TEXT("PieceOfCake.Cloud"),TEXT("PublishableKey"),Key);
+ }
  // Only an HTTPS Supabase project and a public key are allowed in packaged config.
- if(!URL.StartsWith(TEXT("https://")) || !URL.EndsWith(TEXT(".supabase.co")) || Key.StartsWith(TEXT("sb_secret_"))) {URL.Empty();Key.Empty();Status=TEXT("Cloud service is not configured");return;}
+ if(!URL.StartsWith(TEXT("https://")) || !URL.EndsWith(TEXT(".supabase.co")) || !Key.StartsWith(TEXT("sb_publishable_"))) {URL.Empty();Key.Empty();Status=TEXT("Cloud service is not configured");return;}
  RefreshToken=LoadToken(); if(!RefreshToken.IsEmpty()) Authenticate(false);
 }
 FString UPOCCloud::LoadToken()

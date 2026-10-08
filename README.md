@@ -3,12 +3,24 @@
 An original ninja-rabbit platformer: eight enclosed districts, timed presses,
 sentry courts, Echo bridges, rising lifts, crumbling floors and a cake worth the trip.
 
+![Native title screen](docs/validation/v03-title.png)
+
+The v0.3 pass adds distinct architectural bays and room fixtures, softer surface
+patterns, a second-jump somersault, spin trails, clearer guard anticipation and a
+framed cake finale. These are rendered by the game, with its manual gameplay camera
+and shadowless style preserved. [See the archive room](docs/validation/v03-district-3.png)
+and [crystal grotto](docs/validation/v03-district-5.png).
+
 ## Play the Mac app
+
+[Download v0.3.0 for Apple silicon Mac](https://github.com/Siddarth007th/piece-of-cake/releases/download/v0.3.0/PieceOfCake-0.3.0-mac-arm64.zip) · [Release notes and checksum](https://github.com/Siddarth007th/piece-of-cake/releases/tag/v0.3.0)
+
+Complete 368.7 MiB download with optional live Supabase saves. Choose **Cloud saves → Connect** to create your private installation profile.
 
 The main release is a standalone **Apple silicon Mac application**. No Unreal Editor,
 Node, browser, account or game server is needed to play the downloaded app.
 Unzip the release, move **PieceOfCake.app** into Applications and open it.
-On the development Mac, **Piece of Cake.app** on the Desktop opens the installed copy.
+On the development Mac, **Piece of Cake** on the Desktop opens the installed copy.
 
 This is an ad-hoc signed preview, not an Apple-notarized release. macOS may show an
 unidentified-developer warning on downloaded copies. Do not disable system security.
@@ -36,7 +48,9 @@ See [measured results and limits](docs/TEST_RESULTS.md). No bug-free guarantee i
 Bombs and enemies remove hearts and knock Nori back. Falling empties all hearts
 and returns to the checkpoint. Both cake switches cost 180 shards; backtracking
 is allowed. Typing `siddarthisgod` toggles developer flight (WASD, Space up, C/Ctrl
-down, Shift faster); type it again or press R to return safely. Flight is excluded
+down, Shift faster). Type it again to land at your current safe location; R is the
+explicit checkpoint rescue. Fly beside the cake and press E to preview the ending
+without buying the two switches. These runs are labelled assisted and unranked. Flight is excluded
 from beatability tests. Gamepad bindings exist but have not been hardware tested.
 
 ## Source and builds
@@ -53,6 +67,7 @@ optional web player. Set `UE_ROOT` for a nonstandard engine location.
 python3 Scripts/ue.py doctor
 python3 Scripts/package_mac.py Development
 python3 Scripts/regression_local.py --executable /absolute/path/PieceOfCake.app/Contents/MacOS/PieceOfCake --label my-playtest --native --public-session
+python3 Scripts/verify_native_features.py --executable /absolute/path/PieceOfCake.app/Contents/MacOS/PieceOfCake --label feature-check --cloud
 python3 -m unittest discover -s Tests -v
 npm --prefix Web ci
 npm --prefix Web test
@@ -91,6 +106,6 @@ All hosting must remain free. No paid service or automatically paid trial is aut
 
 ## Cloud backend
 
-The native app includes an opt-in cloud profile, progress synchronization, completed-run history and a casual leaderboard. The backend uses Supabase Auth, HTTPS RPCs and PostgreSQL with per-player permissions. Provisioning and live API validation must be completed before cloud availability is advertised. Only the Free plan is allowed. See [backend setup](Backend/README.md) and the [architecture / acceptance table](docs/ARCHITECTURE.md).
+The native app includes an opt-in cloud profile, progress synchronization, completed-run history and a casual leaderboard. The backend uses Supabase Auth, HTTPS RPCs and PostgreSQL with per-player permissions. The Free backend is deployed: real HTTPS isolation tests and packaged native save/upload plus Keychain session restoration pass. Only the Free plan is allowed. See [backend setup](Backend/README.md) and the [architecture / acceptance table](docs/ARCHITECTURE.md).
 
 The current profile is remembered in Mac Keychain; it is not an email account and has no cross-device recovery. A small local cache keeps play and queued uploads working through network interruptions.
