@@ -12,5 +12,7 @@ public:
 private:
     double Born=0;
     int32 Stage=0;
+    int32 PresentationFrames=0;
+    int32 InvisibleFrames=0;
     FVector Start;
 };

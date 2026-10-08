@@ -547,11 +547,13 @@ void APOCCharacter::Tick(float DeltaSeconds)
     Animate(DeltaSeconds);
 }
 
+bool APOCCharacter::IsPresentationVisible() const { return VisualRoot && VisualRoot->IsVisible(); }
+
 void APOCCharacter::Animate(float DeltaSeconds)
 {
     AnimationTime += DeltaSeconds;
     ThoughtBlend = FMath::FInterpTo(ThoughtBlend, Dreaming ? 1.f : 0.f, DeltaSeconds, 3.f);
-    VisualRoot->SetVisibility(InvulnerableRemaining <= 0 || FMath::Fmod(AnimationTime, .16f) < .1f, true);
+    VisualRoot->SetVisibility(Dreaming || InvulnerableRemaining <= 0 || FMath::Fmod(AnimationTime, .16f) < .1f, true);
     LandSquash = FMath::FInterpTo(LandSquash, 0, DeltaSeconds, 12);
     const float Speed = FMath::Clamp(static_cast<float>(GetVelocity().Size2D()) / RunSpeed, 0.f, 1.5f);
     const bool Airborne = GetCharacterMovement()->IsFalling();

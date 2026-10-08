@@ -219,7 +219,7 @@ void APOCController::ActivateSelection()
 void APOCController::FinishDream()
 {
     if(Journey) Journey->ShowDream(false);
-    if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=false; P->ResetHeldInput();P->GetCharacterMovement()->SetMovementMode(MOVE_Walking); }
+    if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=false; P->InvulnerableRemaining=0; P->ResetHeldInput();P->GetCharacterMovement()->SetMovementMode(MOVE_Walking); }
     OpenMenu(EPOCMenu::Playing); SetViewTargetWithBlend(GetPawn(),.8f);
     Journey->ShowCaption(TEXT("One dream. One cake. Collect shards to open the final door."),5);
 }
@@ -238,7 +238,7 @@ void APOCController::PlayerTick(float DeltaSeconds)
         auto* Player=Cast<APOCCharacter>(GetPawn());
         Journey->Player=Player; Player->Journey=Journey;
         Player->Checkpoint=FTransform(FRotator(0,Journey->Route[0].Yaw,0),Journey->Route[0].Position+FVector(0,0,52));
-        Player->SetActorLocation(Journey->Route[0].Position+FVector(0,0,44)); Player->SetActorRotation(FRotator(0,Journey->Route[0].Yaw+35,0)); Player->Dreaming=true; Player->GetCharacterMovement()->DisableMovement();
+        Player->SetActorLocation(Journey->Route[0].Position+FVector(0,0,44)); Player->SetActorRotation(FRotator(0,Journey->Route[0].Yaw+35,0)); Player->Dreaming=true; Player->InvulnerableRemaining=0; Player->GetCharacterMovement()->DisableMovement();
         OpenMenu(EPOCMenu::Title);
     }
     if(Menu==EPOCMenu::Dream)

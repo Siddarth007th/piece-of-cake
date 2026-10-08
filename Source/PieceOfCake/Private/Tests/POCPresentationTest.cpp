@@ -26,7 +26,9 @@ void APOCPresentationTest::Tick(float DeltaSeconds)
     const double Now=FPlatformTime::Seconds(); if(!Born) Born=Now;
     auto* PC=Cast<APOCController>(UGameplayStatics::GetPlayerController(this,0));
     auto* P=PC ? Cast<APOCCharacter>(PC->GetPawn()) : nullptr;
-    if(!P || !PC->Journey || !PC->Journey->Ready || Now-Born<3) return;
+    if(!P || !PC->Journey || !PC->Journey->Ready) return;
+    if(P->Dreaming && Now-Born>1) {++PresentationFrames;if(!P->IsPresentationVisible())++InvisibleFrames;}
+    if(Now-Born<3) return;
     FString Dir; FParse::Value(FCommandLine::Get(),TEXT("POCArtifacts="),Dir);
     if(Dir.IsEmpty()) Dir=FPaths::ProjectSavedDir()/TEXT("PresentationQA");
     IFileManager::Get().MakeDirectory(*Dir,true);
@@ -49,6 +51,9 @@ void APOCPresentationTest::Tick(float DeltaSeconds)
     {
         Shot(TEXT("ready-to-play.png"));
         auto R=MakeShared<FJsonObject>();
+        R->SetBoolField(TEXT("mascot_never_disappeared"),InvisibleFrames==0 && PresentationFrames>100);
+        R->SetNumberField(TEXT("presentation_frames_checked"),PresentationFrames);
+        R->SetNumberField(TEXT("invisible_frames"),InvisibleFrames);
         R->SetBoolField(TEXT("intro_returns_to_play"),PC->Menu==EPOCMenu::Playing);
         R->SetBoolField(TEXT("no_fall_or_damage"),P->Hearts==3 && P->FallDeaths==0);
         R->SetBoolField(TEXT("no_character_teleport"),FVector::Dist(Start,P->GetActorLocation())<15);

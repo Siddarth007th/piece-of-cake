@@ -42,6 +42,7 @@ public:
     UPROPERTY(BlueprintReadOnly) bool Slamming = false;
     UPROPERTY(BlueprintReadOnly) bool Eating = false;
     bool Dreaming = false;
+    bool IsPresentationVisible() const;
     float ThoughtBlend = 0;
     UPROPERTY(BlueprintReadOnly) bool Dying = false;
     float DeathRemaining = 0;

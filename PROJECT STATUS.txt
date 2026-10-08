@@ -5,8 +5,9 @@ Unreal 5.8.3 is installed. Installer polling remains paused.
 
 Native game: rebuilt with a Nori character icon, live mascot title and an eased
 cake-thought sequence. Packaged intro/persistence and full-route tests pass.
-A repeat performance run is checking observed frame-time spikes after stopping
-an old, orphaned game crash reporter. Read docs/TEST_RESULTS.md for honest data.
+The clean-session run averaged 59.53 FPS (p95 16.92 ms), with no frames over
+100 ms; occasional spikes up to 70.31 ms remain. The final intro stayed visible
+for all 499 checked frames. Read docs/TEST_RESULTS.md for full evidence.
 
 Cloud backend: Supabase Free organization created. PostgreSQL migration,
 private-player Auth/RLS rules, async native API client, Keychain session storage,
@@ -15,6 +16,7 @@ Project creation is waiting for the owner to enter/generate a database password
 and click Create new project in the open Supabase Chrome tab. No cloud deployment
 or live-cloud validation is claimed yet. No billing was enabled.
 
-Source stays here on the Desktop. The standalone app is in ~/Applications;
+Source is uploaded to https://github.com/Siddarth007th/piece-of-cake and stays
+here on the Desktop. GitHub source-validation CI passes. The standalone app is in ~/Applications;
 Desktop/Piece of Cake.app opens it. Public release is pending final validation.
 The browser-streaming host remains deferred in favor of a shareable Mac app.
