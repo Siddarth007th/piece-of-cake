@@ -1,26 +1,20 @@
-PIECE OF CAKE
-=============
+PIECE OF CAKE — NATIVE APP + FREE CLOUD BACKEND
+================================================
 Project: ~/Desktop/PieceOfCake
+Unreal 5.8.3 is installed. Installer polling remains paused.
 
-SOURCE + WEB PLAYER READY FOR THE FIRST UNREAL BUILD.
-THE GAME IS NOT YET VERIFIED PLAYABLE.
+Native game: rebuilt with a Nori character icon, live mascot title and an eased
+cake-thought sequence. Packaged intro/persistence and full-route tests pass.
+A repeat performance run is checking observed frame-time spikes after stopping
+an old, orphaned game crash reporter. Read docs/TEST_RESULTS.md for honest data.
 
-Epic Games Launcher is installed in /Applications and open for sign-in.
-Unreal Engine 5.8 still needs to be installed after signing in.
-The Mac currently has Xcode and around 99 GiB of free space.
+Cloud backend: Supabase Free organization created. PostgreSQL migration,
+private-player Auth/RLS rules, async native API client, Keychain session storage,
+run outbox and casual leaderboard are implemented. Database tests pass.
+Project creation is waiting for the owner to enter/generate a database password
+and click Create new project in the open Supabase Chrome tab. No cloud deployment
+or live-cloud validation is claimed yet. No billing was enabled.
 
-Open README.md for exact steps and the validation status.
-
-Double-click shortcuts:
-  Play Piece of Cake.command      Check Unreal, build, and start game + browser
-  Check Setup.command             Detect Unreal and report setup
-  Open Unreal.command             Build/generate assets, then open Unreal
-  Start Browser Player.command    Start the page and signalling server
-  Stream Unreal.command           Start Unreal's real video/audio stream
-
-Local browser page: http://127.0.0.1:8080
-The page correctly says offline until Unreal is running and connected.
-
-No packaged executable or cloud deployment exists yet.
-No claim is made that the Unreal source compiles or the 10-15 minute
-journey is playable until those checks run in the real engine.
+Source stays here on the Desktop. The standalone app is in ~/Applications;
+Desktop/Piece of Cake.app opens it. Public release is pending final validation.
+The browser-streaming host remains deferred in favor of a shareable Mac app.

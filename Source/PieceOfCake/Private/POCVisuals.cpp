@@ -23,7 +23,8 @@ UMaterialInstanceDynamic* POCVisuals::Material(UObject* Owner, FLinearColor Colo
     if (!Base) Base = LoadObject<UMaterialInterface>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial"));
     UMaterialInstanceDynamic* Result = UMaterialInstanceDynamic::Create(Base, Owner);
     Result->SetVectorParameterValue(TEXT("Tint"), Color);
-    Result->SetScalarParameterValue(TEXT("Glow"), Glow);
+    // A restrained ambient tint keeps silhouettes readable in the stylized shade.
+    Result->SetScalarParameterValue(TEXT("Glow"), FMath::Max(Glow, .08f));
     return Result;
 }
 
@@ -40,7 +41,7 @@ UStaticMeshComponent* POCVisuals::Part(AActor* Owner, USceneComponent* Parent, F
     Mesh->SetRelativeScale3D(Scale);
     Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     Mesh->SetCullDistance(14000);
-    Mesh->SetCastShadow(Glow < 1.f);
+    Mesh->SetCastShadow(false);
     Mesh->RegisterComponent();
     return Mesh;
 }

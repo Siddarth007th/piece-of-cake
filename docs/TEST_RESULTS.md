@@ -1,3 +1,148 @@
+> Historical results below are preserved. The owner authorized a tested release on 8 October 2026; the new packaged candidate is being validated.
+
+## 2026-10-08 native app and cloud integration
+
+- The previous complete native warm-up/polish run reached all 192 platforms, opened the cake door, completed the ending and restarted. It averaged 59.98 FPS; p95 16.75 ms, worst 34.60 ms, and no frames over 50 ms. See `validation/native-warmup-polish-run-1.json`.
+- After the mascot title, thinking animation and cloud client were added, another complete native run passed all 192 platforms, 27 checkpoints, both reward switches, the ending and restart with zero falls. It averaged 59.56 FPS, p95 16.90 ms, worst 198.59 ms, with three frames over 100 ms. These spikes are retained in the evidence, not removed from the report. A stale game crash reporter was subsequently found consuming about one CPU core and stopped; a follow-up run is in progress. This observation alone does not prove it caused every spike.
+- Packaged presentation checks passed: no character teleport or fall, three hearts retained, a grounded return to play, and the thinking pose blends out. Screenshots caught a cropped thought bubble; the framing was corrected and checked again.
+- A second native process successfully reloaded saved completion, best shards, sensitivity and music volume. Five Unreal automation tests pass, including persistent cloud outbox serialization.
+- Python tests: 13 passed. Web/signalling tests: 7 passed. TypeScript and Vite build passed. PostgreSQL tests: 9 passed including the parent suite. They exercise the actual migration with two Auth identities under separate SQL roles.
+- Cloud service is **not yet live**. The Free organization is created, but the owner still needs to set the project database password and submit project creation. Database tests are not evidence of a deployed API. No cloud save or public leaderboard availability is claimed until the real HTTPS checks pass.
+
+These are actual packaged Unreal physics runs, not manual/browser-input playthroughs. The studio-rendered Nori icon is branding only. Results apply to the tested Apple M4/macOS 26.7.1 machine and the documented build; they do not establish bug-free operation on every Mac.
+
+
+## Camera ease-of-use revision — 8 October 2026
+
+Holding F while moving is no longer necessary: **tap F** to toggle mouse look, use the **arrow keys** to rotate directly, and press **X** (or click the browser's **Center camera**) to settle the view behind Nori. Middle-mouse drag still works; the controller uses the right stick and R3. Mouse look locks on pause. Running alone never rotates the camera. Sensitivity remains adjustable in the pause menu; normal mouse/stick vertical direction is consistent, and arrows always follow their labelled direction.
+
+The native build and TypeScript/Vite build passed. A focused native controller-input test passed (`Artifacts/camera-control-test.json`): right/left held arrows rotated +67.83/-66.01 degrees in roughly 0.6 s; pitch clamped at +28/-65 degrees; recenter error was below 0.01 degrees; a single F tap enabled +51.65 degrees of mouse rotation; untoggled mouse movement changed yaw by zero; middle drag worked; pause cleared mouse mode; walking changed camera yaw by zero. These are actual Unreal runtime measurements with simulated native key/axis events, not browser mouse evidence.
+
+Real Chrome testing found the underlying browser failure: pointer lock was rejected with `WrongDocumentError`, so the locked mouse controller never forwarded motion. The player now uses hovering mouse input; native F-toggle/middle-drag still decide when the camera may rotate. After reconnecting, actual mouse movement rotated the game view, a second F tap held it fixed, 45 brief Right-arrow presses changed yaw from 90 to 118.23 degrees, and a downward pointer drag reduced pitch from -20.79 to -60.39 degrees. Both the toolbar's Center camera and X returned to pitch -14/yaw 90. The final browser log had no new errors or warnings. Evidence: `Artifacts/camera-browser-check.json`, `Artifacts/camera-manual.log`, and the real engine screenshot `Artifacts/camera-controls.png`. The browser build was rerun successfully after the pointer-input fix. The live local game is left in normal manual control with the view centered and mouse look locked.
+
+This camera-only revision does not replace the earlier full-route evidence or resolve the previously recorded streaming stutters. Release was on hold at the time of that camera check.
+
+## Current result: easier crystals, distinct encounters and developer flight — 8 October 2026
+
+Unreal 5.8.3 is installed and the native game runs. The crystal section that repeatedly caused falls now has 1250 cm wide landings (previously 800), 360 cm lateral shifts (previously 560), gaps capped at 340 cm, 60% lower rises and halfway checkpoints. Bombs, enemies and sweepers no longer overlap its weaving landing sequence. The safe opening has shorter gaps, a checkpoint before its first jump and forgiving short-tap jumps. New district encounters include timed presses, guarded arena gates, lifts and a six-platform crumble sprint.
+
+### Complete gameplay regressions
+
+Three actual Unreal physics traversals completed all 192 route beats, both 180-shard switches, the cake ending and fresh restart. Developer flight was off throughout. These are automated engine tests, **not three manual or browser-input playthroughs**, and do not establish that the game feels easy to a new player.
+
+| Run | Traversal | Falls / respawns | Additional checks | Mean FPS / p95 frame time | Frames >100 ms |
+|---|---|---|---|---|---|
+| 1 | Complete, 351.24 s | 0 / 0 | Two sentry courts, three presses, three lifts, combat and Echo | 54.02 / 25.89 ms | 12 |
+| 2 | Complete, 353.32 s | 1 / 1, deliberate | Fall immediately empties hearts; checkpoint restores; actual bomb damages and knocks back | 57.94 / 19.77 ms | 8 |
+| 3 | Complete, 487.71 s | 2 / 2 | Pause/resume, Echo expiry/reactivation, insufficient shards rejected, backtracking to earn missing shards, return and unlock | 46.01 / 32.50 ms | 32 |
+
+Evidence: `Artifacts/variety-final-run-1.json`, `-2.json`, `-3.json`, matching logs and `Artifacts/variety-regression.log`. Opening jump taps were 50 ms, with takeoff leads of 100, 150 and 80 cm. The final regression script fails if its gameplay acceptance fields are missing or false. **It is not a performance acceptance script: these runs still have stutters.**
+
+Two isolated crystal checks crossed the full district plus its exit with zero damage, falls or respawns. The first averaged 57.57 FPS (p95 21.91 ms, no frames over 100 ms). After reducing Medium internal resolution from 90% to 80%, the second averaged 58.39 FPS (p95 17.29 ms, four frames over 100 ms, worst 220.70 ms). Each took 43.49 seconds. See `Artifacts/CrystalProbe/journey-run-1.json` and `Artifacts/TunedCrystalProbe/journey-run-1.json`. Both explicitly report `completed: false` and `section_probe_passed: true`: they start with a debug jump to the district and are not complete-journey proof. The three complete runs precede the render-only reduction and test-driver scan optimization; gameplay physics and layout did not change afterward.
+
+### Developer flight and actual browser input
+
+The native flight test passed six-direction movement, descent below the floor without death, damage immunity, safe return to checkpoint, restored collision/gravity and a normal 50 ms tap jump afterward (108.26 cm height). See `Artifacts/developer-flight-test.json`.
+
+Actual Chrome keyboard events through Pixel Streaming then verified that typing `siddarthisgod` enables flight, Space raises Nori, and repeating the phrase disables flight and restores the checkpoint with three hearts and collision enabled. A normal jump afterward was accepted and landed after 0.681 seconds. The camera stayed at pitch -14/yaw 90, 82-degree FOV and 420 cm boom. These brief browser key presses supplement the native directional test; they are not a whole manual journey. Evidence: `Artifacts/developer-flight-browser.json`, `.log` and `Artifacts/final-manual.log`.
+
+Flight controls are WASD horizontal, Space up, C/Ctrl down and Shift faster. Type the phrase again or R to leave flight safely. The final manual session has flight off and no automated driver. `Artifacts/easier-crystals.png` is an actual Unreal screenshot of the widened section, visited with a debug section jump solely for visual inspection.
+
+### Performance and remaining limits
+
+The final 1280×720 Chrome sample contains 110 one-second observations including connection/start menus, input checks, debug section jumps and native screenshot capture. Its 43.67 FPS mean counts the initial missing FPS sample as zero; it is a mixed interaction sample, not a clean traversal benchmark. It recorded ten freezes totaling 5.038 seconds, zero packet loss, 30 decoder drops and 375 browser presentation drops among 4764 frames. Audio bytes and nonzero energy prove receipt of sound; audible listening is unverified. Ten protocol responses ranged from 3–20 ms, **not motion-to-photon latency**. Raw evidence: `Artifacts/variety-browser-final-manual.json`. Earlier browser evidence at 90% resolution is preserved in `Artifacts/variety-browser-before-tuning.json`.
+
+The lighter preset improves the isolated engine sample but **does not establish smooth browser gameplay**. Further frame/stream profiling, packaged-runtime validation, gamepad and broader browser checks remain outstanding. No public-network or downloadable release is validated. The previous Mac package failed to launch because `libtbb.12.dylib` was missing; the editor-based local game is what was tested here.
+
+### Build checks
+
+The final native build succeeded. All five native checks passed: OriginalMeshes, RouteAndPhysics, DeveloperPhrase, MemoryRoundTrip and ShardBudget (`Artifacts/final-native-tests.log`, `Artifacts/UnrealTests/index.json`). Thirteen Python checks passed after the crystal changes. The earlier TypeScript/Vite build passed and Web source was unchanged in this revision.
+
+The live local handoff is Chrome at http://127.0.0.1:8080/, manually controlled at the opening. The in-app browser's Start interaction remains unreliable and is not a verified control surface. Keep the Mac game process and local server running for this preview.
+
+---
+
+## Historical reports below — superseded by the current results above
+
+The following sections preserve earlier evidence and then-current pending items. Their references to “current” or “pending” apply to those earlier revisions, not this latest result.
+
+## Ninja rabbit, hearts and manual camera — 8 October 2026
+
+The current local build has a ninja headband, indigo outfit, wraps and animated scarf; pixel hearts; a fixed 420 cm follow camera with an 82 degree field of view; and explicit **hold F + mouse** camera rotation. Ordinary mouse motion does not rotate it. WASD remains unrestricted in both horizontal axes within the level's walkable geometry. The visible automated driver was stopped at the user's request for manual movement; the current stream runs without `-POCAutoRun`.
+
+Real Chrome keyboard input verified W, A, S and D movement in both axes, accepted ground and double jumps, dash and spin. Pitch/yaw remained -14/90, FOV 82 and boom 420 through these checks. Recorded coordinates and evidence are in `Artifacts/free-roam-input-check.json`, `Artifacts/ninja-free-roam.log` and the actual engine screenshot `Artifacts/ninja-free-roam.png`.
+
+Four native Unreal tests passed (content, meshes, persistence and shard budget). The browser TypeScript/Vite build also passed. A complete ninja-version run traversed all 192 platforms, paid 360 shards, opened the cake door, reached the ending and verified a fresh restart. It deliberately took a real bomb hit (two hearts lost, 1587 cm/s push and 1115 cm/s launch) and a fatal fall (zero hearts visible before checkpoint restoration). See `Artifacts/ninja-before-tuning-run-2.json` and `Artifacts/ninja-run-2.log`.
+
+That complete run **did not pass the smoothness target**: 55.13 FPS mean, p95 24.82 ms, 12 frames over 100 ms, worst 254 ms. Heart geometry is now batched, distant/inactive flames avoid animation updates, and Medium renders at 90% internal resolution into the 1280x720 stream; High/Epic retain 100%. The next run's periodic engine timing improved, but it was stopped at platform 138 to switch to manual control. It verified pause/resume and Echo expiry/reactivation, **not** the final underfunded backtrack scenario. `Artifacts/ninja-run-3.log` is partial evidence, not a completed run; an older journey-run-3 JSON must not be mistaken for this run.
+
+Remaining before release consideration: finish three complete regressions of the final build, validate the underfunded door/backtracking route, collect final frame/stream measurements, and finish packaged-runtime validation. No public release, upload or deployment is authorized. The old installation automation remains paused. The final handoff is the real Chrome player at http://127.0.0.1:8080/, manually controlled at the first checkpoint; the in-app browser Start interaction was unreliable and is not accepted as a verified control surface.
+
+## Enclosed redesign: validation in progress, 8 October 2026
+
+The new native module and procedural surface material compiled successfully. Twelve Python checks and six real signalling/server tests pass; the browser TypeScript/Vite build passes. These checks do not substitute for gameplay.
+
+The first actual Unreal traversal completed all 192 route beats, the cake ending, and a fresh restart in 431.08 seconds. It recorded 56 double jumps, 23 dashes, 24 bomb kicks, 28 explosions, four Echo groups and one checkpoint respawn. Frame pacing averaged 59.94 FPS; p95 16.77 ms, p99 16.86 ms, worst 64.60 ms, with no frames over 100 ms during measured traversal. Source evidence: `Artifacts/redesign-initial-run-1.json` and `Artifacts/redesign-run-1.log`.
+
+A live Chrome observation confirmed moving video, the enclosed scene and non-silent incoming audio. Its saved 353-second sample averaged 59.90 decoded FPS, zero reported WebRTC freezes or packet loss, but browser playback quality counted 701 dropped presentation frames out of 21,132 received frames. Ten protocol round trips were 3–17 ms; this is **not** motion-to-photon latency. End-of-run screenshot capture and world restart subsequently caused two stream freezes; they are outside the saved traversal sample. `Artifacts/redesign-browser-run-1.json` contains the actual measurements.
+
+That first run exposed an invisible HUD caused by a Slate-only font without a UFont. The next build uses the actual Roboto font asset and the HUD was visually verified in the real stream. Full-resolution rendering and further interior details are now being tested. The first run is evidence for the gameplay redesign, not approval to release, and it precedes those last visual fixes.
+
+# Runtime status — 8 October 2026
+
+**Release blocked pending final frame-pacing, three complete regression runs,
+packaging and public-network validation. No upload/deployment has occurred.**
+
+Host: Apple M4, 16 GB RAM, macOS 26.7.1, Xcode 26.6; Unreal 5.8.3 CL58210709.
+
+Confirmed runtime evidence:
+
+- UBT/UHT build and actual Unreal asset bootstrap succeeded.
+- Three native Unreal tests passed: Persistence.MemoryRoundTrip,
+  Content.RouteAndPhysics, Content.OriginalMeshes. Report:
+  `Artifacts/UnrealTests/index.json`.
+- One complete automated engine-physics baseline traversed all 192 platforms,
+  reached the cake, used 189 jumps / 8 Echo inputs / 35 bonks / 4 slides and took
+  490.24 seconds. It used ordinary physics, not teleport or time scaling.
+- That baseline **failed performance**: mean 33.844 fps, p95 40.56 ms,
+  p99 56.79 ms. `Artifacts/baseline-high-stream.json` preserves it. Section PNG
+  captures also introduced approximately 1.5–2 s stalls; new timing runs disable
+  those captures rather than confusing instrumentation with ordinary gameplay.
+- Chrome and the in-app browser decoded actual Unreal video and received nonzero
+  audio energy. Audio receipt is measured; audible listening has not been verified.
+- Browser Escape pause/resume and checkpoint restart were observed in native video.
+  Chrome is the current control target; in-app pointer-lock showed a Chromium error.
+- Native `quit` from a connected Chrome stream exited with code 0 after the
+  Pixel Streaming/Slate ownership fix (`Artifacts/manual-stream.log`). Before that
+  fix, one connected shutdown crashed in FMacApplication::OnWindowDestroyed.
+- The intermediate 1600×900 Medium/TAA preset was still around 40–50 fps. It is
+  **not accepted**. The current 1280×720 preset and frame-limit changes are testing.
+
+Known invalid/incomplete diagnostics remain preserved separately: the early
+checker-material run, high-quality performance baseline, and a paused watchdog
+failure. None count toward the three final accepted runs. Original imported
+meshes, material instancing, resident audio, lower-cost lighting, camera sensitivity
+and clean shutdown are implemented; each final outcome must be recorded below.
+
+## Rejected Metal offscreen experiment
+
+`-MetalOffscreenOnly` completed the native physics run and fresh-game restart
+(192 platforms, 17 checkpoint triggers, 4 Echo groups, 12 enemy defeats; 491.57 s).
+However, it produced **black browser video**. Its 54.62 fps mean / 25.60 ms p95 /
+30.37 ms p99 cannot validate playable streaming. The flag has been removed.
+Preserved evidence: `Artifacts/metal-offscreen-rejected.json` and `.log`, plus
+`Artifacts/offscreen-browser-sample-1.json`. This is not an accepted release run.
+
+## Final regression runs
+
+Pending. Use `Scripts/ue.py journey --run 1`, then 2 and 3. Automated physics
+results must remain labeled separately from manual browser-input checks.
+
+## Historical checks before engine installation
+
+The following dated history describes the earlier state; its installation blockers
+are superseded by the runtime status above.
+
 # Test results — 7 October 2026
 
 ## Ran and passed on the development Mac

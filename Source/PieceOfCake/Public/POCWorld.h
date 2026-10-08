@@ -9,12 +9,13 @@ class ACameraActor;
 class UHierarchicalInstancedStaticMeshComponent;
 class UStaticMeshComponent;
 class UAudioComponent;
+class USoundWave;
 class ADirectionalLight;
 class AExponentialHeightFog;
 class UMaterialInstanceDynamic;
 
-UENUM(BlueprintType)
-enum class EPOCProp : uint8 { Shard, Relic, Checkpoint, EchoNode, Bounce, Hazard, Cake, Moving, EchoBridge, Crumble, SlideGate };
+UENUM(BlueprintType, meta=(ScriptName="POCPropKind"))
+enum class EPOCProp : uint8 { Shard, Relic, Checkpoint, EchoNode, Bounce, Hazard, Cake, Moving, EchoBridge, Crumble, SlideGate, Bomb, Sweeper, PressurePlate, GateSwitch, CakeDoor, Crusher, Lift, ArenaGate };
 
 USTRUCT()
 struct FPOCRoutePoint
@@ -34,6 +35,9 @@ struct FPOCRoutePoint
     bool SlideGate = false;
     bool Bounce = false;
     bool Secret = false;
+    bool Bomb = false;
+    bool Sweeper = false;
+    FString Challenge;
 };
 
 UCLASS(Blueprintable)
@@ -47,6 +51,11 @@ public:
     void Configure(EPOCProp InKind, FVector InSize, int32 InId, int32 InGroup = -1);
     UFUNCTION(BlueprintCallable) void Activate(float Duration);
     UFUNCTION(BlueprintCallable) void ResetPlatform();
+    void Kick(APOCCharacter* Player);
+    bool IsDangerous() const;
+    float FuseRemaining = -1;
+    int32 Explosions = 0;
+    int32 Kicks = 0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite) EPOCProp Kind = EPOCProp::Shard;
     UPROPERTY(EditAnywhere, BlueprintReadWrite) int32 Id = 0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite) int32 Group = -1;
@@ -56,10 +65,15 @@ public:
     FVector Size = FVector(1260, 900, 200);
     FVector Origin;
     bool Taken = false;
+    bool EncounterCleared = false;
     float ActiveRemaining = 0;
 private:
     void Collect(APOCCharacter* Player);
     float Age = 0;
+    float BombCooldown = 0;
+    FVector BombVelocity = FVector::ZeroVector;
+    UPROPERTY() TObjectPtr<UStaticMeshComponent> WarningRing;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> FlameJets;
     float CollapseTime = -1;
     bool Touched = false;
     UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> Surface;
@@ -74,8 +88,10 @@ public:
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaSeconds) override;
     UFUNCTION(BlueprintCallable) void Bonked(APOCCharacter* Player, bool Slam);
+    void ResetEnemy();
     UPROPERTY(EditAnywhere, BlueprintReadWrite) int32 Species = 0;
     UPROPERTY() TObjectPtr<APOCWorld> Journey;
+    int32 ArenaGroup = -1;
 private:
     UPROPERTY() TObjectPtr<USceneComponent> Visual;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Shell;
@@ -88,6 +104,9 @@ private:
     float DefeatTime = -1;
     float HitCooldown = 0;
     int32 Hits = 0;
+    FVector AttackDirection;
+    FVector BombTarget;
+    float ChargeRemaining = 0;
 };
 
 UCLASS(Blueprintable)
@@ -104,6 +123,7 @@ public:
     UFUNCTION(BlueprintCallable) void ShowCaption(const FString& Text, float Duration = 4.f);
     void Sound(FName Name, FVector Position, float Pitch = 1.f);
     void Burst(FVector Position, FLinearColor Color, int32 Count = 10);
+    void DropBomb(FVector Position);
     const FPOCRoutePoint* Nearest(FVector Position) const;
     void TeleportSection(int32 Section);
     UPROPERTY(BlueprintReadOnly) FString SectionName;
@@ -117,6 +137,16 @@ public:
     UPROPERTY(EditAnywhere, Category="Journey") TSubclassOf<APOCEnemy> EnemyClass;
     TArray<FPOCRoutePoint> Route;
     int32 ActiveCheckpoint = -1;
+    static constexpr int32 SwitchPrice = 180;
+    bool LeftSwitch = false;
+    bool RightSwitch = false;
+    bool GateIsOpen() const { return LeftSwitch && RightSwitch; }
+    UPROPERTY() TObjectPtr<ACameraActor> DreamCamera;
+    UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> DreamParts;
+    void ShowDream(bool Visible);
+    void AnimateDream(float Time);
+    TArray<FVector> DreamOrigins;
+    TArray<FVector> DreamScales;
 private:
     bool LoadRoute();
     void BuildJourney();
@@ -131,6 +161,8 @@ private:
     UPROPERTY() TObjectPtr<ADirectionalLight> Sun;
     UPROPERTY() TObjectPtr<AExponentialHeightFog> Fog;
     UPROPERTY() TObjectPtr<UAudioComponent> Music;
+    UPROPERTY() TMap<FName, TObjectPtr<USoundWave>> Sounds;
+    UPROPERTY() TArray<TObjectPtr<USoundWave>> Tracks;
     UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> Particles;
     TArray<FVector> ParticleVelocity;
     TArray<float> ParticleLife;

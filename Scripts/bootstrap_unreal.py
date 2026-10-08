@@ -15,26 +15,58 @@ for folder in ("Characters", "Environments", "Materials", "VFX", "Audio", "UI",
     library.make_directory("/Game/" + folder)
 
 material_path = "/Game/Materials/M_World"
-if not library.does_asset_exist(material_path):
-    material = assets.create_asset("M_World", "/Game/Materials", unreal.Material, unreal.MaterialFactoryNew())
-    editing = unreal.MaterialEditingLibrary
-    tint = editing.create_material_expression(material, unreal.MaterialExpressionVectorParameter, -650, 0)
-    tint.set_editor_property("parameter_name", "Tint")
-    tint.set_editor_property("default_value", unreal.LinearColor(.2, .3, .4, 1))
-    glow = editing.create_material_expression(material, unreal.MaterialExpressionScalarParameter, -650, 240)
-    glow.set_editor_property("parameter_name", "Glow")
-    glow.set_editor_property("default_value", 0)
-    roughness = editing.create_material_expression(material, unreal.MaterialExpressionScalarParameter, -400, 400)
-    roughness.set_editor_property("parameter_name", "Roughness")
-    roughness.set_editor_property("default_value", .82)
-    multiply = editing.create_material_expression(material, unreal.MaterialExpressionMultiply, -250, 160)
-    editing.connect_material_expressions(tint, "", multiply, "A")
-    editing.connect_material_expressions(glow, "", multiply, "B")
-    editing.connect_material_property(tint, "", unreal.MaterialProperty.MP_BASE_COLOR)
-    editing.connect_material_property(multiply, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-    editing.connect_material_property(roughness, "", unreal.MaterialProperty.MP_ROUGHNESS)
-    editing.recompile_material(material)
-    library.save_loaded_asset(material)
+material = library.load_asset(material_path) if library.does_asset_exist(material_path) else assets.create_asset("M_World", "/Game/Materials", unreal.Material, unreal.MaterialFactoryNew())
+editing = unreal.MaterialEditingLibrary
+# Versioned graph: centimetre-scaled surfaces with clean mortar and subtle grain.
+# The character uses style zero, preserving its clean, readable silhouette.
+if library.get_metadata_tag(material, "POCSurfaceVersion") != "2":
+    editing.delete_all_material_expressions(material)
+    def scalar(name, value, x, y):
+        node=editing.create_material_expression(material, unreal.MaterialExpressionScalarParameter, x, y)
+        node.set_editor_property("parameter_name",name); node.set_editor_property("default_value",value)
+        return node
+    tint=editing.create_material_expression(material,unreal.MaterialExpressionVectorParameter,-900,0)
+    tint.set_editor_property("parameter_name","Tint");tint.set_editor_property("default_value",unreal.LinearColor(.3,.3,.3,1))
+    glow=scalar("Glow",.08,-900,350)
+    roughness=scalar("Roughness",.86,-300,450)
+    style=scalar("SurfaceStyle",0,-900,180)
+    position=editing.create_material_expression(material,unreal.MaterialExpressionWorldPosition,-900,-250)
+    normal=editing.create_material_expression(material,unreal.MaterialExpressionVertexNormalWS,-900,-400)
+    pattern=editing.create_material_expression(material,unreal.MaterialExpressionCustom,-400,0)
+    pattern.set_editor_property("output_type",unreal.CustomMaterialOutputType.CMOT_FLOAT3)
+    inputs=[]
+    for name in ("P","N","TintColor","Style"):
+        item=unreal.CustomInput();item.set_editor_property("input_name",name);inputs.append(item)
+    pattern.set_editor_property("inputs",inputs)
+    pattern.set_editor_property("code",r"""
+        if (Style < 0.5) return TintColor;
+        float3 an=abs(N);
+        float2 uv=an.z > .6 ? P.xy : (an.x > an.y ? P.yz : P.xz);
+        float2 scale=Style < 1.5 ? float2(140,65) : Style < 2.5 ? float2(240,38) : float2(105,105);
+        float row=floor(uv.y/scale.y);
+        uv.x += Style < 1.5 ? fmod(abs(row),2.0)*70 : 0;
+        float2 cell=floor(uv/scale);
+        float2 f=frac(uv/scale);
+        float2 edge=min(f,1-f)*scale;
+        float mortar=smoothstep(1.0,3.2,min(edge.x,edge.y));
+        float tone=frac(sin(dot(cell,float2(127.1,311.7)))*43758.5453);
+        float grain=sin(uv.x*.12+sin(uv.y*.09)*2)*sin(uv.y*.18)*.022;
+        if(Style>3.5) return TintColor*(.88+.10*sin(P.z*.042+sin(P.x*.014)*2)+grain);
+        float detail=Style>1.5 && Style<2.5 ? sin(uv.x*.08+sin(uv.y*.12)*4)*.045 : grain;
+        return TintColor*lerp(.43,.88+tone*.18+detail,mortar);
+    """)
+    for node,name in ((position,"P"),(normal,"N"),(tint,"TintColor"),(style,"Style")):
+        editing.connect_material_expressions(node,"",pattern,name)
+    emission=editing.create_material_expression(material,unreal.MaterialExpressionMultiply,0,240)
+    editing.connect_material_expressions(pattern,"",emission,"A")
+    editing.connect_material_expressions(glow,"",emission,"B")
+    editing.connect_material_property(pattern,"",unreal.MaterialProperty.MP_BASE_COLOR)
+    editing.connect_material_property(emission,"",unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+    editing.connect_material_property(roughness,"",unreal.MaterialProperty.MP_ROUGHNESS)
+    library.set_metadata_tag(material,"POCSurfaceVersion","2")
+material.set_editor_property("used_with_instanced_static_meshes", True)
+editing.recompile_material(material)
+library.save_loaded_asset(material)
 
 # Import original, editable mesh assets. Collision uses the existing gameplay shells.
 library.make_directory("/Game/Art/Meshes")

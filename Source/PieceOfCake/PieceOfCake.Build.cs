@@ -5,8 +5,9 @@ public class PieceOfCake : ModuleRules
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         PublicDependencyModuleNames.AddRange(new[] {
-            "Core", "CoreUObject", "Engine", "InputCore", "Json", "JsonUtilities",
-            "UMG", "Slate", "SlateCore", "PixelStreaming2", "PixelStreaming2Input"
+            "Core", "CoreUObject", "Engine", "HTTP", "InputCore", "Json", "JsonUtilities",
+            "UMG", "Slate", "SlateCore", "RenderCore", "PixelStreaming2", "PixelStreaming2Input"
         });
+        if (Target.Platform == UnrealTargetPlatform.Mac) PublicFrameworks.AddRange(new[] { "Security", "CoreFoundation" });
     }
 }

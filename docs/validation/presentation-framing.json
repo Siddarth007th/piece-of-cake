@@ -1,0 +1,7 @@
+{
+	"intro_returns_to_play": true,
+	"no_fall_or_damage": true,
+	"no_character_teleport": true,
+	"grounded_after_intro": true,
+	"pose_blended_out": true
+}

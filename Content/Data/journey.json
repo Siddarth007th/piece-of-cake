@@ -1,42 +1,48 @@
 {
-  "version": 1,
+  "version": 3,
   "seed": 2718,
   "name": "The Long Way to Cake",
   "sections": [
-    "The Meadow",
-    "Forgotten Ruins",
-    "Ancient Forest",
-    "The Listening Temple",
-    "Underground Caverns",
-    "The Sunken City",
-    "The Long Way Down",
-    "One Last Climb"
+    "Sunroot Vault",
+    "Bellows Foundry",
+    "Fern Archives",
+    "Echo Sanctum",
+    "Prism Grotto",
+    "Tidal Gallery",
+    "Clockwork Descent",
+    "The Cake Chamber"
   ],
   "target_minutes": [
     10,
     15
   ],
   "timing_verified": false,
+  "enclosed": true,
+  "shadows": false,
   "movement": {
-    "run_speed": 620,
-    "sprint_speed": 840,
+    "run_speed": 820,
+    "sprint_speed": 1100,
     "jump_speed": 650,
-    "gravity": 1568
+    "gravity": 1568,
+    "double_jump_speed": 650,
+    "dash_speed": 1550,
+    "dash_seconds": 0.2,
+    "dash_cooldown": 0.9
   },
   "points": [
     {
       "index": 0,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
         0.0,
         0.0,
-        0.0
+        0
       ],
       "yaw": 90.0,
       "size": [
-        1340,
-        1200,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -45,23 +51,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 1,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -25.7,
-        1570.516,
-        3.333
+        -16.016,
+        1239.862,
+        0
       ],
-      "yaw": 91.875,
+      "yaw": 91.48,
       "size": [
-        1340,
-        1200,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -70,23 +80,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 2,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -102.772,
-        3139.35,
-        6.667
+        -54.14,
+        2279.143,
+        0
       ],
-      "yaw": 93.75,
+      "yaw": 92.722,
       "size": [
-        1340,
-        1200,
+        1100,
+        900,
         200
       ],
       "kind": "ground",
@@ -95,48 +109,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 3,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -231.133,
-        4704.823,
-        10.0
+        -132.698,
+        3566.71,
+        0
       ],
-      "yaw": 95.625,
+      "yaw": 94.261,
       "size": [
-        1340,
-        1200,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
-      "checkpoint": false,
+      "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 4,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -410.647,
-        6265.257,
-        13.333
+        -257.071,
+        4961.124,
+        0
       ],
-      "yaw": 97.5,
+      "yaw": 95.933,
       "size": [
-        1340,
-        1200,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -145,23 +167,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 100
     },
     {
       "index": 5,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -641.12,
-        7818.983,
-        16.667
+        -373.889,
+        5979.426,
+        80
       ],
-      "yaw": 99.375,
+      "yaw": 97.156,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -170,23 +196,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 100
     },
     {
       "index": 6,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -922.307,
-        9364.335,
-        20.0
+        -524.885,
+        7079.083,
+        80
       ],
-      "yaw": 101.25,
+      "yaw": 98.481,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -195,23 +225,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
-      "bounce": true,
-      "secret": false
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 260
     },
     {
       "index": 7,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -1253.905,
-        10899.661,
-        23.333
+        -703.824,
+        8189.735,
+        80
       ],
-      "yaw": 103.125,
+      "yaw": 99.824,
       "size": [
-        1340,
         1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -220,23 +254,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 100
     },
     {
       "index": 8,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -1635.56,
-        12423.314,
-        26.667
+        -952.835,
+        9516.526,
+        200
       ],
-      "yaw": 105.0,
+      "yaw": 101.435,
       "size": [
-        1340,
-        1200,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -245,23 +283,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 9,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -2066.864,
-        13933.665,
-        30.0
+        -1214.349,
+        10728.6,
+        200
       ],
-      "yaw": 106.875,
+      "yaw": 102.915,
       "size": [
-        1340,
-        1200,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -270,48 +312,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 10,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -2547.354,
-        15429.094,
-        33.333
+        -1504.599,
+        11923.829,
+        160
       ],
-      "yaw": 108.75,
+      "yaw": 104.384,
       "size": [
-        1340,
-        1200,
+        1100,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 11,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -3076.516,
-        16908.002,
-        36.667
+        -1841.804,
+        13168.937,
+        160
       ],
-      "yaw": 110.625,
+      "yaw": 105.923,
       "size": [
-        1340,
-        1200,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
@@ -320,23 +370,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 12,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -3653.782,
-        18368.805,
-        40.0
+        -2206.346,
+        14385.454,
+        160
       ],
-      "yaw": 112.5,
+      "yaw": 107.439,
       "size": [
-        1340,
-        1200,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -344,24 +398,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 13,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -4278.536,
-        19809.937,
-        43.333
+        -2549.616,
+        15435.757,
+        360
       ],
-      "yaw": 114.375,
+      "yaw": 108.758,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -370,23 +428,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 14,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -4950.108,
-        21229.857,
-        46.667
+        -3064.635,
+        16876.402,
+        360
       ],
-      "yaw": 116.25,
+      "yaw": 110.585,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -395,23 +457,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 15,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -5667.779,
-        22627.043,
-        50.0
+        -3491.176,
+        17971.217,
+        200
       ],
-      "yaw": 118.125,
+      "yaw": 111.987,
       "size": [
-        1340,
         1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -420,23 +486,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 16,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -6430.781,
-        24000.0,
-        53.333
+        -4014.153,
+        19215.755,
+        200
       ],
-      "yaw": 120.0,
+      "yaw": 113.599,
       "size": [
-        1340,
-        1200,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -445,23 +515,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 17,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -7238.295,
-        25347.257,
-        56.667
+        -4525.181,
+        20345.518,
+        200
       ],
-      "yaw": 121.875,
+      "yaw": 115.079,
       "size": [
-        1340,
-        1200,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -470,48 +544,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": true,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 18,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -8089.459,
-        26667.371,
-        60.0
+        -5060.751,
+        21452.759,
+        200
       ],
-      "yaw": 123.75,
+      "yaw": 116.547,
       "size": [
-        1340,
-        1200,
+        1100,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 19,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -8983.359,
-        27958.929,
-        63.333
+        -5652.73,
+        22598.865,
+        200
       ],
-      "yaw": 125.625,
+      "yaw": 118.087,
       "size": [
-        1340,
-        1200,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
@@ -520,23 +602,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 20,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -9919.04,
-        29220.549,
-        66.667
+        -6265.41,
+        23711.263,
+        200
       ],
-      "yaw": 127.5,
+      "yaw": 119.603,
       "size": [
-        1340,
-        1200,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -544,24 +630,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": true
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 21,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -10895.498,
-        30450.878,
-        70.0
+        -6822.273,
+        24665.661,
+        400
       ],
-      "yaw": 129.375,
+      "yaw": 120.922,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -570,23 +660,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 22,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -11911.689,
-        31648.599,
-        73.333
+        -7629.275,
+        25965.449,
+        400
       ],
-      "yaw": 131.25,
+      "yaw": 122.748,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -595,23 +689,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 23,
       "section": 0,
-      "name": "The Meadow",
+      "name": "Sunroot Vault",
       "position": [
-        -12966.525,
-        32812.43,
-        76.667
+        -8276.919,
+        26945.813,
+        300
       ],
-      "yaw": 133.125,
+      "yaw": 124.151,
       "size": [
-        1340,
         1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -620,23 +718,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 24,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -14058.875,
-        33941.125,
-        80.0
+        -9050.38,
+        28052.221,
+        300
       ],
-      "yaw": 135.0,
+      "yaw": 125.762,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -645,23 +747,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 25,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -15187.57,
-        35033.475,
-        87.5
+        -9787.978,
+        29048.947,
+        300
       ],
-      "yaw": 136.875,
+      "yaw": 127.242,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -670,22 +776,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 26,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -16351.401,
-        36088.311,
-        95.0
+        -10544.821,
+        30018.487,
+        300
       ],
-      "yaw": 138.75,
+      "yaw": 128.71,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -693,50 +803,58 @@
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 27,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -17549.122,
-        37104.502,
-        102.5
+        -11364.996,
+        31014.133,
+        300
       ],
-      "yaw": 140.625,
+      "yaw": 130.25,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 1,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 28,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -18779.451,
-        38080.96,
-        110.0
+        -12198.305,
+        31972.466,
+        300
       ],
-      "yaw": 142.5,
+      "yaw": 131.766,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -744,48 +862,56 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 29,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -20041.071,
-        39016.641,
-        117.5
+        -12943.759,
+        32788.107,
+        500
       ],
-      "yaw": 144.375,
+      "yaw": 133.085,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 30,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -21332.629,
-        39910.541,
-        125.0
+        -14006.51,
+        33888.68,
+        500
       ],
-      "yaw": 146.25,
+      "yaw": 134.912,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -795,23 +921,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 31,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -22652.743,
-        40761.705,
-        132.5
+        -14846.178,
+        34710.576,
+        500
       ],
-      "yaw": 148.125,
+      "yaw": 136.314,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -819,24 +949,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 32,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -24000.0,
-        41569.219,
-        140.0
+        -15835.396,
+        35629.177,
+        500
       ],
-      "yaw": 150.0,
+      "yaw": 137.926,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -845,23 +979,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 33,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -25372.957,
-        42332.221,
-        147.5
+        -16766.446,
+        36448.116,
+        500
       ],
-      "yaw": 151.875,
+      "yaw": 139.406,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -870,22 +1008,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
-      "slide_gate": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": true,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 34,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -26770.143,
-        43049.892,
-        155.0
+        -17710.581,
+        37236.422,
+        460
       ],
-      "yaw": 153.75,
+      "yaw": 140.874,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -893,50 +1035,58 @@
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 35,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -28190.063,
-        43721.464,
-        162.5
+        -18722.127,
+        38036.905,
+        460
       ],
-      "yaw": 155.625,
+      "yaw": 142.414,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 0,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 36,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -29631.195,
-        44346.218,
-        170.0
+        -19738.65,
+        38798.146,
+        460
       ],
-      "yaw": 157.5,
+      "yaw": 143.93,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -944,48 +1094,56 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 37,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -31091.998,
-        44923.484,
-        177.5
+        -20639.225,
+        39438.408,
+        660
       ],
-      "yaw": 159.375,
+      "yaw": 145.249,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 38,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -32570.906,
-        45452.646,
-        185.0
+        -21910.01,
+        40290.352,
+        660
       ],
-      "yaw": 161.25,
+      "yaw": 147.075,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -995,23 +1153,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 39,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -34066.335,
-        45933.136,
-        192.5
+        -22904.002,
+        40916.878,
+        500
       ],
-      "yaw": 163.125,
+      "yaw": 148.478,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1019,24 +1181,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 40,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -35576.686,
-        46364.44,
-        200.0
+        -24064.563,
+        41606.428,
+        500
       ],
-      "yaw": 165.0,
+      "yaw": 150.089,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1045,23 +1211,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 41,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -37100.339,
-        46746.095,
-        207.5
+        -25147.263,
+        42210.809,
+        500
       ],
-      "yaw": 166.875,
+      "yaw": 151.569,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1070,22 +1240,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 42,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -38635.665,
-        47077.693,
-        215.0
+        -26236.299,
+        42782.488,
+        500
       ],
-      "yaw": 168.75,
+      "yaw": 153.037,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -1093,100 +1267,58 @@
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 43,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -40181.017,
-        47358.88,
-        222.5
+        -27393.799,
+        43351.868,
+        500
       ],
-      "yaw": 170.625,
+      "yaw": 154.577,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 2,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 44,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -41734.743,
-        47589.353,
-        230.0
+        -28547.895,
+        43881.837,
+        500
       ],
-      "yaw": 172.5,
+      "yaw": 156.093,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": true
-    },
-    {
-      "index": 45,
-      "section": 1,
-      "name": "Forgotten Ruins",
-      "position": [
-        -43295.177,
-        47768.867,
-        237.5
-      ],
-      "yaw": 174.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "moving",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 46,
-      "section": 1,
-      "name": "Forgotten Ruins",
-      "position": [
-        -44860.65,
-        47897.228,
-        245.0
-      ],
-      "yaw": 176.25,
-      "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -1195,23 +1327,85 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
+    },
+    {
+      "index": 45,
+      "section": 1,
+      "name": "Bellows Foundry",
+      "position": [
+        -29563.157,
+        44317.974,
+        700
+      ],
+      "yaw": 157.412,
+      "size": [
+        850,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
+    },
+    {
+      "index": 46,
+      "section": 1,
+      "name": "Bellows Foundry",
+      "position": [
+        -30984.918,
+        44883.037,
+        700
+      ],
+      "yaw": 159.238,
+      "size": [
+        850,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 47,
       "section": 1,
-      "name": "Forgotten Ruins",
+      "name": "Bellows Foundry",
       "position": [
-        -46429.484,
-        47974.3,
-        252.5
+        -32088.606,
+        45286.063,
+        600
       ],
-      "yaw": 178.125,
+      "yaw": 160.641,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1220,23 +1414,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 48,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -48000.0,
-        48000.0,
-        260.0
+        -33368.401,
+        45715.602,
+        600
       ],
-      "yaw": 180.0,
+      "yaw": 162.252,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1245,23 +1443,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 49,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -49570.516,
-        47974.3,
-        292.917
+        -34554.138,
+        46078.29,
+        600
       ],
-      "yaw": 181.875,
+      "yaw": 163.733,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1270,73 +1472,85 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 50,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -51139.35,
-        47897.228,
-        325.833
+        -35739.179,
+        46407.675,
+        600
       ],
-      "yaw": 183.75,
+      "yaw": 165.201,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
-      "kind": "ground",
+      "kind": "moving",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 51,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -52704.823,
-        47768.867,
-        358.75
+        -37282.878,
+        46788.282,
+        600
       ],
-      "yaw": 185.625,
+      "yaw": 167.099,
       "size": [
-        1340,
-        900,
+        2200,
+        1850,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 2,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 52,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -54265.257,
-        47589.353,
-        391.667
+        -38818.704,
+        47113.733,
+        600
       ],
-      "yaw": 187.5,
+      "yaw": 168.973,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -1345,47 +1559,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": true,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 53,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -55818.983,
-        47358.88,
-        424.583
+        -39905.639,
+        47312.592,
+        800
       ],
-      "yaw": 189.375,
+      "yaw": 170.292,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 54,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -57364.335,
-        47077.693,
-        457.5
+        -41417.584,
+        47546.522,
+        800
       ],
-      "yaw": 191.25,
+      "yaw": 172.118,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -1395,23 +1617,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
-      "bounce": true,
-      "secret": false
+      "bounce": false,
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 55,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -58899.661,
-        46746.095,
-        490.417
+        -42583.339,
+        47693.394,
+        800
       ],
-      "yaw": 193.125,
+      "yaw": 173.521,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1420,23 +1646,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 56,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -60423.314,
-        46364.44,
-        523.333
+        -43926.681,
+        47826.855,
+        800
       ],
-      "yaw": 195.0,
+      "yaw": 175.132,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1445,23 +1675,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 57,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -61933.665,
-        45933.136,
-        556.25
+        -45163.43,
+        47916.113,
+        800
       ],
-      "yaw": 196.875,
+      "yaw": 176.612,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1470,73 +1704,85 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
-      "slide_gate": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": true,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 58,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -63429.094,
-        45452.646,
-        589.167
+        -46392.077,
+        47973.061,
+        760
       ],
-      "yaw": 198.75,
+      "yaw": 178.08,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
-      "kind": "ground",
+      "kind": "moving",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 59,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -64908.002,
-        44923.484,
-        622.083
+        -47681.779,
+        47998.945,
+        760
       ],
-      "yaw": 200.625,
+      "yaw": 179.62,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 1,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 60,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -66368.805,
-        44346.218,
-        655.0
+        -48951.714,
+        47990.564,
+        760
       ],
-      "yaw": 202.5,
+      "yaw": 181.136,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -1545,47 +1791,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": true,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 61,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -67809.937,
-        43721.464,
-        687.917
+        -50056.147,
+        47955.941,
+        960
       ],
-      "yaw": 204.375,
+      "yaw": 182.455,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 62,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -69229.857,
-        43049.892,
-        720.833
+        -51583.439,
+        47866.052,
+        960
       ],
-      "yaw": 206.25,
+      "yaw": 184.281,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -1595,23 +1849,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 63,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -70627.043,
-        42332.221,
-        753.75
+        -52753.97,
+        47764.001,
+        800
       ],
-      "yaw": 208.125,
+      "yaw": 185.684,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1620,23 +1878,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 64,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -72000.0,
-        41569.219,
-        786.667
+        -54095.275,
+        47611.423,
+        800
       ],
-      "yaw": 210.0,
+      "yaw": 187.295,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1645,23 +1907,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 65,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -73347.257,
-        40761.705,
-        819.583
+        -55323.066,
+        47438.093,
+        800
       ],
-      "yaw": 211.875,
+      "yaw": 188.776,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1670,97 +1936,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": true,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 66,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -74667.371,
-        39910.541,
-        852.5
+        -56536.13,
+        47234.886,
+        800
       ],
-      "yaw": 213.75,
+      "yaw": 190.244,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 67,
-      "section": 2,
-      "name": "Ancient Forest",
-      "position": [
-        -75958.929,
-        39016.641,
-        885.417
-      ],
-      "yaw": 215.625,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": 0,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 68,
-      "section": 2,
-      "name": "Ancient Forest",
-      "position": [
-        -77220.549,
-        38080.96,
-        918.333
-      ],
-      "yaw": 217.5,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": true
-    },
-    {
-      "index": 69,
-      "section": 2,
-      "name": "Ancient Forest",
-      "position": [
-        -78450.878,
-        37104.502,
-        951.25
-      ],
-      "yaw": 219.375,
-      "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -1770,22 +1965,113 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 67,
+      "section": 2,
+      "name": "Fern Archives",
+      "position": [
+        -58095.817,
+        46926.266,
+        800
+      ],
+      "yaw": 192.142,
+      "size": [
+        2200,
+        1850,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 68,
+      "section": 2,
+      "name": "Fern Archives",
+      "position": [
+        -59625.023,
+        46571.009,
+        800
+      ],
+      "yaw": 194.016,
+      "size": [
+        1000,
+        1050,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": true,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
+    },
+    {
+      "index": 69,
+      "section": 2,
+      "name": "Fern Archives",
+      "position": [
+        -60693.952,
+        46291.075,
+        1000
+      ],
+      "yaw": 195.335,
+      "size": [
+        850,
+        900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 70,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -79648.599,
-        36088.311,
-        984.167
+        -62162.782,
+        45863.009,
+        1000
       ],
-      "yaw": 221.25,
+      "yaw": 197.161,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -1795,23 +2081,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 71,
       "section": 2,
-      "name": "Ancient Forest",
+      "name": "Fern Archives",
       "position": [
-        -80812.43,
-        35033.475,
-        1017.083
+        -63281.115,
+        45502.61,
+        900
       ],
-      "yaw": 223.125,
+      "yaw": 198.564,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1820,23 +2110,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 72,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -81941.125,
-        33941.125,
-        1050.0
+        -64554.664,
+        45054.89,
+        900
       ],
-      "yaw": 225.0,
+      "yaw": 200.175,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1845,23 +2139,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 73,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -83033.475,
-        32812.43,
-        1029.167
+        -65712.928,
+        44612.242,
+        900
       ],
-      "yaw": 226.875,
+      "yaw": 201.655,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -1870,47 +2168,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 74,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -84088.311,
-        31648.599,
-        1008.333
+        -66850.177,
+        44143.752,
+        900
       ],
-      "yaw": 228.75,
+      "yaw": 203.123,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 75,
-      "section": 3,
-      "name": "The Listening Temple",
-      "position": [
-        -85104.502,
-        30450.878,
-        987.5
-      ],
-      "yaw": 230.625,
-      "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -1920,22 +2197,84 @@
       "checkpoint": false,
       "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 75,
+      "section": 3,
+      "name": "Echo Sanctum",
+      "position": [
+        -68029.59,
+        43621.274,
+        900
+      ],
+      "yaw": 204.663,
+      "size": [
+        1600,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 76,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -86080.96,
-        29220.549,
-        966.667
+        -69176.592,
+        43076.118,
+        900
       ],
-      "yaw": 232.5,
+      "yaw": 206.179,
       "size": [
-        1340,
+        1000,
+        1050,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
+    },
+    {
+      "index": 77,
+      "section": 3,
+      "name": "Echo Sanctum",
+      "position": [
+        -70162.541,
+        42577.245,
+        1100
+      ],
+      "yaw": 207.498,
+      "size": [
+        850,
         900,
         200
       ],
@@ -1945,47 +2284,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 77,
-      "section": 3,
-      "name": "The Listening Temple",
-      "position": [
-        -87016.641,
-        27958.929,
-        945.833
-      ],
-      "yaw": 234.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "echo",
-      "group": 300,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 78,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -87910.541,
-        26667.371,
-        925.0
+        -71508.203,
+        41849.306,
+        1100
       ],
-      "yaw": 236.25,
+      "yaw": 209.324,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -1995,48 +2313,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 79,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -88761.705,
-        25347.257,
-        904.167
+        -72525.494,
+        41261.364,
+        1100
       ],
-      "yaw": 238.125,
+      "yaw": 210.727,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "ground",
-      "group": -1,
+      "kind": "echo",
+      "group": 300,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 80,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -89569.219,
-        24000.0,
-        883.333
+        -73676.117,
+        40555.357,
+        1100
       ],
-      "yaw": 240.0,
+      "yaw": 212.338,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2045,23 +2371,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 81,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -90332.221,
-        22627.043,
-        862.5
+        -74715.114,
+        39878.6,
+        1100
       ],
-      "yaw": 241.875,
+      "yaw": 213.819,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2070,23 +2400,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 82,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -91049.892,
-        21229.857,
-        841.667
+        -75728.12,
+        39181.007,
+        1060
       ],
-      "yaw": 243.75,
+      "yaw": 215.287,
       "size": [
-        1340,
+        1100,
         900,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 83,
+      "section": 3,
+      "name": "Echo Sanctum",
+      "position": [
+        -76770.97,
+        38421.755,
+        1060
+      ],
+      "yaw": 216.827,
+      "size": [
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2095,47 +2458,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
-      "slide_gate": true,
+      "sweeper": false,
+      "bomb": true,
+      "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
-      "index": 83,
+      "index": 84,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -91721.464,
-        19809.937,
-        820.833
+        -77777.357,
+        37647.164,
+        1060
       ],
-      "yaw": 245.625,
+      "yaw": 218.343,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 2,
-      "hazard": false,
+      "enemy": -1,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
-      "index": 84,
+      "index": 85,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -92346.218,
-        18368.805,
-        800.0
+        -78636.06,
+        36951.75,
+        1260
       ],
-      "yaw": 247.5,
+      "yaw": 219.662,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -2145,47 +2516,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 85,
-      "section": 3,
-      "name": "The Listening Temple",
-      "position": [
-        -92923.484,
-        16908.002,
-        779.167
-      ],
-      "yaw": 249.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "echo",
-      "group": 301,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 86,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -93452.646,
-        15429.094,
-        758.333
+        -79798.135,
+        35956.621,
+        1260
       ],
-      "yaw": 251.25,
+      "yaw": 221.488,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -2195,48 +2545,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 87,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -93933.136,
-        13933.665,
-        737.5
+        -80668.709,
+        35167.534,
+        1100
       ],
-      "yaw": 253.125,
+      "yaw": 222.89,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "ground",
-      "group": -1,
+      "kind": "echo",
+      "group": 301,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 88,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -94364.44,
-        12423.314,
-        716.667
+        -81644.746,
+        34234.94,
+        1100
       ],
-      "yaw": 255.0,
+      "yaw": 224.502,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2245,23 +2603,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 89,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -94746.095,
-        10899.661,
-        695.833
+        -82517.824,
+        33354.458,
+        1100
       ],
-      "yaw": 256.875,
+      "yaw": 225.982,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2270,22 +2632,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 90,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95077.693,
-        9364.335,
-        675.0
+        -83361.106,
+        32459.085,
+        1100
       ],
-      "yaw": 258.75,
+      "yaw": 227.45,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -2293,50 +2659,58 @@
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
-      "slide_gate": true,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 91,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95358.88,
-        7818.983,
-        654.167
+        -84220.57,
+        31497.148,
+        1100
       ],
-      "yaw": 260.625,
+      "yaw": 228.99,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 1,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 92,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95589.353,
-        6265.257,
-        633.333
+        -85041.157,
+        30527.9,
+        1100
       ],
-      "yaw": 262.5,
+      "yaw": 230.506,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -2344,23 +2718,27 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": true
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 93,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95768.867,
-        4704.823,
-        612.5
+        -85734.058,
+        29667.168,
+        1300
       ],
-      "yaw": 264.375,
+      "yaw": 231.825,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -2370,22 +2748,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 94,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95897.228,
-        3139.35,
-        591.667
+        -86660.371,
+        28449.529,
+        1300
       ],
-      "yaw": 266.25,
+      "yaw": 233.651,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -2394,24 +2776,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 95,
       "section": 3,
-      "name": "The Listening Temple",
+      "name": "Echo Sanctum",
       "position": [
-        -95974.3,
-        1570.516,
-        570.833
+        -87345.14,
+        27494.726,
+        1200
       ],
-      "yaw": 268.125,
+      "yaw": 235.054,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2420,23 +2806,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 96,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -96000.0,
-        0.0,
-        550.0
+        -88102.767,
+        26377.416,
+        1200.0
       ],
-      "yaw": 270.0,
+      "yaw": 236.665,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2445,273 +2835,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 97,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -95974.3,
-        -1570.516,
-        543.75
+        -88770.727,
+        25332.742,
+        1200.0
       ],
-      "yaw": 271.875,
+      "yaw": 238.145,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 98,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -95897.228,
-        -3139.35,
-        537.5
-      ],
-      "yaw": 273.75,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 99,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -95768.867,
-        -4704.823,
-        531.25
-      ],
-      "yaw": 275.625,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": 1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 100,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -95589.353,
-        -6265.257,
-        525.0
-      ],
-      "yaw": 277.5,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 101,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -95358.88,
-        -7818.983,
-        518.75
-      ],
-      "yaw": 279.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "moving",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 102,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -95077.693,
-        -9364.335,
-        512.5
-      ],
-      "yaw": 281.25,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 103,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -94746.095,
-        -10899.661,
-        506.25
-      ],
-      "yaw": 283.125,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": true,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 104,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -94364.44,
-        -12423.314,
-        500.0
-      ],
-      "yaw": 285.0,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": true,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 105,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -93933.136,
-        -13933.665,
-        493.75
-      ],
-      "yaw": 286.875,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 106,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -93452.646,
-        -15429.094,
-        487.5
-      ],
-      "yaw": 288.75,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 107,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -92923.484,
-        -16908.002,
-        481.25
-      ],
-      "yaw": 290.625,
-      "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2720,73 +2864,375 @@
       "checkpoint": false,
       "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 98,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -89561.697,
+        24370.838,
+        1200.0
+      ],
+      "yaw": 239.614,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 99,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -89886.247,
+        23071.514,
+        1200.0
+      ],
+      "yaw": 241.153,
+      "size": [
+        1600,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 100,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -90824.781,
+        22076.016,
+        1200.0
+      ],
+      "yaw": 242.729,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
+    },
+    {
+      "index": 101,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -91073.91,
+        20769.948,
+        1280.0
+      ],
+      "yaw": 244.257,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
+    },
+    {
+      "index": 102,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -92006.348,
+        19615.141,
+        1280.0
+      ],
+      "yaw": 245.976,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 340
+    },
+    {
+      "index": 103,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -92355.056,
+        18347.453,
+        1280.0
+      ],
+      "yaw": 247.528,
+      "size": [
+        1200,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
+    },
+    {
+      "index": 104,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -92853.468,
+        17092.876,
+        1280.0
+      ],
+      "yaw": 249.139,
+      "size": [
+        1500,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
+    },
+    {
+      "index": 105,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -93280.019,
+        15928.587,
+        1280.0
+      ],
+      "yaw": 250.619,
+      "size": [
+        1100,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 106,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -93844.553,
+        14818.547,
+        1264.0
+      ],
+      "yaw": 252.087,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "moving",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 107,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -93880.799,
+        13479.791,
+        1264.0
+      ],
+      "yaw": 253.627,
+      "size": [
+        1600,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 108,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -92346.218,
-        -18368.805,
-        475.0
+        -94582.159,
+        12305.074,
+        1264.0
       ],
-      "yaw": 292.5,
+      "yaw": 255.203,
       "size": [
-        1340,
-        900,
+        1100,
+        1250,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
-      "checkpoint": false,
+      "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 109,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -91721.464,
-        -19809.937,
-        468.75
+        -94543.304,
+        10976.027,
+        1344.0
       ],
-      "yaw": 294.375,
+      "yaw": 256.731,
       "size": [
-        1340,
-        900,
+        1100,
+        1250,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 110,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -91049.892,
-        -21229.857,
-        462.5
+        -95204.303,
+        9647.079,
+        1344.0
       ],
-      "yaw": 296.25,
+      "yaw": 258.45,
       "size": [
-        1340,
-        900,
+        1100,
+        1250,
         200
       ],
       "kind": "ground",
@@ -2795,23 +3241,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 340
     },
     {
       "index": 111,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -90332.221,
-        -22627.043,
-        456.25
+        -95270.969,
+        8333.997,
+        1280.0
       ],
-      "yaw": 298.125,
+      "yaw": 260.001,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2819,24 +3269,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 112,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -89569.219,
-        -24000.0,
-        450.0
+        -95486.637,
+        7001.38,
+        1280.0
       ],
-      "yaw": 300.0,
+      "yaw": 261.613,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -2845,123 +3299,56 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 113,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -88761.705,
-        -25347.257,
-        443.75
+        -95651.641,
+        5772.442,
+        1280.0
       ],
-      "yaw": 301.875,
+      "yaw": 263.093,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "bounce": true,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 114,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -87910.541,
-        -26667.371,
-        437.5
+        -95963.09,
+        4566.668,
+        1280.0
       ],
-      "yaw": 303.75,
+      "yaw": 264.561,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 115,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -87016.641,
-        -27958.929,
-        431.25
-      ],
-      "yaw": 305.625,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": 2,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 116,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -86080.96,
-        -29220.549,
-        425.0
-      ],
-      "yaw": 307.5,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": true
-    },
-    {
-      "index": 117,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -85104.502,
-        -30450.878,
-        418.75
-      ],
-      "yaw": 309.375,
-      "size": [
-        1340,
-        900,
+        1100,
+        1250,
         200
       ],
       "kind": "moving",
@@ -2970,48 +3357,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
-      "index": 118,
+      "index": 115,
       "section": 4,
-      "name": "Underground Caverns",
+      "name": "Prism Grotto",
       "position": [
-        -84088.311,
-        -31648.599,
-        412.5
+        -95709.317,
+        3251.687,
+        1280.0
       ],
-      "yaw": 311.25,
+      "yaw": 266.101,
       "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": true,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 119,
-      "section": 4,
-      "name": "Underground Caverns",
-      "position": [
-        -83033.475,
-        -32812.43,
-        406.25
-      ],
-      "yaw": 313.125,
-      "size": [
-        1340,
-        900,
+        1600,
+        1250,
         200
       ],
       "kind": "ground",
@@ -3020,23 +3386,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
-      "index": 120,
-      "section": 5,
-      "name": "The Sunken City",
+      "index": 116,
+      "section": 4,
+      "name": "Prism Grotto",
       "position": [
-        -81941.125,
-        -33941.125,
-        400.0
+        -96140.392,
+        1953.21,
+        1280.0
       ],
-      "yaw": 315.0,
+      "yaw": 267.677,
       "size": [
-        1340,
-        900,
+        1100,
+        1250,
         200
       ],
       "kind": "ground",
@@ -3045,48 +3415,201 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
+    },
+    {
+      "index": 117,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -95815.39,
+        663.925,
+        1360.0
+      ],
+      "yaw": 269.204,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
+    },
+    {
+      "index": 118,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -96173.744,
+        -776.419,
+        1360.0
+      ],
+      "yaw": 270.923,
+      "size": [
+        1100,
+        1250,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 340
+    },
+    {
+      "index": 119,
+      "section": 4,
+      "name": "Prism Grotto",
+      "position": [
+        -95955.219,
+        -2072.908,
+        1320.0
+      ],
+      "yaw": 272.475,
+      "size": [
+        1200,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
+    },
+    {
+      "index": 120,
+      "section": 5,
+      "name": "Tidal Gallery",
+      "position": [
+        -95877.961,
+        -3420.651,
+        900
+      ],
+      "yaw": 274.087,
+      "size": [
+        1500,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 121,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -80812.43,
-        -35033.475,
-        418.75
+        -95773.629,
+        -4656.219,
+        900
       ],
-      "yaw": 316.875,
+      "yaw": 275.567,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 122,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -79648.599,
-        -36088.311,
-        437.5
+        -95638.642,
+        -5878.756,
+        900
       ],
-      "yaw": 318.75,
+      "yaw": 277.035,
       "size": [
-        1340,
+        1100,
         900,
+        200
+      ],
+      "kind": "lift",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 123,
+      "section": 5,
+      "name": "Tidal Gallery",
+      "position": [
+        -95452.226,
+        -7230.92,
+        900
+      ],
+      "yaw": 278.664,
+      "size": [
+        1750,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3095,47 +3618,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
-      "index": 123,
+      "index": 124,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -78450.878,
-        -37104.502,
-        456.25
+        -95231.009,
+        -8557.559,
+        900
       ],
-      "yaw": 320.625,
+      "yaw": 280.27,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 2,
-      "hazard": false,
+      "enemy": -1,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
-      "index": 124,
+      "index": 125,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -77220.549,
-        -38080.96,
-        475.0
+        -95021.509,
+        -9642.492,
+        1100
       ],
-      "yaw": 322.5,
+      "yaw": 281.589,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3145,47 +3676,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 125,
-      "section": 5,
-      "name": "The Sunken City",
-      "position": [
-        -75958.929,
-        -39016.641,
-        493.75
-      ],
-      "yaw": 324.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "echo",
-      "group": 500,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 126,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -74667.371,
-        -39910.541,
-        512.5
+        -94690.322,
+        -11136.151,
+        1100
       ],
-      "yaw": 326.25,
+      "yaw": 283.415,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3195,48 +3705,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 127,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -73347.257,
-        -40761.705,
-        531.25
+        -94403.757,
+        -12275.641,
+        1100
       ],
-      "yaw": 328.125,
+      "yaw": 284.818,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "ground",
-      "group": -1,
+      "kind": "echo",
+      "group": 500,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 128,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -72000.0,
-        -41569.219,
-        550.0
+        -94040.198,
+        -13575.719,
+        1100
       ],
-      "yaw": 330.0,
+      "yaw": 286.429,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3245,48 +3763,85 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 129,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -70627.043,
-        -42332.221,
-        568.75
+        -93674.169,
+        -14760.429,
+        1100
       ],
-      "yaw": 331.875,
+      "yaw": 287.909,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 130,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -69229.857,
-        -43049.892,
-        587.5
+        -93280.98,
+        -15925.856,
+        1060
       ],
-      "yaw": 333.75,
+      "yaw": 289.377,
       "size": [
-        1340,
+        1100,
         900,
+        200
+      ],
+      "kind": "lift",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 131,
+      "section": 5,
+      "name": "Tidal Gallery",
+      "position": [
+        -92809.841,
+        -17206.921,
+        1060
+      ],
+      "yaw": 291.007,
+      "size": [
+        1750,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3295,47 +3850,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
-      "index": 131,
+      "index": 132,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -67809.937,
-        -43721.464,
-        606.25
+        -92310.162,
+        -18455.611,
+        1060
       ],
-      "yaw": 335.625,
+      "yaw": 292.612,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 1,
-      "hazard": false,
+      "enemy": -1,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
-      "index": 132,
+      "index": 133,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -66368.805,
-        -44346.218,
-        625.0
+        -91873.595,
+        -19470.688,
+        1260
       ],
-      "yaw": 337.5,
+      "yaw": 293.931,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3345,47 +3908,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 133,
-      "section": 5,
-      "name": "The Sunken City",
-      "position": [
-        -64908.002,
-        -44923.484,
-        643.75
-      ],
-      "yaw": 339.375,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "echo",
-      "group": 501,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 134,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -63429.094,
-        -45452.646,
-        662.5
+        -91230.785,
+        -20859.031,
+        1260
       ],
-      "yaw": 341.25,
+      "yaw": 295.757,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3395,48 +3937,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 135,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -61933.665,
-        -45933.136,
-        681.25
+        -90707.273,
+        -21910.93,
+        1100
       ],
-      "yaw": 343.125,
+      "yaw": 297.16,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "ground",
-      "group": -1,
+      "kind": "echo",
+      "group": 501,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 136,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -60423.314,
-        -46364.44,
-        700.0
+        -90074.219,
+        -23103.248,
+        1100
       ],
-      "yaw": 345.0,
+      "yaw": 298.771,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3445,98 +3995,114 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 137,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -58899.661,
-        -46746.095,
-        718.75
+        -89463.413,
+        -24182.336,
+        1100
       ],
-      "yaw": 346.875,
+      "yaw": 300.252,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 138,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -57364.335,
-        -47077.693,
-        737.5
+        -88830.196,
+        -25236.781,
+        1100
       ],
-      "yaw": 348.75,
+      "yaw": 301.72,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
-      "kind": "ground",
+      "kind": "lift",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 139,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -55818.983,
-        -47358.88,
-        756.25
+        -88096.113,
+        -26387.529,
+        1100
       ],
-      "yaw": 350.625,
+      "yaw": 303.349,
       "size": [
-        1340,
-        900,
+        1750,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 0,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 140,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -54265.257,
-        -47589.353,
-        775.0
+        -87341.07,
+        -27500.55,
+        1100
       ],
-      "yaw": 352.5,
+      "yaw": 304.955,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -3544,48 +4110,56 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": true
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 141,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -52704.823,
-        -47768.867,
-        793.75
+        -86697.616,
+        -28398.847,
+        1300
       ],
-      "yaw": 354.375,
+      "yaw": 306.274,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "moving",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 142,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -51139.35,
-        -47897.228,
-        812.5
+        -85772.899,
+        -29617.699,
+        1300
       ],
-      "yaw": 356.25,
+      "yaw": 308.1,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3595,23 +4169,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 143,
       "section": 5,
-      "name": "The Sunken City",
+      "name": "Tidal Gallery",
       "position": [
-        -49570.516,
-        -47974.3,
-        831.25
+        -85036.638,
+        -30533.383,
+        1200
       ],
-      "yaw": 358.125,
+      "yaw": 309.503,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3620,23 +4198,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 144,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -48000.0,
-        -48000.0,
-        850.0
+        -84163.352,
+        -31562.825,
+        1200
       ],
-      "yaw": 360.0,
+      "yaw": 311.114,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3645,98 +4227,114 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 145,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -46429.484,
-        -47974.3,
-        872.917
+        -83336.004,
+        -32486.41,
+        1200
       ],
-      "yaw": 361.875,
+      "yaw": 312.594,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 146,
-      "section": 6,
-      "name": "The Long Way Down",
-      "position": [
-        -44860.65,
-        -47897.228,
-        895.833
-      ],
-      "yaw": 363.75,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "crumble",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 147,
-      "section": 6,
-      "name": "The Long Way Down",
-      "position": [
-        -43295.177,
-        -47768.867,
-        918.75
-      ],
-      "yaw": 365.625,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "crumble",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 146,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -82471.16,
+        -33402.682,
+        1200
+      ],
+      "yaw": 314.098,
+      "size": [
+        1100,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
+    },
+    {
+      "index": 147,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -81403.485,
+        -34470.381,
+        1200
+      ],
+      "yaw": 315.901,
+      "size": [
+        1600,
+        1400,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": true,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
     },
     {
       "index": 148,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -41734.743,
-        -47589.353,
-        941.667
+        -80339.722,
+        -35470.303,
+        1200
       ],
-      "yaw": 367.5,
+      "yaw": 317.643,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "crumble",
@@ -3745,47 +4343,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": true,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
     },
     {
       "index": 149,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -40181.017,
-        -47358.88,
-        964.583
+        -79514.669,
+        -36205.326,
+        1400
       ],
-      "yaw": 369.375,
+      "yaw": 318.962,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 150,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -38635.665,
-        -47077.693,
-        987.5
+        -78344.811,
+        -37191.295,
+        1400
       ],
-      "yaw": 371.25,
+      "yaw": 320.789,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3795,48 +4401,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
-      "bounce": true,
-      "secret": false
+      "bounce": false,
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 151,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -37100.339,
-        -46746.095,
-        1010.417
+        -77425.399,
+        -37922.894,
+        1400
       ],
-      "yaw": 373.125,
+      "yaw": 322.191,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 152,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -35576.686,
-        -46364.44,
-        1033.333
+        -76347.321,
+        -38735.377,
+        1400
       ],
-      "yaw": 375.0,
+      "yaw": 323.803,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -3845,47 +4459,55 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 153,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -34066.335,
-        -45933.136,
-        1056.25
+        -75337.31,
+        -39454.676,
+        1400
       ],
-      "yaw": 376.875,
+      "yaw": 325.283,
       "size": [
-        1340,
-        900,
+        1100,
+        1400,
         200
       ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
-      "slide_gate": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": true,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 154,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -32570.906,
-        -45452.646,
-        1079.167
+        -74292.326,
+        -40158.606,
+        1360
       ],
-      "yaw": 378.75,
+      "yaw": 326.787,
       "size": [
-        1340,
+        1100,
         900,
         200
       ],
@@ -3895,48 +4517,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
-      "slide_gate": true,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
     },
     {
       "index": 155,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -31091.998,
-        -44923.484,
-        1102.083
+        -73016.202,
+        -40965.713,
+        1360
       ],
-      "yaw": 380.625,
+      "yaw": 328.589,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "crumble",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": 2,
+      "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
     },
     {
       "index": 156,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -29631.195,
-        -44346.218,
-        1125.0
+        -71758.783,
+        -41707.556,
+        1360
       ],
-      "yaw": 382.5,
+      "yaw": 330.332,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
       "kind": "crumble",
@@ -3945,47 +4575,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": true,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 160
     },
     {
       "index": 157,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -28190.063,
-        -43721.464,
-        1147.917
+        -70792.43,
+        -42243.404,
+        1560
       ],
-      "yaw": 384.375,
+      "yaw": 331.651,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 158,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -26770.143,
-        -43049.892,
-        1170.833
+        -69434.571,
+        -42948.331,
+        1560
       ],
-      "yaw": 386.25,
+      "yaw": 333.477,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -3995,48 +4633,56 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 159,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -25372.957,
-        -42332.221,
-        1193.75
+        -68376.915,
+        -43460.112,
+        1400
       ],
-      "yaw": 388.125,
+      "yaw": 334.88,
       "size": [
-        1340,
-        900,
+        1200,
+        1400,
         200
       ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": true,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 160,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -24000.0,
-        -41569.219,
-        1216.667
+        -67146.702,
+        -44015.949,
+        1400
       ],
-      "yaw": 390.0,
+      "yaw": 336.491,
       "size": [
-        1340,
-        900,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4045,23 +4691,27 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 161,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -22652.743,
-        -40761.705,
-        1239.583
+        -65919.9,
+        -44529.509,
+        1400
       ],
-      "yaw": 391.875,
+      "yaw": 338.079,
       "size": [
-        1340,
         900,
+        1400,
         200
       ],
       "kind": "crumble",
@@ -4070,22 +4720,26 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
-      "bounce": true,
-      "secret": false
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 162,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -21332.629,
-        -39910.541,
-        1262.5
+        -64960.319,
+        -44903.759,
+        1400
       ],
-      "yaw": 393.75,
+      "yaw": 339.308,
       "size": [
-        1340,
+        900,
         900,
         200
       ],
@@ -4095,48 +4749,259 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
-      "slide_gate": true,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 163,
       "section": 6,
-      "name": "The Long Way Down",
+      "name": "Clockwork Descent",
       "position": [
-        -20041.071,
-        -39016.641,
-        1285.417
+        -63992.928,
+        -45257.334,
+        1400
       ],
-      "yaw": 395.625,
+      "yaw": 340.538,
       "size": [
-        1340,
+        900,
+        1400,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 164,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -63018.174,
+        -45590.07,
+        1400
+      ],
+      "yaw": 341.767,
+      "size": [
+        900,
+        1050,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 165,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -62036.505,
+        -45901.814,
+        1600
+      ],
+      "yaw": 342.997,
+      "size": [
+        900,
         900,
         200
       ],
       "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 166,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -61048.372,
+        -46192.423,
+        1600
+      ],
+      "yaw": 344.226,
+      "size": [
+        900,
+        900,
+        200
+      ],
+      "kind": "crumble",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
+    },
+    {
+      "index": 167,
+      "section": 6,
+      "name": "Clockwork Descent",
+      "position": [
+        -59889.604,
+        -46504.164,
+        1500
+      ],
+      "yaw": 345.659,
+      "size": [
+        1200,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": true,
+      "challenge": "jump",
+      "incoming_gap": 150
+    },
+    {
+      "index": 168,
+      "section": 7,
+      "name": "The Cake Chamber",
+      "position": [
+        -58577.145,
+        -46820.124,
+        1600
+      ],
+      "yaw": 347.27,
+      "size": [
+        1500,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": true,
+      "enemy": -1,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
+    },
+    {
+      "index": 169,
+      "section": 7,
+      "name": "The Cake Chamber",
+      "position": [
+        -57364.231,
+        -47077.714,
+        1600
+      ],
+      "yaw": 348.75,
+      "size": [
+        1100,
+        1400,
+        200
+      ],
+      "kind": "ground",
+      "group": -1,
+      "echo_node": -1,
+      "checkpoint": false,
+      "enemy": 0,
+      "hazard": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": false,
+      "bounce": false,
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
+    },
+    {
+      "index": 170,
+      "section": 7,
+      "name": "The Cake Chamber",
+      "position": [
+        -56154.922,
+        -47302.191,
+        1600
+      ],
+      "yaw": 350.218,
+      "size": [
+        1100,
+        900,
+        200
+      ],
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": 1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
-      "index": 164,
-      "section": 6,
-      "name": "The Long Way Down",
+      "index": 171,
+      "section": 7,
+      "name": "The Cake Chamber",
       "position": [
-        -18779.451,
-        -38080.96,
-        1308.333
+        -54880.884,
+        -47504.247,
+        1600
       ],
-      "yaw": 397.5,
+      "yaw": 351.758,
       "size": [
-        1340,
-        900,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4145,72 +5010,55 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": true
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
-      "index": 165,
-      "section": 6,
-      "name": "The Long Way Down",
+      "index": 172,
+      "section": 7,
+      "name": "The Cake Chamber",
       "position": [
-        -17549.122,
-        -37104.502,
-        1331.25
+        -53621.739,
+        -47669.655,
+        1600
       ],
-      "yaw": 399.375,
+      "yaw": 353.274,
       "size": [
-        1340,
-        900,
+        1000,
+        1050,
         200
       ],
-      "kind": "crumble",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 166,
-      "section": 6,
-      "name": "The Long Way Down",
-      "position": [
-        -16351.401,
-        -36088.311,
-        1354.167
-      ],
-      "yaw": 401.25,
-      "size": [
-        1340,
-        900,
-        200
-      ],
-      "kind": "crumble",
+      "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
       "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
-      "index": 167,
-      "section": 6,
-      "name": "The Long Way Down",
+      "index": 173,
+      "section": 7,
+      "name": "The Cake Chamber",
       "position": [
-        -15187.57,
-        -35033.475,
-        1377.083
+        -52522.951,
+        -47786.43,
+        1800
       ],
-      "yaw": 403.125,
+      "yaw": 354.593,
       "size": [
-        1340,
+        850,
         900,
         200
       ],
@@ -4220,173 +5068,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 168,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -14058.875,
-        -33941.125,
-        1400.0
-      ],
-      "yaw": 405.0,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": true,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 169,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -12966.525,
-        -32812.43,
-        1439.583
-      ],
-      "yaw": 406.875,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 170,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -11911.689,
-        -31648.599,
-        1479.167
-      ],
-      "yaw": 408.75,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 171,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -10895.498,
-        -30450.878,
-        1518.75
-      ],
-      "yaw": 410.625,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 172,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -9919.04,
-        -29220.549,
-        1558.333
-      ],
-      "yaw": 412.5,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
-    },
-    {
-      "index": 173,
-      "section": 7,
-      "name": "One Last Climb",
-      "position": [
-        -8983.359,
-        -27958.929,
-        1597.917
-      ],
-      "yaw": 414.375,
-      "size": [
-        1340,
-        1200,
-        200
-      ],
-      "kind": "ground",
-      "group": -1,
-      "echo_node": -1,
-      "checkpoint": false,
-      "enemy": -1,
-      "hazard": false,
-      "slide_gate": false,
-      "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 174,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -8089.459,
-        -26667.371,
-        1637.5
+        -50997.719,
+        -47906.301,
+        1800
       ],
-      "yaw": 416.25,
+      "yaw": 356.419,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -4395,23 +5097,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 175,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -7238.295,
-        -25347.257,
-        1677.083
+        -49824.232,
+        -47965.323,
+        1800
       ],
-      "yaw": 418.125,
+      "yaw": 357.822,
       "size": [
-        1340,
         1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4420,23 +5126,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 176,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -6430.781,
-        -24000.0,
-        1716.667
+        -48474.663,
+        -47997.653,
+        1800
       ],
-      "yaw": 420.0,
+      "yaw": 359.433,
       "size": [
-        1340,
-        1200,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4445,73 +5155,85 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 177,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -5667.779,
-        -22627.043,
-        1756.25
+        -47234.703,
+        -47993.899,
+        1800
       ],
-      "yaw": 421.875,
+      "yaw": 360.914,
       "size": [
-        1340,
-        1200,
+        1100,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
-      "slide_gate": false,
+      "sweeper": false,
+      "bomb": false,
+      "slide_gate": true,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 178,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -4950.108,
-        -21229.857,
-        1795.833
+        -46005.246,
+        -47958.534,
+        1760
       ],
-      "yaw": 423.75,
+      "yaw": 362.382,
       "size": [
-        1340,
-        1200,
+        1100,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 130
     },
     {
       "index": 179,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -4278.536,
-        -19809.937,
-        1835.417
+        -44717.236,
+        -47887.613,
+        1760
       ],
-      "yaw": 425.625,
+      "yaw": 363.922,
       "size": [
-        1340,
-        1200,
+        1600,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4520,23 +5242,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -60
     },
     {
       "index": 180,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -3653.782,
-        -18368.805,
-        1875.0
+        -43451.506,
+        -47784.006,
+        1760
       ],
-      "yaw": 427.5,
+      "yaw": 365.438,
       "size": [
-        1340,
-        1200,
+        1000,
+        1050,
         200
       ],
       "kind": "ground",
@@ -4544,24 +5270,28 @@
       "echo_node": -1,
       "checkpoint": false,
       "enemy": -1,
-      "hazard": false,
+      "hazard": true,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -30
     },
     {
       "index": 181,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -3076.516,
-        -16908.002,
-        1914.583
+        -42352.781,
+        -47666.644,
+        1960
       ],
-      "yaw": 429.375,
+      "yaw": 366.757,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -4570,23 +5300,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": 180
     },
     {
       "index": 182,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -2547.354,
-        -15429.094,
-        1954.167
+        -40836.532,
+        -47462.456,
+        1960
       ],
-      "yaw": 431.25,
+      "yaw": 368.583,
       "size": [
-        1340,
-        1200,
+        850,
+        900,
         200
       ],
       "kind": "ground",
@@ -4595,23 +5329,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "dash_jump",
+      "incoming_gap": 680
     },
     {
       "index": 183,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -2066.864,
-        -13933.665,
-        1993.75
+        -39676.953,
+        -47272.898,
+        1800
       ],
-      "yaw": 433.125,
+      "yaw": 369.985,
       "size": [
-        1340,
         1200,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4620,23 +5358,27 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "jump",
+      "incoming_gap": 150
     },
     {
       "index": 184,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -1635.56,
-        -12423.314,
-        2033.333
+        -38350.87,
+        -47020.148,
+        1800
       ],
-      "yaw": 435.0,
+      "yaw": 371.597,
       "size": [
-        1340,
-        1200,
+        1500,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4645,173 +5387,201 @@
       "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": 0
     },
     {
       "index": 185,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -1253.905,
-        -10899.661,
-        2072.917
+        -37217.478,
+        -46773.253,
+        2000
       ],
-      "yaw": 436.875,
+      "yaw": 372.981,
       "size": [
-        1340,
-        1200,
+        900,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 0,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -40
     },
     {
       "index": 186,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -922.307,
-        -9364.335,
-        2112.5
+        -36381.232,
+        -46572.57,
+        2200
       ],
-      "yaw": 438.75,
+      "yaw": 374.008,
       "size": [
-        1340,
-        1200,
+        900,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -40
     },
     {
       "index": 187,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -641.12,
-        -7818.983,
-        2152.083
+        -35548.717,
+        -46356.936,
+        2400
       ],
-      "yaw": 440.625,
+      "yaw": 375.035,
       "size": [
-        1340,
-        1200,
+        900,
+        1400,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -40
     },
     {
       "index": 188,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -410.647,
-        -6265.257,
-        2191.667
+        -34720.198,
+        -46126.422,
+        2600
       ],
-      "yaw": 442.5,
+      "yaw": 376.061,
       "size": [
-        1340,
-        1200,
+        900,
+        1050,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
-      "checkpoint": false,
+      "checkpoint": true,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": true
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -40
     },
     {
       "index": 189,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -231.133,
-        -4704.823,
-        2231.25
+        -33895.941,
+        -45881.102,
+        2800
       ],
-      "yaw": 444.375,
+      "yaw": 377.088,
       "size": [
-        1340,
-        1200,
+        900,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": true,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "double_jump",
+      "incoming_gap": -40
     },
     {
       "index": 190,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -102.772,
-        -3139.35,
-        2270.833
+        -33076.213,
+        -45621.054,
+        3000
       ],
-      "yaw": 446.25,
+      "yaw": 378.114,
       "size": [
-        1340,
-        1200,
+        900,
+        900,
         200
       ],
       "kind": "ground",
       "group": -1,
       "echo_node": -1,
       "checkpoint": false,
-      "enemy": -1,
+      "enemy": 2,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": false,
+      "challenge": "walk",
+      "incoming_gap": -40
     },
     {
       "index": 191,
       "section": 7,
-      "name": "One Last Climb",
+      "name": "The Cake Chamber",
       "position": [
-        -25.7,
-        -1570.516,
-        2310.417
+        -31554.688,
+        -45094.919,
+        3200
       ],
-      "yaw": 448.125,
+      "yaw": 380.036,
       "size": [
-        1340,
-        1200,
+        2400,
+        1400,
         200
       ],
       "kind": "ground",
@@ -4820,9 +5590,13 @@
       "checkpoint": false,
       "enemy": -1,
       "hazard": false,
+      "sweeper": false,
+      "bomb": false,
       "slide_gate": false,
       "bounce": false,
-      "secret": false
+      "secret": true,
+      "challenge": "walk",
+      "incoming_gap": -40
     }
   ]
 }

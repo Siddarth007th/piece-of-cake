@@ -18,6 +18,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     # Fail before starting a tempting but unplayable browser page.
     packaged = os.environ.get("GAME_EXECUTABLE")
+    delivered = Path.home() / "Applications/PieceOfCake.app/Contents/MacOS/PieceOfCake"
+    if not delivered.is_file():
+        delivered = ROOT / "Builds/Mac/Development/PieceOfCake.app/Contents/MacOS/PieceOfCake"
+    if not packaged and delivered.is_file():
+        packaged = str(delivered)
+        os.environ["GAME_EXECUTABLE"] = packaged
     if packaged:
         if not Path(packaged).expanduser().is_file():
             raise SystemExit("GAME_EXECUTABLE does not exist")

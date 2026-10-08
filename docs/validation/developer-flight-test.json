@@ -1,0 +1,40 @@
+{
+	"passed": true,
+	"reason": "Six-axis flight, floor traversal, damage immunity, safe exit and ordinary tap jump",
+	"damage_blocked": true,
+	"below_floor_without_death": true,
+	"collision_gravity_checkpoint_restored": true,
+	"normal_50ms_tap_jump_height_cm": 108.26292419433594,
+	"deltas_down_up_forward_backward_right_left": [
+		[
+			0,
+			0,
+			-2877.561563262735
+		],
+		[
+			0,
+			0,
+			2853.2081227896915
+		],
+		[
+			2.2491200680318735e-13,
+			793.96509622962446,
+			28.03858078604534
+		],
+		[
+			-2.2683858459927817e-13,
+			-800.76613609854041,
+			0
+		],
+		[
+			-801.41403573718208,
+			0,
+			0
+		],
+		[
+			824.08491781770363,
+			0,
+			0
+		]
+	]
+}

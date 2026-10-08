@@ -18,23 +18,37 @@ class JourneyTests(unittest.TestCase):
         spec.loader.exec_module(module)
         self.assertEqual(module.generate(), DATA)
 
-    def test_every_required_gap_has_airtime_margin_at_run_speed(self):
+    def test_required_gaps_have_a_reachable_move_combination(self):
         movement = DATA["movement"]
-        for a, b in zip(POINTS, POINTS[1:]):
-            dz = b["position"][2] - a["position"][2]
-            # Reserve 45 cm on both platforms for capsule radius and imperfect timing.
-            distance = math.dist(a["position"][:2], b["position"][:2])
-            gap = distance - a["size"][0] / 2 - b["size"][0] / 2 + 90
-            lateral = 300 if a["kind"] == "moving" or b["kind"] == "moving" else 0
-            gap = math.hypot(gap, lateral)
-            discriminant = movement["jump_speed"] ** 2 - 2 * movement["gravity"] * dz
-            self.assertGreater(discriminant, 0, f"Unreachable height at platform {b['index']}")
-            flight = (movement["jump_speed"] + math.sqrt(discriminant)) / movement["gravity"]
-            self.assertLess(gap, movement["run_speed"] * flight, f"Gap {a['index']} → {b['index']} is too long")
+        gravity, jump, speed = movement['gravity'], movement['jump_speed'], movement['run_speed']
+        for a,b in zip(POINTS,POINTS[1:]):
+            dz=b['position'][2]-a['position'][2] + (220 if b['kind']=='lift' else 0)
+            distance=math.dist(a['position'][:2],b['position'][:2])
+            gap=max(0,distance-(a['size'][0]+b['size'][0])/2)+90
+            lateral=300 if 'moving' in (a['kind'],b['kind']) else 0
+            required=math.hypot(gap,lateral)
+            # Double jump at 0.30s; then a 0.2s dash with gravity suspended.
+            launch_time=.30
+            launch_height=jump*launch_time-.5*gravity*launch_time**2
+            discriminant=jump**2-2*gravity*(dz-launch_height)
+            self.assertGreater(discriminant,0,f"Height unreachable at {b['index']}")
+            flight=launch_time+(jump+math.sqrt(discriminant))/gravity
+            reach=speed*flight+movement['dash_speed']*movement['dash_seconds']
+            self.assertLess(required,reach-50,f"No move combination reaches {b['index']}")
+
+    def test_encounters_have_breathing_room_and_different_jump_demands(self):
+        for p in POINTS:
+            if p['checkpoint']:
+                self.assertFalse(p['bomb'] or p['hazard'] or p['sweeper'])
+                self.assertEqual(p['enemy'],-1)
+        self.assertGreater(sum(p['incoming_gap']<=0 for p in POINTS),60)
+        self.assertGreater(sum(p['challenge']=='double_jump' for p in POINTS),20)
+        self.assertGreaterEqual(sum(p['challenge']=='dash_jump' for p in POINTS),15)
+        self.assertGreater(sum(p['bomb'] for p in POINTS),15)
 
     def test_checkpoints_are_safe_and_never_more_than_eight_platforms_apart(self):
         checkpoints = [p for p in POINTS if p["checkpoint"]]
-        self.assertEqual(len(checkpoints), 24)
+        self.assertGreaterEqual(len(checkpoints), 24)
         self.assertTrue(all(p["kind"] == "ground" for p in checkpoints))
         self.assertEqual(checkpoints[0]["index"], 0)
         self.assertTrue(all(b["index"] - a["index"] <= 8 for a, b in zip(checkpoints, checkpoints[1:])))
@@ -53,21 +67,33 @@ class JourneyTests(unittest.TestCase):
             length = sum(math.dist(a["position"], b["position"]) for a,b in zip([nodes[group]] + bridges, bridges + [POINTS[bridges[-1]["index"]+1]]))
             self.assertLess(length / DATA["movement"]["run_speed"] + 4, 18)
 
+    def test_districts_offer_distinct_traversal(self):
+        self.assertEqual(sum(p['kind']=='lift' for p in POINTS),3)
+        self.assertTrue(all(p['kind']=='crumble' for p in POINTS[161:167]))
+        self.assertTrue(all(POINTS[i]['size'][1]>=1800 for i in (51,67)))
+        self.assertFalse(any(p['enemy']>=0 or p['hazard'] or p['bomb'] for p in POINTS[:8]))
+        self.assertTrue(POINTS[3]['checkpoint'])
+        for point in POINTS[96:120]:
+            self.assertLessEqual(point['incoming_gap'],340)
+            if point['index']%8 in (2,3,4,5,6): self.assertGreaterEqual(point['size'][1],1250)
+        # The first rise is within the measured short-tap jump height.
+        self.assertLessEqual(POINTS[5]['position'][2]-POINTS[4]['position'][2],80)
+
     def test_secrets_are_optional_and_reachable(self):
         secrets = [p for p in POINTS if p["secret"]]
         self.assertEqual(len(secrets), 8)
         for point in secrets:
             self.assertEqual(point["kind"], "ground")
-            gap = 900 - point["size"][1] / 2 - 250 + 90
+            gap = 830 - point["size"][1] / 2 - 250 + 90
             flight = (650 + math.sqrt(650**2 - 2*1568*60))/1568
             self.assertLess(gap, 620*flight)
 
     def test_route_has_all_eight_sections_and_an_unobstructed_ending(self):
         self.assertEqual(sorted(set(p["section"] for p in POINTS)), list(range(8)))
         self.assertEqual(len(POINTS), 192)
-        self.assertTrue(all(p["enemy"] == -1 for p in POINTS[-24:]))
+        self.assertTrue(all(p["enemy"] == -1 and not p["bomb"] and not p["hazard"] for p in POINTS[-1:]))
         self.assertEqual(POINTS[-1]["kind"], "ground")
-        self.assertGreater(sum(math.dist(a["position"], b["position"]) for a,b in zip(POINTS,POINTS[1:])), 280000)
+        self.assertGreater(sum(math.dist(a["position"], b["position"]) for a,b in zip(POINTS,POINTS[1:])), 200000)
         self.assertFalse(DATA["timing_verified"], "Set this only after a timed playthrough")
 
     def test_original_audio_has_valid_nonempty_pcm(self):

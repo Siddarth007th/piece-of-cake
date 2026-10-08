@@ -3,12 +3,14 @@
 #include "GameFramework/GameModeBase.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/HUD.h"
+#include "POCDeveloperCode.h"
 #include "POCGameMode.generated.h"
 
 class APOCWorld;
+class UFont;
 
 UENUM()
-enum class EPOCMenu : uint8 { Title, Playing, Pause, Settings, Complete, Controls };
+enum class EPOCMenu : uint8 { Title, Playing, Pause, Settings, Complete, Controls, Dream, Cloud };
 
 UCLASS()
 class PIECEOFCAKE_API APOCGameMode : public AGameModeBase
@@ -29,9 +31,11 @@ public:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
     virtual void PlayerTick(float DeltaSeconds) override;
+    virtual bool InputKey(const FInputKeyEventArgs& Params) override;
     UFUNCTION(BlueprintCallable) void TogglePause();
     void OpenMenu(EPOCMenu NewMenu);
     void ActivateSelection();
+    void FinishDream();
     void AdjustSetting(int32 Direction);
     TArray<FString> MenuLabels() const;
     UPROPERTY() TObjectPtr<APOCWorld> Journey;
@@ -40,7 +44,10 @@ public:
     int32 Selection = 0;
     bool HasStarted = false;
     bool ShowFPS = false;
+    float DreamTime = 0;
 private:
+    FPOCDeveloperCode DeveloperCode;
+    TSet<FKey> CodeKeys;
     bool Initialized = false;
     FVector2D PreviousMouse = FVector2D(-1, -1);
 };
@@ -50,10 +57,12 @@ class PIECEOFCAKE_API APOCHUD : public AHUD
 {
     GENERATED_BODY()
 public:
+    APOCHUD();
     virtual void DrawHUD() override;
     int32 HitMenu(FVector2D Mouse) const;
 private:
     void Text(const FString& Value, float X, float Y, float Scale, FLinearColor Color, bool Center = false);
+    UPROPERTY() TObjectPtr<UFont> InterfaceFont;
     TArray<FBox2D> ButtonRects;
     float UIScale = 1;
 };

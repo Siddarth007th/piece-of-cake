@@ -1,0 +1,17 @@
+{
+	"passed": true,
+	"reason": "Native key/axis input: arrows, clamps, recenter, F toggle, middle drag, pause reset and stable walking",
+	"mode": "Native controller key and mouse-axis simulation in running Unreal; browser checks recorded separately",
+	"tap_F_latches_mouse": true,
+	"pause_locks_camera": true,
+	"locked_mouse_yaw_change": 0,
+	"right_arrow_degrees": 67.834182739257812,
+	"left_arrow_degrees": -66.005760192871094,
+	"up_pitch_limit": 28,
+	"down_pitch_limit": -65,
+	"recenter_yaw_error": 5.6205635701189749e-09,
+	"toggled_mouse_degrees": 51.654834747314453,
+	"untoggled_mouse_degrees": 0,
+	"middle_drag_degrees": 51.654834747314453,
+	"walking_camera_yaw_change": 0
+}

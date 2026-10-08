@@ -1,0 +1,36 @@
+name: Validate game and cloud source
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate route and launch behavior
+        run: python -m unittest discover -s Tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            Backend/package-lock.json
+            Web/package-lock.json
+      - name: Test PostgreSQL ownership and write constraints
+        working-directory: Backend
+        run: |
+          npm ci --ignore-scripts
+          npm test
+      - name: Test and build optional streaming frontend
+        working-directory: Web
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Check patch whitespace
+        run: git diff --check

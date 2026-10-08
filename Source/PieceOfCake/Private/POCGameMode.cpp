@@ -1,11 +1,25 @@
 #include "POCGameMode.h"
+#include "InputKeyEventArgs.h"
+#include "HAL/PlatformTime.h"
+#include "POCJourneyTest.h"
+#include "POCFlightTest.h"
+#include "POCCameraTest.h"
+#include "POCPresentationTest.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 #include "POCCharacter.h"
 #include "POCWorld.h"
 #include "POCGameInstance.h"
+#include "POCCloud.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Camera/CameraActor.h"
 #include "Engine/Canvas.h"
+#include "CanvasItem.h"
+#include "Engine/Texture.h"
+#include "Engine/Font.h"
+#include "UObject/ConstructorHelpers.h"
 #include "Engine/Engine.h"
+#include "Engine/GameViewportClient.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
@@ -25,7 +39,21 @@ void APOCGameMode::InitGame(const FString& MapName, const FString& Options, FStr
 void APOCGameMode::StartPlay()
 {
     Super::StartPlay();
+    // Public preview keeps the requested in-game flight code, but exposes no engine console.
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCPublicSession")) && GetWorld()->GetGameViewport())
+        GetWorld()->GetGameViewport()->ViewportConsole=nullptr;
+    // Establish the final render preset before constructing the world, so starting
+    // a journey does not invalidate warmed render state.
+    GetGameInstance<UPOCGameInstance>()->ApplySettings();
     GetWorld()->SpawnActor<APOCWorld>();
+#if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCPresentationTest"))) GetWorld()->SpawnActor<APOCPresentationTest>();
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCCameraTest"))) GetWorld()->SpawnActor<APOCCameraTest>();
+    if(FParse::Param(FCommandLine::Get(),TEXT("POCFlightTest"))) GetWorld()->SpawnActor<APOCFlightTest>();
+    int32 TestRun = 0;
+    if (FParse::Value(FCommandLine::Get(), TEXT("POCAutoRun="), TestRun) && TestRun > 0)
+        GetWorld()->SpawnActor<APOCJourneyTest>();
+#endif
 }
 
 APOCController::APOCController()
@@ -46,12 +74,45 @@ void APOCController::SetupInputComponent()
     auto& PauseBinding = InputComponent->BindAction(TEXT("Pause"), IE_Pressed, this, &APOCController::TogglePause);
     PauseBinding.bExecuteWhenPaused = true;
 }
+bool APOCController::InputKey(const FInputKeyEventArgs& Params)
+{
+    if (CodeKeys.Contains(Params.Key))
+    {
+        if (Params.Event == IE_Released) CodeKeys.Remove(Params.Key);
+        if (Params.Event != IE_Pressed) return true;
+    }
+    if (Menu == EPOCMenu::Playing || Menu == EPOCMenu::Pause)
+    {
+        const FString Key = Params.Key.GetFName().ToString();
+        if (Params.Event == IE_Pressed && Key.Len() == 1 && FChar::IsAlpha(Key[0]))
+        {
+            bool Consume = false;
+            const bool Toggle = DeveloperCode.Push(Key[0], FPlatformTime::Seconds(), Consume);
+            if (Consume)
+            {
+                if (auto* Player = Cast<APOCCharacter>(GetPawn()))
+                {
+                    Player->ResetHeldInput();
+                    Player->GetCharacterMovement()->StopMovementImmediately();
+                    if (Toggle) Player->SetDeveloperFlight(!Player->DeveloperFlight);
+                }
+                CodeKeys.Add(Params.Key);
+                return true;
+            }
+        }
+        else if (Params.Event == IE_Pressed && !Params.Key.IsModifierKey()) DeveloperCode.Reset();
+    }
+    else DeveloperCode.Reset();
+    return Super::InputKey(Params);
+}
+
 void APOCController::OpenMenu(EPOCMenu NewMenu)
 {
+    DeveloperCode.Reset(); CodeKeys.Reset();
     Menu = NewMenu; Selection = 0;
     const bool Playing = Menu == EPOCMenu::Playing;
     bShowMouseCursor = !Playing;
-    SetPause(!Playing);
+    SetPause(!Playing && HasStarted);
     if (Playing)
     {
         FInputModeGameOnly Mode; SetInputMode(Mode);
@@ -69,7 +130,7 @@ void APOCController::OpenMenu(EPOCMenu NewMenu)
 }
 void APOCController::TogglePause()
 {
-    if (Menu == EPOCMenu::Settings || Menu == EPOCMenu::Controls)
+    if (Menu == EPOCMenu::Settings || Menu == EPOCMenu::Controls || Menu == EPOCMenu::Cloud)
     {
         GetGameInstance<UPOCGameInstance>()->ApplySettings(); OpenMenu(ReturnMenu);
     }
@@ -80,10 +141,11 @@ void APOCController::TogglePause()
 TArray<FString> APOCController::MenuLabels() const
 {
     const auto* GI = GetGameInstance<UPOCGameInstance>();
-    if (Menu == EPOCMenu::Title) return { TEXT("Begin the journey"), TEXT("Settings"), TEXT("How to play") };
+    if (Menu == EPOCMenu::Title) return { TEXT("Start adventure"), TEXT("Settings"), TEXT("How to play"), TEXT("Cloud saves"), TEXT("Quit game") };
     if (Menu == EPOCMenu::Pause) return { TEXT("Keep going"), TEXT("Restart checkpoint"), TEXT("Settings"), TEXT("How to play"), TEXT("Start a new journey") };
     if (Menu == EPOCMenu::Complete) return { TEXT("One more slice?"), TEXT("Settings") };
     if (Menu == EPOCMenu::Controls) return { TEXT("Back") };
+    if (Menu == EPOCMenu::Cloud) return { GI->Cloud->Connected() ? TEXT("Sync and refresh") : TEXT("Connect cloud profile"), TEXT("Back") };
     if (Menu == EPOCMenu::Settings)
         return {
             FString::Printf(TEXT("Music                         %d%%"), FMath::RoundToInt(GI->Save->MusicVolume * 100)),
@@ -124,12 +186,20 @@ void APOCController::ActivateSelection()
         else AdjustSetting(1);
     }
     else if (Menu == EPOCMenu::Controls) OpenMenu(ReturnMenu);
+    else if (Menu == EPOCMenu::Cloud) { if(Selection==0) GI->Cloud->Connect(); else OpenMenu(ReturnMenu); }
     else if (Menu == EPOCMenu::Title)
     {
         if (Selection == 0 && Journey && Journey->Ready)
-        { HasStarted = true; GI->ApplySettings(); OpenMenu(EPOCMenu::Playing); SetViewTargetWithBlend(GetPawn(), .8f); Journey->ShowCaption(TEXT("There it is. Just up there. How hard could it be?"), 6); }
+        {
+            HasStarted=true; OpenMenu(EPOCMenu::Playing);
+            Menu=EPOCMenu::Dream; DreamTime=0; Journey->AnimateDream(0); Journey->ShowDream(true);
+            if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=true; P->GetCharacterMovement()->DisableMovement(); }
+            SetViewTargetWithBlend(Journey->DreamCamera,.5f);
+        }
         else if (Selection == 1) OpenSettings();
         else if (Selection == 2) OpenControls();
+        else if (Selection == 3) {ReturnMenu=Menu;OpenMenu(EPOCMenu::Cloud);GI->Cloud->RefreshBoard();}
+        else if (Selection == 4) FPlatformMisc::RequestExit(false);
     }
     else if (Menu == EPOCMenu::Pause)
     {
@@ -146,14 +216,37 @@ void APOCController::ActivateSelection()
     }
 }
 
+void APOCController::FinishDream()
+{
+    if(Journey) Journey->ShowDream(false);
+    if(auto* P=Cast<APOCCharacter>(GetPawn())) { P->Dreaming=false; P->ResetHeldInput();P->GetCharacterMovement()->SetMovementMode(MOVE_Walking); }
+    OpenMenu(EPOCMenu::Playing); SetViewTargetWithBlend(GetPawn(),.8f);
+    Journey->ShowCaption(TEXT("One dream. One cake. Collect shards to open the final door."),5);
+}
+
 void APOCController::PlayerTick(float DeltaSeconds)
 {
     Super::PlayerTick(DeltaSeconds);
-    if (!Journey) for (TActorIterator<APOCWorld> It(GetWorld()); It; ++It) { Journey = *It; break; }
-    if (!Initialized && Journey && GetPawn())
+    if (!Journey)
+    {
+        TActorIterator<APOCWorld> It(GetWorld());
+        if (It) Journey = *It;
+    }
+    if (!Initialized && Journey && Journey->Ready && GetPawn())
     {
         Initialized = true;
+        auto* Player=Cast<APOCCharacter>(GetPawn());
+        Journey->Player=Player; Player->Journey=Journey;
+        Player->Checkpoint=FTransform(FRotator(0,Journey->Route[0].Yaw,0),Journey->Route[0].Position+FVector(0,0,52));
+        Player->SetActorLocation(Journey->Route[0].Position+FVector(0,0,44)); Player->SetActorRotation(FRotator(0,Journey->Route[0].Yaw+35,0)); Player->Dreaming=true; Player->GetCharacterMovement()->DisableMovement();
         OpenMenu(EPOCMenu::Title);
+    }
+    if(Menu==EPOCMenu::Dream)
+    {
+        DreamTime+=DeltaSeconds;
+        Journey->AnimateDream(DreamTime);
+        if(DreamTime>5.5f || WasInputKeyJustPressed(EKeys::Enter) || WasInputKeyJustPressed(EKeys::SpaceBar) || WasInputKeyJustPressed(EKeys::Gamepad_FaceButton_Bottom)) FinishDream();
+        return;
     }
     if (Menu == EPOCMenu::Playing && GetGameInstance<UPOCGameInstance>()->Won) OpenMenu(EPOCMenu::Complete);
     if (Menu != EPOCMenu::Playing)
@@ -194,12 +287,20 @@ void APOCController::PlayerTick(float DeltaSeconds)
 #endif
 }
 
+APOCHUD::APOCHUD()
+{
+    static ConstructorHelpers::FObjectFinder<UFont> Font(TEXT("/Engine/EngineFonts/Roboto.Roboto"));
+    InterfaceFont = Font.Object;
+}
+
 void APOCHUD::Text(const FString& Value, float X, float Y, float Scale, FLinearColor Color, bool Center)
 {
-    UFont* Font = GEngine->GetLargeFont();
-    float W = 0, H = 0;
-    GetTextSize(Value, W, H, Font, Scale * UIScale);
-    DrawText(Value, Color, X * UIScale - (Center ? W * .5 : 0), Y * UIScale, Font, Scale * UIScale, false);
+    // Rasterize at the actual display size instead of enlarging a small bitmap atlas.
+    const FSlateFontInfo Font(InterfaceFont, FMath::Max(11, FMath::RoundToInt(Scale * 30.f * UIScale)),
+        Scale >= 1.f ? TEXT("Bold") : TEXT("Regular"));
+    FCanvasTextItem Item(FVector2D(X * UIScale, Y * UIScale), FText::FromString(Value), Font, Color);
+    Item.bCentreX = Center;
+    Canvas->DrawItem(Item);
 }
 int32 APOCHUD::HitMenu(FVector2D Mouse) const
 {
@@ -219,25 +320,127 @@ void APOCHUD::DrawHUD()
     const float W = Canvas->SizeX / UIScale, H = Canvas->SizeY / UIScale;
     const FLinearColor Ivory(.95, .91, .79), Muted(.55, .66, .67), Gold(.9, .65, .32), Dark(.025, .055, .075, .94);
     ButtonRects.Reset();
+    if(PC->Menu==EPOCMenu::Title)
+    {
+        // A readable game logo and simple menu leave most of the live scene to Nori.
+        for(int32 I=0;I<50;++I)
+            DrawRect(FLinearColor(.009,.025,.04,.90f*FMath::Pow(1-I/50.f,1.4f)),I*15*UIScale,0,15*UIScale,Canvas->SizeY);
+        Text(TEXT("A NORI ADVENTURE"),76,116,.44,Ivory);
+        Text(TEXT("PIECE OF"),72,156,1.5,FLinearColor(.015,.05,.065));
+        Text(TEXT("PIECE OF"),68,150,1.5,Ivory);
+        Text(TEXT("CAKE"),68,220,2.85,FLinearColor(.015,.05,.065));
+        Text(TEXT("CAKE"),64,212,2.85,Gold);
+        DrawRect(Gold,76*UIScale,321*UIScale,68*UIScale,3*UIScale);
+        Text(TEXT("Small paws. One enormous adventure."),76,345,.43,Ivory);
+        const auto Labels=PC->MenuLabels();
+        for(int32 Index=0;Index<Labels.Num();++Index)
+        {
+            const float X=76,Y=384+Index*52;
+            const bool Selected=PC->Selection==Index;
+            DrawRect(Selected?Gold:FLinearColor(.02,.07,.09,.6),X*UIScale,Y*UIScale,404*UIScale,42*UIScale);
+            if(Selected) Text(TEXT(">"),92,Y+9,.52,Dark);
+            Text(Labels[Index],Selected?120:96,Y+9,.52,Selected?Dark:Ivory);
+            ButtonRects.Add(FBox2D(FVector2D(X,Y)*UIScale,FVector2D(X+404,Y+42)*UIScale));
+        }
+        Text(TEXT("ARROWS choose    ENTER play    /    Click to select"),76,H-40,.32,Muted);
+        Text(TEXT("NORI"),W-235,H-95,.65,Ivory);
+        Text(TEXT("NINJA. RABBIT. DESSERT ENTHUSIAST."),W-397,H-58,.30,Gold);
+        if(PC->Journey && !PC->Journey->Ready) Text(PC->Journey->LoadError,76,H-73,.34,FLinearColor(1,.4,.2));
+        return;
+    }
+    if(PC->Menu==EPOCMenu::Cloud)
+    {
+        DrawRect(FLinearColor(.018,.045,.065,.97),0,0,Canvas->SizeX,Canvas->SizeY);
+        Text(TEXT("YOUR CLOUD PROFILE"),W*.5,68,1.1,Ivory,true);
+        Text(GI->Cloud->Status,W*.5,125,.5,Gold,true);
+        Text(TEXT("Best shards, relics and completed runs are saved online."),W*.5,172,.4,Ivory,true);
+        Text(TEXT("This installation has its own private profile, remembered in Mac Keychain."),W*.5,202,.34,Muted,true);
+        Text(TEXT("CASUAL LEADERBOARD"),W*.5,258,.5,Gold,true);
+        if(GI->Cloud->Board.IsEmpty()) Text(TEXT("No records loaded yet. Connect to see the board."),W*.5,305,.4,Muted,true);
+        for(int32 I=0;I<FMath::Min(6,GI->Cloud->Board.Num());++I) Text(GI->Cloud->Board[I],W*.5,300+I*29,.43,Ivory,true);
+        Text(TEXT("Client-reported runs. Developer-flight runs are excluded."),W*.5,495,.32,Muted,true);
+        const auto Labels=PC->MenuLabels();
+        for(int32 I=0;I<Labels.Num();++I) {
+            const float X=W*.5-230,Y=539+I*53;const bool Selected=PC->Selection==I;
+            DrawRect(Selected?Gold:Dark,X*UIScale,Y*UIScale,460*UIScale,42*UIScale);
+            Text(Labels[I],W*.5,Y+9,.5,Selected?Dark:Ivory,true);
+            ButtonRects.Add(FBox2D(FVector2D(X,Y)*UIScale,FVector2D(X+460,Y+42)*UIScale));
+        }
+        Text(TEXT("No email, payment details or gameplay video are uploaded."),W*.5,H-36,.32,Muted,true);
+        return;
+    }
+    if(PC->Menu==EPOCMenu::Dream)
+    {
+        DrawRect(FLinearColor(.025,.04,.09,.13),0,0,Canvas->SizeX,Canvas->SizeY);
+        DrawRect(FLinearColor(.025,.035,.06,.95),0,0,Canvas->SizeX,48*UIScale);
+        DrawRect(FLinearColor(.025,.035,.06,.95),0,(H-105)*UIScale,Canvas->SizeX,105*UIScale);
+        Text(PC->DreamTime<2.2f?TEXT("Nori had one very important dream..."):TEXT("A slice of cake. All to himself."),W*.5,H-83,.8,Ivory,true);
+        Text(TEXT("SPACE / ENTER  to wake up"),W*.5,H-37,.4,Gold,true);
+        return;
+    }
     if (PC->Menu == EPOCMenu::Playing)
     {
-        Text(FString::Printf(TEXT("%03d  /  576     MEMORY SHARDS"), GI->Shards), 40, 30, .52, Ivory);
+        Text(FString::Printf(TEXT("%03d     SHARDS"), GI->Shards-GI->ShardsSpent), 40, 30, .52, Ivory);
         Text(FString::Printf(TEXT("%d / 8  RELICS"), GI->Relics), 40, 56, .4, Gold);
-        FString Hearts;
-        for (int32 I = 0; I < (Player ? Player->Hearts : 3); ++I) Hearts += TEXT("o  ");
-        Text(Hearts, W - 150, 30, .7, Gold);
+        // Pixel hearts are drawn directly, independent of font glyph support.
+        const char* HeartRows[]={"011000110","111101111","111111111","111111111","011111110","001111100","000111000","000010000"};
+        TArray<FCanvasUVTri> HeartTriangles; HeartTriangles.Reserve(300);
+        for(int32 Heart=0;Heart<3;++Heart)
+            for(int32 Y=0;Y<8;++Y) for(int32 X=0;X<9;++X)
+            {
+                if(HeartRows[Y][X]!='1') continue;
+                const bool Edge=X==0||X==8||Y==0||Y==7||HeartRows[Y-1][X]!='1'||HeartRows[Y+1][X]!='1'||HeartRows[Y][X-1]!='1'||HeartRows[Y][X+1]!='1';
+                const bool Full=Heart<(Player?Player->Hearts:3);
+                FLinearColor Color=Edge?FLinearColor(.14,.04,.075):Full?FLinearColor(.95,.13,.23):FLinearColor(.22,.20,.26);
+                if(Full&&!Edge&&Y==2&&(X==2||X==6)) Color=FLinearColor(1,.66,.67);
+                const FVector2D P((W-156+Heart*39+X*3)*UIScale,(31+Y*3)*UIScale);
+                const FVector2D DX(3*UIScale,0), DY(0,3*UIScale);
+                FCanvasUVTri A,B;
+                A.V0_Pos=P;A.V1_Pos=P+DX;A.V2_Pos=P+DY;
+                B.V0_Pos=P+DX;B.V1_Pos=P+DX+DY;B.V2_Pos=P+DY;
+                A.V0_Color=A.V1_Color=A.V2_Color=B.V0_Color=B.V1_Color=B.V2_Color=Color;
+                HeartTriangles.Add(A);HeartTriangles.Add(B);
+            }
+        FCanvasTriangleItem HeartItem(HeartTriangles,GWhiteTexture);
+        HeartItem.BlendMode=SE_BLEND_Translucent;
+        Canvas->DrawItem(HeartItem);
+        if(Player && Player->DeveloperFlight)
+        {
+            DrawRect(FLinearColor(.015,.09,.12,.92),(W*.5f-300)*UIScale,65*UIScale,600*UIScale,88*UIScale);
+            Text(TEXT("DEVELOPER FLIGHT  /  NO CLIP"),W*.5f,73,.55,FLinearColor(.3,1,.83),true);
+            Text(TEXT("WASD move   SPACE up   C / CTRL down   SHIFT fast"),W*.5f,104,.38,Ivory,true);
+            Text(TEXT("Type siddarthisgod again or R: return to checkpoint"),W*.5f,128,.34,Muted,true);
+            Text(FString::Printf(TEXT("X %.0f   Y %.0f   Z %.0f   /   F: mouse camera   X: center"),Player->GetActorLocation().X,Player->GetActorLocation().Y,Player->GetActorLocation().Z),W*.5f,160,.35,Ivory,true);
+        }
+        if(Player && Player->Dying)
+        {
+            DrawRect(FLinearColor(.25,.015,.025,.22),0,0,Canvas->SizeX,Canvas->SizeY);
+            Text(TEXT("BACK TO CHECKPOINT"),W*.5,H*.4,.75,Ivory,true);
+        }
+#if !UE_BUILD_SHIPPING
+        if(FParse::Param(FCommandLine::Get(),TEXT("POCAutoRun")) || FString(FCommandLine::Get()).Contains(TEXT("POCAutoRun=")))
+            Text(TEXT("AUTOMATED PLAYTEST"),W*.5,78,.35,Gold,true);
+#endif
+        if(Player && !Player->DeveloperFlight)
+        {
+            Text(Player->DashCooldown<=0 ? TEXT("Q  DASH READY") : TEXT("Q  RECHARGING"),W-200,68,.4,Player->DashCooldown<=0 ? FLinearColor(.35,.9,.8) : Muted);
+            DrawRect(FLinearColor(.15,.3,.32,.8),(W-200)*UIScale,94*UIScale,145*UIScale,3*UIScale);
+            DrawRect(FLinearColor(.3,.9,.8),(W-200)*UIScale,94*UIScale,145*UIScale*(1-FMath::Clamp(Player->DashCooldown/.9f,0.f,1.f)),3*UIScale);
+        }
+        if(Player && !Player->DeveloperFlight)
+            Text(Player->IsMouseCameraActive() ? TEXT("MOUSE CAMERA ON  /  F to lock  /  X center") : TEXT("F: toggle mouse look  /  ARROWS: camera  /  X: center"),W*.5,56,.34,Player->IsMouseCameraActive()?Gold:Muted,true);
         if (PC->Journey)
         {
             Text(PC->Journey->SectionName, W * .5, 28, .4, Muted, true);
-            Text(PC->Journey->Prompt, W * .5, H - 110, .55, Ivory, true);
+            if(!Player || !Player->DeveloperFlight) Text(PC->Journey->Prompt, W * .5, H - 110, .55, Ivory, true);
             if (GI->Save->Subtitles && !PC->Journey->Caption.IsEmpty())
             {
                 DrawRect(FLinearColor(0, 0, 0, .55), (W * .5 - 450) * UIScale, (H - 65) * UIScale, 900 * UIScale, 42 * UIScale);
                 Text(PC->Journey->Caption, W * .5, H - 57, .48, Ivory, true);
             }
         }
-        if (GI->Section == 0 && GI->RunSeconds < 40)
-            Text(TEXT("WASD  move     SPACE  jump     SHIFT  sprint     J / click  bonk     C  slide / slam     E  Echo"), W * .5, H - 155, .4, Muted, true);
+        if (GI->Section == 0 && GI->RunSeconds < 40 && (!Player || !Player->DeveloperFlight))
+            Text(TEXT("WASD roam   SPACE double jump   Q dash   J spin   E interact   Arrows: camera   X: center"), W * .5, H - 155, .4, Muted, true);
     }
     else
     {
@@ -247,15 +450,17 @@ void APOCHUD::DrawHUD()
         Text(TEXT("THE LONG WAY TO CAKE"), W * .5, Settings ? 50 : 85, .42, Gold, true);
         const FString Title = Settings ? TEXT("Make yourself comfortable.") : Controls ? TEXT("Small paws. Big possibilities.") : PC->Menu == EPOCMenu::Pause ? TEXT("Catch your breath.") : TEXT("PIECE OF CAKE");
         Text(Title, W * .5, Settings ? 80 : 120, Settings || Controls ? 1.1 : 1.65, Ivory, true);
+        if (PC->Menu == EPOCMenu::Pause && Player && Player->DeveloperFlight) Text(TEXT("DEVELOPER FLIGHT ENABLED  -  resume to fly"),W*.5,205,.48,FLinearColor(.3,1,.83),true);
         if (PC->Menu == EPOCMenu::Title) Text(TEXT("An enormous journey. A perfectly ordinary dessert."), W * .5, 205, .52, Muted, true);
         if (PC->Menu == EPOCMenu::Complete)
         {
             Text(TEXT("It was, in fact, a piece of cake."), W * .5, 215, .6, Ivory, true);
+            if(GI->Cloud) Text(GI->Cloud->Status,W*.5,299,.34,Muted,true);
             Text(FString::Printf(TEXT("%d:%02d     |     %d memory shards     |     %d relics"), int32(GI->RunSeconds) / 60, int32(GI->RunSeconds) % 60, GI->Shards, GI->Relics), W * .5, 260, .48, Gold, true);
         }
         if (Controls)
         {
-            const TCHAR* Lines[] = {TEXT("WASD / left stick       Move"), TEXT("Mouse / right stick     Camera"), TEXT("Space / A       Jump  (hold for height)"), TEXT("Shift / LB       Sprint"), TEXT("J or left click / X       Bonk  (also in the air)"), TEXT("C or Ctrl / B       Slide on land; slam in the air"), TEXT("E / Y       Echo or eat cake"), TEXT("Esc / Menu       Pause          R       Checkpoint")};
+            const TCHAR* Lines[] = {TEXT("WASD / left stick       Move"), TEXT("Arrows / right stick: camera   F: mouse toggle   X / R3: center"), TEXT("Space / A       Jump; press again for double jump"), TEXT("Q / right click / RB       Dash     Shift / LB       Sprint"), TEXT("J or left click / X       Spin attack / kick bombs"), TEXT("C or Ctrl / B       Slide on land; slam in the air"), TEXT("E / Y       Echo or eat cake"), TEXT("Esc / Menu       Pause          R       Checkpoint")};
             for (int32 I = 0; I < 8; ++I) Text(Lines[I], W * .5, 210 + I * 34, .48, I % 2 ? Muted : Ivory, true);
         }
         const auto Labels = PC->MenuLabels();

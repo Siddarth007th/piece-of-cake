@@ -23,7 +23,16 @@ export function peerOptions(env, now = Date.now(), role = 'player') {
     const credential = createHmac('sha1', env.TURN_SECRET).update(username).digest('base64');
     iceServers.push({urls: env.TURN_URL.split(','), username, credential});
   }
-  return {iceServers};
+  if (env.FREE_RELAY === '1') {
+    // Public static-auth service documented by the Open Relay Project. Opt-in only.
+    // This published value is not an account credential; never replace custom TURN validation.
+    const username = `${Math.floor(now / 1000) + 86400}:poc`;
+    const credential = createHmac('sha1', 'openrelayprojectsecret').update(username).digest('base64');
+    iceServers.push({urls: ['turn:staticauth.openrelay.metered.ca:443?transport=udp',
+      'turn:staticauth.openrelay.metered.ca:443?transport=tcp'], username, credential});
+  }
+  if (env.ICE_RELAY_ONLY === '1' && !env.TURN_URL && env.FREE_RELAY !== '1') throw new Error('Relay-only testing needs a TURN service');
+  return {iceServers, ...(env.ICE_RELAY_ONLY === '1' ? {iceTransportPolicy:'relay'} : {})};
 }
 
 export function allowedOrigin(origin, allowed) {

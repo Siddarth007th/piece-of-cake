@@ -8,9 +8,9 @@ for attempt in {1..30}; do
 done
 curl -fsS http://127.0.0.1:8080/healthz >/dev/null
 exec "$GAME_EXECUTABLE" \
-  -PixelStreamingSignallingURL=ws://127.0.0.1:8888 \
+  -PixelStreamingConnectionURL=ws://127.0.0.1:8888 \
   -PixelStreamingID=piece-of-cake \
-  -PixelStreamingEncoderCodec=H264 \
+  -PixelStreamingEncoderCodec=H264 -PixelStreamingEncoderKeyframeInterval=120 \
   -PixelStreamingWebRTCMinPort=49160 -PixelStreamingWebRTCMaxPort=49200 \
   -RenderOffscreen -ForceRes -ResX=1600 -ResY=900 \
   -AudioMixer -Unattended -stdout -FullStdOutLogOutput

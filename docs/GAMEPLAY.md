@@ -1,73 +1,80 @@
-# The Long Way to Cake
+# The Long Way to Cake — local redesign
 
-Nori is a small cream-colored creature with teal tapered ears, large dark eyes,
-a red scarf and a worn adventurer's pack. Nori's ambition is completely ordinary:
-eat the slice of vanilla cake at the terrace above the meadow.
+**Release is on hold until the user explicitly approves it.** This version replaces the open-air route with enclosed districts and a more demanding movement/combat loop. Nori is an original ninja rabbit with cream ears and face, an indigo cloth outfit, light wraps, a red headband and flowing scarf, looking for an ordinary slice of vanilla cake.
 
-## Journey
-
-| Section | Palette / scale | Play focus |
+| District | Interior and mood | Main challenges |
 |---|---|---|
-| Meadow | Warm green, broad platforms, distant basin | Walk/run/jump, bonk, bounce tutorial |
-| Forgotten ruins | Blue stone, amber lanterns | Moving platforms, wandering enemies, pulse traps |
-| Ancient forest | Giant teal canopies, roots and falls | Ascending jumps, moving landings, bounce chains |
-| Listening temple | Huge pillars, warm inlays | Echo bridges, guardians, slide gates, pulse traps |
-| Underground caverns | Deep blue roof ribs and cyan crystals | Narrower atmosphere, moving landings, hazards |
-| Sunken city | Monumental towers, blue/gold | Camera widening, flight nuisances, Echo traversal |
-| Long way down | Crumbling causeway | Sustained movement, sliding, bouncing, pulse timing |
-| One last climb | Quiet warm stone | No enemies, final ascent, ordinary cake |
+| Sunroot Vault | Warm stone, roots, ferns and lime lamps | Learn double jump, dash and vent timing |
+| Bellows Foundry | Copper pipes, orange vents, heavy masonry | Timed heavy presses, charging guards and kickable bombs |
+| Fern Archives | Timber surfaces, bookshelves and hanging foliage | Two sentry courts with guard-locked gates, moving landings |
+| Echo Sanctum | Violet stone, banners and glowing inlays | Timed Echo bridges and guardians |
+| Prism Grotto | Blue rock strata, crystals and hanging formations | Wider weaving islands, shorter gaps and halfway checkpoints |
+| Tidal Gallery | Teal ceramic, canals and wall panels | Three vertical lifts, bomb throwers and Echo crossings |
+| Clockwork Descent | Brass pipes and amber machinery | Crumbling floors, sweepers and chained movement |
+| The Cake Chamber | Warm tiles, red banners and gold trim | A final mixed gauntlet, then the cake |
 
-The route is about 3 km in Unreal world units. Its 192 platforms run continuously
-around a basin, ending on a higher terrace near the start. There are 24 safe
-checkpoints, 576 common shards, 8 optional relic detours and 18 enemies. No secret
-is required for completion. A complete first run is **targeted** at 10–15 minutes;
-this has not been timed and must not be presented as a measured duration.
+Each district has three encounter rooms with checkpoints at their entrances. The 192 route beats include continuous walking surfaces, combat spaces, ordinary gaps, 200 cm rises and wide dash crossings. Checkpoints never share a bomb, vent or sweeper. Eight relic detours remain optional. Grounded platforms have visible borders; every gap has an enclosing ceiling and walls. Shadows, contact shadows and ambient occlusion are disabled at every graphics setting.
 
-## Movement tuning
+## Controls and movement
 
-- Run 620 cm/s; sprint 840 cm/s; analog gamepad input supplies walking speed.
-- Acceleration 3200 cm/s²; walking brake 2800 cm/s²; air control 0.7.
-- Jump impulse 650 cm/s; gravity 1.6 × 980 cm/s².
-- Coyote window 0.12 s; input buffer 0.14 s. Release cuts upward velocity for short hops.
-- Slide lasts 0.65 s and lowers collision height. In air the same button slams downward.
-- Bonk has a short cooldown and forward reach; aerial bonk redirects momentum.
-- Landing on an enemy from above defeats/staggers it and bounces the player.
-- Ledge assist checks surface normal and capsule clearance before a short step-up.
-- Three hits cause respawn; individual hits grant temporary invulnerability.
-- Falls respawn at the latest checkpoint. Collected shards and defeated enemies
-  remain accounted for during the same run.
+| Action | Keyboard/mouse | Controller |
+|---|---|---|
+| Move | WASD | Left stick |
+| Rotate camera | Arrow keys, or tap F then move mouse; F again locks | Right stick |
+| Center behind Nori | X | R3 |
+| Jump, then double jump | Space; press again in the air | A / Cross |
+| Dash | Q or right click | RB / R1 |
+| Sprint | Shift | LB / L1 |
+| Spin attack / kick a bomb | J or left click | X / Square |
+| Slide / air slam | C or Ctrl | B / Circle |
+| Echo / interact / eat cake | E | Y / Triangle |
+| Pause / checkpoint | Esc / R | Menu / Options |
 
-Geometry checks reserve a 45 cm takeoff/landing margin at each edge, account for
-height changes, and allow a conservative 300 cm lateral moving-platform offset.
-This only establishes mathematical feasibility; controller feel, actual collisions
-and frame-rate behavior need engine validation.
+Run speed is 820 cm/s; sprint speed 1100 cm/s. Jump impulse is 650 cm/s and gravity 1568 cm/s². One additional jump resets vertical velocity in the air; landing or a bounce restores it. Coyote time is 0.16 seconds and the jump buffer 0.18 seconds. Short taps retain at least 0.12 seconds of lift before a gentler upward-speed cut; held jumps retain full height.
 
-## Echo
+The gameplay camera holds its angle with a fixed 420 cm boom and 82 degree field of view. Arrow keys rotate it directly. Tap F once to enable mouse look and tap it again to lock; middle-drag remains available. X (or R3) smoothly centers behind Nori and locks mouse look. Right-stick look remains supported. The browser uses pointer-lock-free mouse input, and its Center camera button is equivalent to X. Mouse/stick sensitivity and invert Y are adjustable in Pause → Settings; arrow up always looks up. Pausing clears mouse-look mode. Running and dashing never auto-rotate or zoom the camera. Wall collision may shorten the boom to avoid clipping.
 
-Approach a cyan Echo stone and press E/Y. Its two linked platforms become solid for
-18 seconds. They brighten/pulse near expiry, and a bridge won't remove collision
-directly beneath the player. The player can reactivate a stone; no inventory key or
-long puzzle is required. Respawn resets all temporary platforms.
+Three pixel hearts show health. Bombs and enemies remove hearts and launch Nori away. Every fatal fall immediately empties all hearts, shows a brief death cue, then restores three hearts at the checkpoint. There is no limited life counter.
 
-## Danger and rewards
+Body lean follows turns, the torso stretches during jumps and squashes on landing, arms swing through the run, and the spin twists the full body twice. There is no grapple or hanging-ring move; the user clarified that “swing” meant body animation.
 
-Moss wanderers patrol a fixed platform. Stone guardians take two bonks or one slam.
-Flying nuisances bob above a platform and can be hit in the air. Enemies telegraph
-for 0.65 seconds before their attack. Pulse traps also visibly warn before activation.
-Defeat is a squash and particle pop, with no gore.
+Dash lasts 0.20 seconds at 1550 cm/s, with a 0.9-second cooldown and one dash per airborne stretch. It briefly suspends gravity and hits nearby enemies or kicks bombs, but grants no blanket damage immunity. The HUD shows when dash is available. Slide lasts 0.65 seconds; the same input becomes a downward slam while airborne.
 
-Collapse platforms shake, then fall after 2.4 seconds of contact. Safe landings
-and checkpoints break the sequence into forgiving stretches. The relic departure
-in this section is a permanent platform. The final ascent is deliberately calmer.
+## Encounters
 
-Press E/Y near the final table to begin the brief eating animation; the cake
-disappears after the bite, completion is recorded, and the actual elapsed time and
-collected counts appear. Restart creates a fresh journey.
+Vents use a shared, pause-aware room clock: 1.05 seconds of amber warning, 1 second of red danger, then a teal crossing window. Rotating orange arms require jumping over or timing a passage around them. Crumbling platforms shake for 2.4 seconds before falling and reform after five seconds so players can return for missed shards.
 
-## Presentation limits
+Floor bombs arm on approach and show their 360 cm blast footprint during a 1.6-second fuse. Some are triggered by reusable pressure plates. Close blasts deal two health points; outer blasts deal one. They launch Nori up and away with distance-scaled force, and ignite nearby bombs with a 0.4-second chain fuse. A spin launches a bomb forward with a short remaining fuse; its explosion can defeat enemies. Bomb throwers mark a player's position with a bomb whose fuse allows time to move away. A fixed pool limits spawned bombs.
 
-The character/scenery animation is a procedural first implementation, not a finished
-skeletal animation pipeline. The generated music consists of short original loops.
-The opening cake reveal, visual transitions, camera readability, enemy telegraphs,
-collapse pacing and eating animation all require visual validation and refinement
-inside Unreal before this meets the intended commercial-prototype quality bar.
+Charging guards lock their direction during a 0.7-second warning and cannot chase across gaps. Armoured guardians need two bonks or one slam and punish close approaches with a ground burst. Flying bomb throwers pressure stationary players. Enemy defeat uses a squash and particle pop. Checkpoint recovery restores enemies, temporary platforms, bombs, movement resources and three hearts; collected shards remain collected.
+
+Echo stones activate their linked bridges for 18 seconds. Expiring bridges pulse and never remove support directly beneath the player. The final approach has actual 25 cm stair treads and additional enemies that can knock Nori back down. At the cake room, each of two side switches consumes 180 shards. Insufficient funds consume nothing; players can go back for more, with return Echo controls available. Both switches raise a physical door, then E at the cake starts the eating animation and completion menu. Paid switches and collected shards survive checkpoint deaths. Restart clears the run and shard spending.
+
+A short, skippable opening shows Nori asleep and dreaming of cake before the playable journey begins.
+
+## Validation
+
+The Python route checks establish geometric reachability and safe checkpoint placement only. Actual movement, encounter interactions, collision, ending, restart and frame pacing are tested in Unreal. See TEST_RESULTS.md for current runtime evidence and outstanding issues. The target first-play duration remains 10–15 minutes; an automated route traversal is not a measure of a new player's experience.
+
+
+## Developer flight and the opening practice sequence
+
+Type `siddarthisgod` during gameplay or while paused to toggle developer flight. No console is needed. The phrase is case insensitive and allows three seconds between letters. Flight controls: WASD moves on the horizontal plane, Space rises, C or Ctrl descends, and Shift increases speed. Tap F to enable mouse look, or use the arrow keys. X centers behind Nori. The green developer banner includes coordinates. Collision and damage are disabled in this mode; collectibles, checkpoint triggers and cake interactions are suspended. Type the phrase again, or press R, to turn flight off and return safely to the last checkpoint. This mode starts off on every new journey and is never used to certify beatability.
+
+The first practice room now has no enemy or timed vent, a checkpoint immediately before its first gap, a lower 80 cm introductory rise and a shorter 260 cm practice gap. Quick taps retain at least 120 ms of lift, with a gentler jump cut; holding Space still gives full height. Coyote time is 160 ms and the jump buffer is 180 ms. Later encounters retain their harder double jump, dash, bomb and enemy demands.
+
+
+## Distinct district encounters
+
+- **Sunroot Vault:** a safe movement practice room, teal takeoff edges and a checkpoint before the introductory jumps. Later rooms introduce bombs and timing.
+- **Bellows Foundry:** three heavy presses with a four-second warning/slam/open cycle. Amber announces the drop; teal marks the crossing window. The press physically blocks the route while lowered.
+- **Fern Archives:** two wider sentry courts. Each gate belongs to three guards and opens only after those guards are defeated. Spin attacks and jumping create space during the fight.
+- **Echo Sanctum:** temporary bridges activated from either end, so the route supports returning for shards.
+- **Prism Grotto:** 1250 cm wide islands alternate 360 cm from side to side. The player steers across the room, with gaps capped at 340 cm, lower rises and an extra checkpoint halfway through each room.
+- **Tidal Gallery:** three lifts travel 220 cm vertically. Wait for a low deck, board it, then choose when to leave. Lit guide rails identify lift travel.
+- **Clockwork Descent:** a six-platform collapsing-floor sprint after a safe checkpoint, in addition to the earlier sweepers.
+- **Cake Chamber:** guarded stairs, bombs and the two shard-funded switches before the cake.
+
+Ceiling heights now vary from a low 950 cm industrial passage to a 2100 cm crystal chamber. All districts remain enclosed and free of cast shadows. Arena enemies reset on checkpoint recovery, along with their gate.
+
+Medium now uses 80% internal rendering into a 1280×720 stream, while HUD text remains at stream resolution. High/Epic retain 100%. The current performance evidence still includes stutters; see TEST_RESULTS.md.

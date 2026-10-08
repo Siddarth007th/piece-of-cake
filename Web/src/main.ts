@@ -1,6 +1,7 @@
 import { Config, Flags, NumericParameters, PixelStreaming, TextParameters } from '@epicgames-ps/lib-pixelstreamingfrontend-ue5.8';
 import './style.css';
 import './title';
+import {attachDiagnostics} from './diagnostics';
 
 const element = <T extends HTMLElement>(id: string) => {
   const value = document.getElementById(id);
@@ -15,6 +16,7 @@ const errorDialog = element<HTMLDialogElement>('error-dialog');
 const controlsDialog = element<HTMLDialogElement>('controls-dialog');
 const resumeButton = element<HTMLButtonElement>('resume-video');
 const restartButton = element<HTMLButtonElement>('restart');
+const centerCameraButton = element<HTMLButtonElement>('camera-center');
 const volumeInput = element<HTMLInputElement>('volume');
 const availability = element('availability');
 let stream: PixelStreaming | undefined;
@@ -78,6 +80,7 @@ function leave() {
   playerPanel.hidden = true;
   document.body.classList.remove('playing');
   restartButton.disabled = true;
+  centerCameraButton.disabled = true;
   playButton.disabled = true;
   void checkAvailability();
   if (document.pointerLockElement) document.exitPointerLock();
@@ -110,13 +113,15 @@ function createStream() {
     [Flags.MouseInput]: true,
     [Flags.GamepadInput]: true,
     [Flags.TouchInput]: false,
-    [Flags.HoveringMouseMode]: false,
+    // Native F-toggle / middle-drag gates camera movement; pointer lock is not required.
+    [Flags.HoveringMouseMode]: true,
     [Flags.SuppressBrowserKeys]: true,
     [Flags.UseMic]: false,
     [Flags.UseCamera]: false,
     [NumericParameters.MaxReconnectAttempts]: 0,
   }});
   const client = new PixelStreaming(config, {videoElementParent: streamParent});
+  attachDiagnostics(client, streamParent);
   client.addEventListener('webRtcConnecting', () => loading('Crossing the last bridge…', 'Connecting to the live game.'));
   client.addEventListener('webRtcConnected', () => loading('Your adventure is arriving.', 'Waiting for the first live frame.'));
   client.addEventListener('videoInitialized', volume);
@@ -125,6 +130,7 @@ function createStream() {
     overlay.hidden = true;
     connecting = false; playing = true;
     restartButton.disabled = false;
+    centerCameraButton.disabled = false;
     volume(); streamParent.focus();
   });
   client.addEventListener('playStreamRejected', () => {
@@ -179,6 +185,15 @@ element('fullscreen').addEventListener('click', async () => {
   } catch { notice('Fullscreen is unavailable in this browser.'); }
 });
 document.addEventListener('fullscreenchange', () => element('fullscreen').setAttribute('aria-label', document.fullscreenElement ? 'Exit fullscreen' : 'Enter fullscreen'));
+centerCameraButton.addEventListener('click', () => {
+  if (!playing || !stream) return;
+  const down = stream.toStreamerHandlers.get('KeyDown');
+  const up = stream.toStreamerHandlers.get('KeyUp');
+  if (!down || !up) { notice('Press X in the game to center the camera.'); return; }
+  down([88, 0]);
+  setTimeout(() => up([88]), 80);
+  streamParent.focus();
+});
 restartButton.addEventListener('click', () => {
   if (!playing || !stream) return;
   const down = stream.toStreamerHandlers.get('KeyDown');
@@ -191,7 +206,7 @@ restartButton.addEventListener('click', () => {
 // Toolbar controls must not send their keystrokes into the game.
 document.addEventListener('focusin', event => {
   const target = event.target as HTMLElement;
-  const editingUI = target.closest('.stream-toolbar,dialog') !== null;
+  const editingUI = target.closest('.stream-toolbar,dialog,#stream-diagnostics') !== null;
   stream?.config.setFlagEnabled(Flags.KeyboardInput, !editingUI);
 });
 window.addEventListener('pagehide', leave);

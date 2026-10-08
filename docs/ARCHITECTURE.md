@@ -1,91 +1,32 @@
-# Architecture
+# Product architecture and acceptance criteria
 
-## Runtime ownership
+Piece of Cake is an Unreal native game with a Supabase cloud backend. The optional browser client displays Pixel Streaming video; it does not replace or run the native renderer.
 
-`APOCGameMode` selects `BP_Nori` when generated and spawns `APOCWorld` after play
-starts. The native character remains the fallback. `APOCWorld` reads staged JSON,
-creates the entire lightweight route and modular scenery, and owns its props,
-enemies, atmosphere, sound and bounded particle pool.
-
-`APOCCharacter` uses Unreal CharacterMovement for collision/floor/base movement,
-acceleration and air control. It adds jump buffering/coyote time, short-hop release,
-bonk/air bonk, crouched sliding, slam, enemy bounce and a small ledge assist.
-SpringArm collision and camera lag handle follow framing. The character consists of
-original proportions assembled from engine primitives, with procedural gait,
-blinking, breathing, scarf motion, squash and attack/eating motion.
-
-`APOCProp` is a small explicit behavior enum. It handles collectible pickup,
-checkpoints, Echo nodes/bridges, moving platforms, crumble timing, hazards, bounce
-pads, slide gates and the cake. `APOCEnemy` handles three telegraphed enemy behaviors.
-Neither relies on a NavMesh or uncontrolled physics simulation.
-
-`APOCController` owns the title, play, pause, settings, controls and completion
-states. `APOCHUD` draws their real interactive controls. The controller continues
-ticking while the game is paused. Mouse, keyboard and gamepad menu actions enter
-the same action handlers.
-
-`UPOCGameInstance` owns a run's collectible IDs, checkpoint-independent scores and
-progress. `UPOCSaveGame` serializes settings, completion and best counts. A fresh
-journey clears run state while retaining these persistent values.
-
-## Level data and asset pipeline
-
-`Scripts/generate_journey.py` is the authoritative route source. It builds an
-eight-sector basin route, including explicit flags for enemies, hazards, Echo
-groups, secrets and safe checkpoints. `Content/Data/journey.json` is staged as UFS
-data during packaging and read with Unreal file APIs.
-
-`Scripts/bootstrap_unreal.py`, run inside the compiled Editor, creates actual
-Unreal material/audio/Blueprint assets and the map. It is idempotent and preserves
-existing assets. These binary assets do not exist until a successful editor run.
-`BP_Nori`, `BP_EchoObject` and `BP_Guardian` inherit working native behavior and are
-loaded by the runtime for subsequent designer edits.
-
-Scenery and ordinary platforms use hierarchical instancing, grouped by material
-and shape. Moving/interactive objects remain actors. Their tick is disabled beyond
-6–8k cm and restored as the player approaches. A pool of 72 mesh particles bounds
-effect allocation. Collision is on the traversal surfaces; decorative geometry is
-nonblocking. This avoids hidden blockers, though visual/collision matching still
-needs an engine playthrough.
-
-This compact implementation keeps the route in one map. It does not claim to use
-World Partition/streamed sublevels. Culling and tick activation limit the small
-procedural scene; profile before adding high-resolution production assets.
-
-## Browser and host
-
-```text
-Browser: HTML/CSS + Epic UE5.8 frontend
-  │ HTTPS document / WSS signalling
-  ▼
-Caddy TLS ──► Node HTTP + Epic SignallingServer
-                    │ loopback ws://127.0.0.1:8888
-                    ▼
-             UE5.8 packaged native GPU process
-                    ║ encrypted WebRTC video/audio/data
-                    ╚════════════════════► Browser
-                         direct or via authenticated coturn
+```mermaid
+flowchart LR
+  Player --> App[Unreal Mac app\nTitle, story, movement, combat, UI]
+  App --> Cache[Small offline save and upload outbox]
+  App --> Keychain[Mac Keychain\nCloud refresh token]
+  App -->|Asynchronous HTTPS| Auth[Supabase Auth]
+  Auth -->|Player JWT| API[PostgREST RPC API]
+  App -->|Player JWT| API
+  API --> DB[(PostgreSQL\nPrivate progress and run history)]
+  DB --> RLS[Ownership policies and constrained writes]
 ```
 
-The page has no local game renderer, fallback gameplay or fake progress meter.
-It switches to play state only on the frontend's actual `playStream` event.
-Keyboard, mouse and gamepad are forwarded by Epic's library. The checkpoint button
-uses the library's registered KeyDown/KeyUp protocol handlers for the game's R key.
+| Area | Implemented | Verification / current boundary |
+| --- | --- | --- |
+| Native frontend | Original Nori mascot, animated title, intentional cake thought sequence, settings, controls and cloud panel | Packaged screenshots and intro transition assertions; not a webpage launcher |
+| Gameplay | Eight enclosed districts, free ground movement, double jump, dash, spin, bombs, enemies, Echo, checkpoints, two reward switches, cake and restart | Actual packaged engine traversal; manual play remains important |
+| Authentication | Private anonymous Supabase identity and rotating refresh token in Mac Keychain | No emails collected; no cross-device recovery yet |
+| API | Authenticated HTTPS RPCs, 8-second async timeout, explicit save states | Real-cloud check must pass after provisioning |
+| Database | Progress and run tables, constraints, ownership RLS, monotonic merge, idempotent uploads | Nine PostgreSQL test results including the parent suite |
+| Offline resilience | Small local cache plus at most 100 pending completed runs | Unreal serialization and new-process persistence checks |
+| Leaderboard | Generated nickname and best non-assisted completed time | Casual client-reported scores; not cheat-proof or suitable for prizes |
+| Performance | 1280×720 native default, warmed graphics state, resident audio, bounded actors, 60 FPS cap | Packaged frame-time reports, tested on this M4 Mac only |
+| Distribution | Self-contained Apple-silicon app and verified ZIP, dependency/signature checks | Ad-hoc signing; not Apple notarized, not an Intel/Windows build |
+| CI | Python gameplay-data tests, PostgreSQL rules, web tests and production frontend build | Standard free public-repository GitHub runner; Unreal runtime tests remain local |
+| Secrets | Public project key in app; session token in Keychain; private QA profiles ignored | No database password or service-role key in source/bundle |
+| Operations | Honest cloud status and reproducible schema, build, test and archive scripts | Free project may pause; manual backups; no paid usage enabled |
 
-`/readyz` requires the `piece-of-cake` streamer to identify itself and advertise a
-free seat. This is registration evidence, not a media health test. The stream port
-is loopback-only; the browser WebSocket enforces exact allowed origins. No arbitrary
-console command channel is implemented. TURN clients receive HMAC credentials,
-never the shared relay secret.
-
-## Version policy
-
-Engine 5.8 is pinned together with `lib-pixelstreamingfrontend-ue5.8@0.1.2` and
-`lib-pixelstreamingsignalling-ue5.8@0.2.0`, with an npm lockfile.
-[Epic's infrastructure repository](https://github.com/EpicGames/PixelStreamingInfrastructure)
-requires matching engine/infrastructure branches. Its
-[Pixel Streaming 2 migration guide](https://github.com/EpicGames/PixelStreamingInfrastructure/blob/UE5.8/Docs/pixel-streaming-2-migration-guide.md)
-documents the public API changes and `PixelStreamingSignallingURL` launch flag.
-
-An engine upgrade is a deliberate project + npm + bootstrap + packaging + browser
-verification change. The wrapper fails if a different minor engine is selected.
+“AAA” describes the desired polish, not a measured or achieved certification. Source checks, studio icon renders and a successful cook do not establish runtime quality. Use `docs/TEST_RESULTS.md` and the corresponding runtime reports to assess what was actually tested.

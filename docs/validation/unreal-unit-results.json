@@ -1,0 +1,27 @@
+{
+  "succeeded": 5,
+  "failed": 0,
+  "notRun": 0,
+  "tests": [
+    {
+      "name": "PieceOfCake.Content.OriginalMeshes",
+      "state": "Success"
+    },
+    {
+      "name": "PieceOfCake.Content.RouteAndPhysics",
+      "state": "Success"
+    },
+    {
+      "name": "PieceOfCake.Input.DeveloperPhrase",
+      "state": "Success"
+    },
+    {
+      "name": "PieceOfCake.Persistence.MemoryRoundTrip",
+      "state": "Success"
+    },
+    {
+      "name": "PieceOfCake.Reward.ShardBudget",
+      "state": "Success"
+    }
+  ]
+}

@@ -43,3 +43,14 @@ test('invalid network ports fail fast', () => {
   assert.equal(port('8888',0),8888);
   for (const value of ['oops','0','65536','80.5']) assert.throws(() => port(value,8080));
 });
+
+
+test('free community relay is explicit, time-limited, and can be tested without a direct-media fallback', () => {
+  const options = peerOptions({FREE_RELAY:'1',ICE_RELAY_ONLY:'1'}, 1000000);
+  assert.equal(options.iceTransportPolicy, 'relay');
+  assert.equal(options.iceServers[0].username, '87400:poc');
+  assert.ok(options.iceServers[0].urls.every(url => url.startsWith('turn:staticauth.openrelay.metered.ca:443')));
+  assert.ok(!JSON.stringify(options).includes('openrelayprojectsecret'));
+  assert.throws(() => peerOptions({ICE_RELAY_ONLY:'1'}), /TURN service/);
+  assert.throws(() => peerOptions({FREE_RELAY:'1',TURN_URL:'turn:example.test',TURN_SECRET:'short'}), /TURN_SECRET/);
+});

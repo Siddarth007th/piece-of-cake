@@ -58,23 +58,29 @@ def prepare(root):
 
 
 def stream_arguments():
-    return ["-PixelStreamingSignallingURL=ws://127.0.0.1:8888", "-PixelStreamingID=piece-of-cake", "-PixelStreamingEncoderCodec=H264",
-                  "-RenderOffscreen", "-ForceRes", "-ResX=1600", "-ResY=900", "-AudioMixer", "-Unattended", "-log", "-stdout", "-FullStdOutLogOutput"]
+    return ["-PixelStreamingConnectionURL=ws://127.0.0.1:8888", "-PixelStreamingID=piece-of-cake", "-PixelStreamingEncoderCodec=H264", "-PixelStreamingEncoderKeyframeInterval=120",
+                  "-PixelStreamingUseMediaCapture=false",
+                  "-RenderOffscreen", "-ForceRes", "-ResX=1280", "-ResY=720", "-AudioMixer", "-Unattended", "-log", "-stdout", "-FullStdOutLogOutput"]
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["doctor", "prepare", "editor", "play", "package", "stream", "profile", "test"])
+    parser.add_argument("action", choices=["doctor", "prepare", "editor", "play", "package", "stream", "profile", "test", "journey"])
     parser.add_argument("--target", choices=["Mac", "Win64", "Linux"], default=PLATFORM)
     parser.add_argument("--configuration", choices=["Development", "Shipping"], default="Shipping")
+    parser.add_argument("--run", type=int, choices=[1, 2, 3], default=1)
+    parser.add_argument("--quality", type=int, choices=[0, 1, 2, 3], default=1)
+    parser.add_argument("--screenshots", action="store_true", help="Capture real Unreal district screenshots during a journey test; affects timing")
     args = parser.parse_args()
     if args.action == "doctor":
         print(json.dumps({"platform":PLATFORM,"project":str(PROJECT),"disk_free_gib":round(shutil.disk_usage(ROOT).free / 2**30, 1),"python":platform.python_version(),"node":shutil.which("node")}, indent=2))
     configured = os.environ.get("GAME_EXECUTABLE")
-    if args.action == "stream" and configured:
+    journey_flags = [f"-POCAutoRun={args.run}", f"-POCQuality={args.quality}", f"-POCArtifacts={ROOT / 'Artifacts'}"] if args.action == "journey" else []
+    if args.action == "journey" and args.screenshots: journey_flags.append("-POCScreenshots")
+    if args.action in ("stream", "journey") and configured:
         executable = Path(configured).expanduser().resolve()
         if not executable.is_file(): raise SystemExit("GAME_EXECUTABLE does not exist")
-        run([executable, *stream_arguments()])
+        run([executable, *(["-POCPublicSession"] if args.action == "stream" else []), *journey_flags, *stream_arguments()])
         return
     root = engine_root()
     build, editor, uat = tools(root)
@@ -93,11 +99,18 @@ def main():
     elif args.action == "package":
         if args.target != PLATFORM:
             raise SystemExit(f"Build {args.target} on a {args.target} UE host. This wrapper does not pretend {PLATFORM} can cross-package that platform.")
+        if PLATFORM == "Mac" and os.environ.get("POC_NATIVE_STAGE") != "1":
+            run([sys.executable, ROOT / "Scripts/package_mac.py", args.configuration])
+            return
         prepare(root)
-        output = ROOT / "Builds" / args.target
+        output = ROOT / "Builds" / args.target / args.configuration
         run([uat, "BuildCookRun", f"-project={PROJECT}", "-noP4", f"-platform={args.target}", f"-clientconfig={args.configuration}",
-             "-build", "-cook", "-stage", "-pak", "-archive", f"-archivedirectory={output}", "-utf8output"])
+             "-build", "-cook", "-stage", "-pak", "-compressed", "-archive", f"-archivedirectory={output}", "-utf8output"])
         print(f"Packaging command succeeded. Launch and validate the build in {output} before distribution.")
+    elif args.action == "journey":
+        build_editor(root)
+        run([editor, PROJECT, "/Game/Levels/L_LongWayToCake", "-game",
+             *journey_flags, *stream_arguments()])
     elif args.action == "stream":
         if not (ROOT / "Content/Levels/L_LongWayToCake.umap").exists(): prepare(root)
         else: build_editor(root)

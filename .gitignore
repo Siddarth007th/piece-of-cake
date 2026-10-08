@@ -27,3 +27,11 @@ __pycache__/
 Setup/*.dmg
 
 *.blend1
+
+# Ephemeral free-hosting shortcut
+Play Online.webloc
+Build/Mac/*.PackageVersionCounter
+
+# Cloud development dependencies and private live-test credentials
+Backend/node_modules/
+Backend/runtime/
