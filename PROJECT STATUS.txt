@@ -17,6 +17,7 @@ and click Create new project in the open Supabase Chrome tab. No cloud deploymen
 or live-cloud validation is claimed yet. No billing was enabled.
 
 Source is uploaded to https://github.com/Siddarth007th/piece-of-cake and stays
-here on the Desktop. A CI test race is fixed and passed 20 local repeats; the next pushed CI run is pending. The standalone app is in ~/Applications;
+here on the Desktop. The CI test race is fixed, passed 20 local repeats, and GitHub source validation passed.
+Validation: https://github.com/Siddarth007th/piece-of-cake/actions/runs/37769833331 The standalone app is in ~/Applications;
 Desktop/Piece of Cake.app opens it. Public release is pending final validation.
 The browser-streaming host remains deferred in favor of a shareable Mac app.
