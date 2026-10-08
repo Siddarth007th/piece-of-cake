@@ -53,8 +53,15 @@ test('real signalling server: offline health, protocol identification, disconnec
     assert.match((await rejected).message,/full/i,'Second peer must not share control of the same game');
     first.close(); await once(first,'close');
     fixture.close(); await once(fixture,'close');
-    response = await fetch('http://127.0.0.1:18080/readyz');
-    assert.equal(response.status,503);
+    // The client close event can precede the server's registry cleanup on another
+    // process. Observe the server state with a bounded deadline, as for subscribe.
+    for (let i=0;i<80;i++) {
+      response = await fetch('http://127.0.0.1:18080/readyz');
+      if (response.status === 503) break;
+      await new Promise(resolve=>setTimeout(resolve,25));
+    }
+    assert.equal(response.status,503,'Disconnected streamer must leave the readiness registry');
+    assert.deepEqual(await response.json(),{ready:false,reason:'no_streamer'});
     response = await fetch('http://127.0.0.1:18080/server.mjs');
     assert.equal(response.status,404,'Server source must never be served from the web root');
   } finally {
