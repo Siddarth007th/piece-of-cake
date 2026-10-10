@@ -16,12 +16,12 @@ def main():
     app=args.app.expanduser().resolve()
     subprocess.run(['codesign','--verify','--deep','--strict',str(app)],check=True)
     output=ROOT/'Builds/Releases';output.mkdir(parents=True,exist_ok=True)
-    name='PieceOfCake-0.3.0-mac-arm64'
+    name='PieceOfCake-0.3.1-mac-arm64'
     archive=output/(name+'.zip')
     with tempfile.TemporaryDirectory(prefix='piece-of-cake-release-') as temp:
         release=Path(temp)/name;release.mkdir()
         shutil.copytree(app,release/'PieceOfCake.app',copy_function=copy_file,symlinks=True)
-        (release/'READ ME.txt').write_text('''PIECE OF CAKE 0.3 — MAC PREVIEW
+        (release/'READ ME.txt').write_text('''PIECE OF CAKE 0.3.1 — MAC PREVIEW
 
 Play: move PieceOfCake.app to Applications, then double-click it.
 No Unreal Editor, browser, Node.js, account or internet connection is needed.
@@ -45,10 +45,11 @@ you are above safe ground. R is the explicit checkpoint rescue. E at the
 cake previews the ending; developer-assisted runs are unranked.
 
 CLOUD SAVES
-Optional Supabase Free cloud saves are available in the Cloud saves menu.
-Connect creates a private guest profile for this installation; the session
-is stored in macOS Keychain. No email is needed. There is no cross-device
-account recovery yet. Offline play still works; saves retry on reconnection.
+The first normal launch automatically connects to Supabase Free and creates a
+private guest profile for this installation; the session is stored in macOS
+Keychain. No email is needed. Cloud saves can be turned off in the menu.
+There is no cross-device account recovery yet. Offline play still works; saves
+retry on reconnection.
 
 Medium graphics is the tested 60 FPS target. Three hearts; falling sends
 you to your checkpoint. Each cake switch costs 180 shards. You may return

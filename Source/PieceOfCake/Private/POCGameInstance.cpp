@@ -35,6 +35,10 @@ void UPOCGameInstance::Init()
     Save->Sensitivity = FMath::Clamp(Save->Sensitivity, .25f, 2.f);
     Save->Quality = FMath::Clamp(Save->Quality, 0, 3);
     Cloud=NewObject<UPOCCloud>(this);Cloud->Initialize(this);
+    // Cloud saves are opt-out for normal players: the first launch creates a
+    // private anonymous Supabase profile, while QA command-line sessions exit
+    // from UPOCCloud::Initialize before this path is reached.
+    if (Cloud && Cloud->Configured()) Cloud->Connect();
 }
 
 void UPOCGameInstance::Shutdown()

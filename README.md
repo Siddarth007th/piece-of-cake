@@ -106,6 +106,6 @@ All hosting must remain free. No paid service or automatically paid trial is aut
 
 ## Cloud backend
 
-The native app includes an opt-in cloud profile, progress synchronization, completed-run history and a casual leaderboard. The backend uses Supabase Auth, HTTPS RPCs and PostgreSQL with per-player permissions. The Free backend is deployed: real HTTPS isolation tests and packaged native save/upload plus Keychain session restoration pass. Only the Free plan is allowed. See [backend setup](Backend/README.md) and the [architecture / acceptance table](docs/ARCHITECTURE.md).
+The native app connects to a private anonymous cloud profile on first normal launch, with progress synchronization, completed-run history and a casual leaderboard. The backend uses Supabase Auth, HTTPS RPCs and PostgreSQL with per-player permissions. The Free backend is deployed: real HTTPS isolation tests and packaged native save/upload plus Keychain session restoration pass. Only the Free plan is allowed. Cloud saves can still be turned off from the menu. See [backend setup](Backend/README.md) and the [architecture / acceptance table](docs/ARCHITECTURE.md).
 
 The current profile is remembered in Mac Keychain; it is not an email account and has no cross-device recovery. A small local cache keeps play and queued uploads working through network interruptions.

@@ -1,0 +1,11 @@
+{
+  "version": "0.3.1",
+  "configuration": "Development",
+  "architecture": "arm64",
+  "engine": "5.8.3",
+  "executable_sha256": "bc2a88bdf81bd79d49207e0e258bbe1d86f73a192df03961c2dc4ee775b853e5",
+  "ucas_sha256": "3a61762e33d3c907c7abde4f8607efd751653b2b72d3084e6486b90dd73ac80d",
+  "runtime_evidence": "Artifacts/auto-cloud-04-retry",
+  "installed_path": "/Users/siddarthguruprasad/Applications/PieceOfCake.app",
+  "status": "Automatic Supabase connect; focused native cloud and presentation checks passed"
+}

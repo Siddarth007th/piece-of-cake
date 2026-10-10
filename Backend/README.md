@@ -4,7 +4,7 @@ The native Unreal app is the frontend. Supabase Auth, authenticated HTTPS RPCs a
 
 ## Current feature scope
 
-- Opt-in cloud profiles using Supabase anonymous authentication; the Auth user is unique and authenticated, even though no email is collected.
+- Private cloud profiles using Supabase anonymous authentication on first normal launch; the Auth user is unique and authenticated, even though no email is collected. Cloud saves can be turned off from the in-game menu.
 - Mac Keychain retains the rotating refresh token. Access tokens stay in memory. The binary contains only the project's public publishable key.
 - Cloud storage for best shards, best relics and completion, with monotonic merges so stale clients cannot erase a better score.
 - A bounded, persistent outbox retries completed-run uploads after a network outage or restart. Repeated submissions are idempotent.
